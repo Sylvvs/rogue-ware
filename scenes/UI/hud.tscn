@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1ln82hkmj5x7"]
+
+[ext_resource type="Texture2D" uid="uid://lc3fpi1dv4ft" path="res://images/bomb sprite 3.png" id="1_37p78"]
+[ext_resource type="Script" uid="uid://cwv5sj7i3k3wl" path="res://scenes/UI/hud.gd" id="1_64ctp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64ctp"]
+atlas = ExtResource("1_37p78")
+region = Rect2(3, 6, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sq4i"]
+atlas = ExtResource("1_37p78")
+region = Rect2(19, 6, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37p78"]
+atlas = ExtResource("1_37p78")
+region = Rect2(35, 6, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_640wx"]
+atlas = ExtResource("1_37p78")
+region = Rect2(19, 26, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2258"]
+atlas = ExtResource("1_37p78")
+region = Rect2(0, 81, 48, 48)
+
+[node name="HUD" type="Control"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+script = ExtResource("1_64ctp")
+
+[node name="Label" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="ColorRect" parent="Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.98039216, 0.73333335, 1)
+
+[node name="Description" type="RichTextLabel" parent="Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "KILL EVERYONE!!!!!"
+vertical_alignment = 1
+
+[node name="Bomb" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_direction = 2
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_constants/separation = 0
+
+[node name="BombSprite" type="TextureRect" parent="Bomb"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_64ctp")
+expand_mode = 2
+
+[node name="BombStringStart" type="TextureRect" parent="Bomb"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8sq4i")
+expand_mode = 2
+
+[node name="BombStringPart" type="TextureRect" parent="Bomb"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_37p78")
+expand_mode = 2
+
+[node name="FuseHolder" type="Control" parent="Bomb"]
+layout_mode = 2
+
+[node name="BombFuse" type="TextureRect" parent="Bomb/FuseHolder"]
+z_index = 1
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+texture = SubResource("AtlasTexture_640wx")
+expand_mode = 2
+
+[node name="ExplosionHolder" type="Control" parent="Bomb"]
+layout_mode = 2
+
+[node name="Explosion" type="TextureRect" parent="Bomb/ExplosionHolder"]
+visible = false
+z_index = 2
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+texture = SubResource("AtlasTexture_a2258")
+expand_mode = 2
+
+[node name="Time" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/normal_font_size = 50
+text = "67"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="FlickerTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]

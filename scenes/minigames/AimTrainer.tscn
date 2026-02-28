@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfhkob8m7fkqu"]
+
+[ext_resource type="Script" uid="uid://b4klrgqdemeq1" path="res://scenes/minigames/aim_trainer.gd" id="1_8m13g"]
+[ext_resource type="Texture2D" uid="uid://d1i6qlv7hbl1" path="res://images/apple.png" id="1_lspkl"]
+[ext_resource type="Texture2D" uid="uid://lc3fpi1dv4ft" path="res://images/bomb sprite 3.png" id="2_8m13g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prp3r"]
+atlas = ExtResource("1_lspkl")
+region = Rect2(36, 24, 216, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8fh8"]
+atlas = ExtResource("2_8m13g")
+region = Rect2(3, 6, 16, 16)
+
+[node name="AimTrainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8m13g")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.65, 1)
+
+[node name="Apple" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 300.0
+scale = Vector2(0.333, 0.333)
+texture_normal = SubResource("AtlasTexture_prp3r")
+stretch_mode = 5
+
+[node name="Bomb" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture_normal = SubResource("AtlasTexture_h8fh8")
+stretch_mode = 0
+
+[connection signal="button_down" from="Apple" to="." method="_on_apple_button_down" binds= [&"Apple"]]
+[connection signal="button_down" from="Bomb" to="." method="_on_bomb_button_down"]
