@@ -47,5 +47,4 @@ offset_bottom = 100.0
 texture_normal = SubResource("AtlasTexture_h8fh8")
 stretch_mode = 0
 
-[connection signal="button_down" from="Apple" to="." method="_on_apple_button_down" binds= [&"Apple"]]
 [connection signal="button_down" from="Bomb" to="." method="_on_bomb_button_down"]

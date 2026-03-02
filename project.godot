@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RogueWare"
-run/main_scene="uid://b1ln82hkmj5x7"
+run/main_scene="uid://dhnqrkpp0ckqv"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

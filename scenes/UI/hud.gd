@@ -3,17 +3,20 @@ extends Control
 @onready var bomb = $Bomb
 @onready var timer = $Timer
 @onready var timeShow = $Time
+@onready var desc = $Label/Description
 
 @onready var bombStringPart = $Bomb/BombStringPart
 @onready var bombStringStart = $Bomb/BombStringStart
 @onready var fuseHolder = $Bomb/FuseHolder
 @onready var bombFuse = $Bomb/FuseHolder/BombFuse
-@onready var explosionHolder = $Bomb/explosionHolder
+@onready var explosionHolder = $Bomb/ExplosionHolder
 @onready var explosion = $Bomb/ExplosionHolder/Explosion
+
+signal time_out
 
 var time = 5
 
-func _ready():
+func start():
 	timer.start()
 	timeShow.text = str(time)
 
@@ -28,6 +31,8 @@ func _ready():
 	# keep fuse last
 	bomb.move_child(fuseHolder, bomb.get_child_count() - 1)
 
+func change_text(param: String):
+	desc.text = param
 
 func _on_timer_timeout():
 	time -= 1
@@ -38,6 +43,8 @@ func _on_timer_timeout():
 		explosion.position.y = -200
 		explosion.position.x = -100
 		explosion.visible = true
+		if time < 0:
+			emit_signal("time_out")
 
 	var removed := false
 
@@ -49,6 +56,7 @@ func _on_timer_timeout():
 			child.queue_free()
 			removed = true
 			break
+	
 
 	if !removed:
 		bombStringStart.hide()

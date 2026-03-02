@@ -33,6 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("1_64ctp")
 
 [node name="Label" type="Control" parent="."]
@@ -52,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9843137, 0.98039216, 0.73333335, 1)
+color = Color(0.88, 0.7777733, 0.5192, 1)
 
 [node name="Description" type="RichTextLabel" parent="Label"]
 layout_mode = 1
@@ -72,20 +73,24 @@ layout_direction = 2
 layout_mode = 1
 offset_right = 300.0
 offset_bottom = 100.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="BombSprite" type="TextureRect" parent="Bomb"]
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_64ctp")
 expand_mode = 2
 
 [node name="BombStringStart" type="TextureRect" parent="Bomb"]
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_8sq4i")
 expand_mode = 2
 
 [node name="BombStringPart" type="TextureRect" parent="Bomb"]
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("AtlasTexture_37p78")
 expand_mode = 2
 
