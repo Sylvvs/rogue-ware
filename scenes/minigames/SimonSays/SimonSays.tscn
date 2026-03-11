@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjxgtor4m6xso"]
+
+[ext_resource type="Script" uid="uid://becs7xv5a2qq" path="res://scenes/minigames/SimonSays/simon_says.gd" id="1_ljdl2"]
+
+[node name="SimonSays" type="CanvasLayer"]
+script = ExtResource("1_ljdl2")
