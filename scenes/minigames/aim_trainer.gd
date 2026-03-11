@@ -22,9 +22,6 @@ func start():
 		new_apple.button_down.connect(_on_apple_button_down.bind(new_apple))
 		
 
-func stop():
-	emit_signal("game_lost")
-
 var rng = RandomNumberGenerator.new()
 func get_random_pos():
 	return Vector2(

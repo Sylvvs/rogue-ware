@@ -13,4 +13,4 @@ func start():
 	pass
 
 func stop():
-	pass
+	emit_signal("game_lost")
