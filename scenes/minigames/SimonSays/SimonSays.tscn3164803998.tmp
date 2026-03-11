@@ -47,6 +47,7 @@ columns = 3
 [node name="Button" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ljdl2")
 
 [node name="Button2" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -95,7 +96,3 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ljdl2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o7oxr")
-
-[node name="Timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
