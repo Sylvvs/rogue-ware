@@ -6,7 +6,7 @@ extends Node2D
 @onready var HUD = preload("res://scenes/UI/hud.tscn")
 
 @onready var MINIGAMES = [
-	preload("res://scenes/minigames/CatchApples.tscn")
+	preload("res://scenes/minigames/CatchApples/CatchApples.tscn")
 ]
 
 var current_minigame = null

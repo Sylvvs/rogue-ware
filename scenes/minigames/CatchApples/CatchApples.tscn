@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dphw8cq8pdvn4"]
 
-[ext_resource type="Script" uid="uid://b4klrgqdemeq1" path="res://scenes/minigames/aim_trainer.gd" id="1_oijsp"]
+[ext_resource type="Script" uid="uid://b4klrgqdemeq1" path="res://scenes/minigames/CatchApples/aim_trainer.gd" id="1_oijsp"]
 [ext_resource type="Texture2D" uid="uid://d1i6qlv7hbl1" path="res://images/apple.png" id="2_kvg6j"]
 [ext_resource type="Texture2D" uid="uid://lc3fpi1dv4ft" path="res://images/bomb sprite 3.png" id="3_dynq4"]
 
