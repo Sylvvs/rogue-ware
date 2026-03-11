@@ -14,6 +14,7 @@ var current_timer = null
 
 func _ready() -> void:
 	intermission.start()
+	get_window().unresizable = true
 
 func start_random_minigame():
 	intermission.stop()
