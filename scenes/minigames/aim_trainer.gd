@@ -25,8 +25,8 @@ func start():
 var rng = RandomNumberGenerator.new()
 func get_random_pos():
 	return Vector2(
-	rng.randi_range(0,get_viewport().size.x-100),
-	rng.randi_range(0,get_viewport().size.y-250)
+	rng.randi_range(0,get_viewport().get_visible_rect().size.x-100),
+	rng.randi_range(0,get_viewport().get_visible_rect().size.y-250)
 	)
 
 func _on_bomb_button_down() -> void:
