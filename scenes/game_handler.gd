@@ -8,7 +8,8 @@ extends Node2D
 @onready var MINIGAMES = [
 	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
 	preload("res://scenes/minigames/Spamclick/SpamClick.tscn"),
-	preload("res://scenes/minigames/SimonSays/SimonSays.tscn")
+	preload("res://scenes/minigames/SimonSays/SimonSays.tscn"),
+	preload("res://scenes/minigames/TeachesTyping/Typing.tscn")
 ]
 
 var current_minigame = null
