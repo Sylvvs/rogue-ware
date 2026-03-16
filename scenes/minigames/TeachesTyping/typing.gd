@@ -14,6 +14,7 @@ const WORDS = ["time","person","year","way","day","thing","man","world","life","
 "bring","start","stop","learn","change","create","watch","listen","speak","travel"]
 
 var words: String = ""
+var progress: int = 0
 
 func start():
 	instruction_text = "Type the words!"
@@ -22,6 +23,13 @@ func start():
 	for i in range(10):
 		words = words + WORDS.pick_random() + " "
 	words = words.trim_suffix(" ")
-	print(words)
-	label.text = words
+	label.text = "[color=#4f4f4f]" + words + "[/color]"
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.pressed and char(event.unicode) == words[progress]:
+		progress += 1
+	label.text = "[color=#ffffff]" + words.substr(0,progress) + "[/color]"
+	label.text = label.text + "[color=#4f4f4f]" + words.substr(progress) + "[/color]"
 	
+	if progress == words.length():
+		emit_signal("game_won")
