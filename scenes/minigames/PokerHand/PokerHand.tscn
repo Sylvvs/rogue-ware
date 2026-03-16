@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://blh54k0qiwmw2"]
+
+[ext_resource type="Script" uid="uid://cfjsvr67pov1d" path="res://scenes/minigames/PokerHand/poker_hand.gd" id="1_2c6e8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2c6e8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtyac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl08o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiytn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wacyb"]
+
+[node name="PokerHand" type="CanvasLayer"]
+script = ExtResource("1_2c6e8")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.093100004, 0.49, 0.205555, 1)
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_right = 0.08400001
+anchor_bottom = 0.102000006
+offset_left = 1342.0
+offset_top = 216.0
+offset_right = 1316.2319
+offset_bottom = 244.90399
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2c6e8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wtyac")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nl08o")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uiytn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wacyb")
+
+[node name="Color" type="TextureRect" parent="Button"]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 95.0
+
+[node name="Value" type="TextureRect" parent="Button"]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 95.0
+
+[node name="Container" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1, 95)
+offset_left = 305.0
+offset_top = 420.0
+offset_right = 376.0
+offset_bottom = 515.0
