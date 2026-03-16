@@ -8,6 +8,7 @@ signal game_lost
 
 var instruction_text := "something broke lol"
 var time_limit := 5
+var mult = 1
 
 func start():
 	pass
