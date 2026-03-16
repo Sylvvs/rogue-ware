@@ -26,8 +26,6 @@ func start():
 	
 	for i in range(memory_number):
 		button_array.append(grid.get_children().pick_random())
-		if i > memory_number-2:
-			print(button_array)
 	
 	timer.start()
 
@@ -50,8 +48,6 @@ func on_button_pressed(button: Button):
 		return
 	if button == button_array[0]:
 		button_array.pop_front()
-		print(button_array.size)
-		print(button_array)
 	else:
 		emit_signal("game_lost")
 		
