@@ -7,7 +7,7 @@ const QUESTIONS = [
 	{ "text": "What is ?", "question": BASE_PATH + "3/S.png", "correct": BASE_PATH + "3/R.png", "wrong": [BASE_PATH + "3/F1.png", BASE_PATH + "3/F2.png", BASE_PATH + "3/F3.png"] },
 	{ "text": "Simplify: ", "question": BASE_PATH + "4/S.png", "correct": BASE_PATH + "4/R.png", "wrong": [BASE_PATH + "4/F1.png", BASE_PATH + "4/F2.png", BASE_PATH + "4/F3.png"] },
 	{ "text": "What is the derivative of ", "question": BASE_PATH + "5/S.png", "correct": BASE_PATH + "5/R.png", "wrong": [BASE_PATH + "5/F1.png", BASE_PATH + "5/F2.png", BASE_PATH + "5/F3.png"] },
-	{ "text": "A fair die is rolled twice. \nWhat is the chance that you roll 6 twice?", "question": BASE_PATH + "6/S.png", "correct": BASE_PATH + "6/R.png", "wrong": [BASE_PATH + "6/F1.png", BASE_PATH + "6/F2.png", BASE_PATH + "6/F3.png"] },
+	{ "text": "A fair dice is rolled twice. \nWhat is the chance that you roll 6 twice?", "question": BASE_PATH + "6/S.png", "correct": BASE_PATH + "6/R.png", "wrong": [BASE_PATH + "6/F1.png", BASE_PATH + "6/F2.png", BASE_PATH + "6/F3.png"] },
 	{ "text": "Evaluate: ", "question": BASE_PATH + "7/S.png", "correct": BASE_PATH + "7/R.png", "wrong": [BASE_PATH + "7/F1.png", BASE_PATH + "7/F2.png", BASE_PATH + "7/F3.png"] },
 ]
 
