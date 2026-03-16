@@ -9,7 +9,8 @@ extends Node2D
 	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
 	preload("res://scenes/minigames/Spamclick/SpamClick.tscn"),
 	preload("res://scenes/minigames/SimonSays/SimonSays.tscn"),
-	preload("res://scenes/minigames/TeachesTyping/Typing.tscn")
+	preload("res://scenes/minigames/TeachesTyping/Typing.tscn"),
+	preload("res://scenes/minigames/PerfectCircle/PerfectCircle.tscn")
 ]
 
 var current_minigame = null
