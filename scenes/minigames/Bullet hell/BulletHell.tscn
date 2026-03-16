@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0qskxcf5qsp4"]
+
+[ext_resource type="Script" uid="uid://cbvrrg7bccose" path="res://scenes/minigames/Bullet hell/bullet_hell_spawner.gd" id="1_dk6l2"]
+[ext_resource type="PackedScene" uid="uid://t0j1vjscijsw" path="res://scenes/minigames/Bullet hell/Bullet.tscn" id="2_mfe8g"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(532, 307)
+script = ExtResource("1_dk6l2")
+bullet_scene = ExtResource("2_mfe8g")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="BulletSpawner" type="Node2D" parent="."]
