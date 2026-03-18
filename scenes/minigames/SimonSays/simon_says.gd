@@ -22,7 +22,7 @@ func start():
 	for child in grid.get_children():
 		child.add_theme_stylebox_override("normal", style)
 		child.add_theme_stylebox_override("pressed",style_clicked)
-		child.pressed.connect(Callable(self, "on_button_pressed").bind(child))
+		child.button_down.connect(Callable(self, "on_button_pressed").bind(child))
 	
 	for i in range(memory_number):
 		button_array.append(grid.get_children().pick_random())
@@ -30,13 +30,12 @@ func start():
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	if index >= memory_number:
-		game_state = true
-		return
 	button_array[index].add_theme_stylebox_override("normal", style_clicked)
 	flash(index)
 	index += 1
-	
+	if index >= memory_number:
+		game_state = true
+		timer.stop()
 
 func flash(index):
 	await get_tree().create_timer(0.5).timeout

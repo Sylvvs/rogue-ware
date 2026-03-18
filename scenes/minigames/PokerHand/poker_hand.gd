@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new()
 var hand = []
 var hand_counter = 0
 var held = 0
+var held_hand = []
 
 
 func start():
@@ -41,10 +42,25 @@ func on_button_pressed(button: TextureButton):
 	if held < 5 and !button.focused:
 		button.focused = !button.focused
 		button.tween.tween_property(button, "position", button.position + Vector2(0,-30), 0.1).set_ease(Tween.EASE_OUT)
+		held_hand.append(button.index)
 		held += 1
 	elif button.focused:
 		button.focused = false
 		button.tween.tween_property(button, "position", button.position + Vector2(0,30), 0.1).set_ease(Tween.EASE_OUT)
+		held_hand.erase(button.index)
 		held -= 1 
+
+func _on_confirm_pressed() -> void:
+	best_hand()
+	pass # Replace with function body.
+
+func check_hand():
+	
+	pass
+func best_hand():
+	var test_hand = hand.duplicate()
+	test_hand.sort()
+	test_hand.reverse()
+	
 	
 	pass
