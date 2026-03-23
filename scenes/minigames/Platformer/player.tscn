@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c15ycibi734p8"]
+
+[ext_resource type="Script" path="res://scenes/minigames/Platformer/player.gd" id="1_rlh2x"]
+[ext_resource type="Texture2D" uid="uid://kjnr3id41q72" path="res://scenes/minigames/Math/MatematikTing/3/R.png" id="1_y4waq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlh2x"]
+radius = 11.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_rlh2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rlh2x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -1.9073486e-06)
+scale = Vector2(0.20370375, 0.17709796)
+texture = ExtResource("1_y4waq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
