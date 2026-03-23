@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvo0ttqbt2tvf"]
+
+[ext_resource type="Script" uid="uid://d14nwq30isxq7" path="res://scenes/minigames/GætEtTal/gæt_et_tal.gd" id="1_oyn7n"]
+
+[node name="GætEtTal" type="CanvasLayer"]
+script = ExtResource("1_oyn7n")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.48505443, 0.652177, 0.9868832, 1)
+
+[node name="FeedbackLabel" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 350.0
+offset_right = 460.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 30
+
+[node name="NumberInput" type="LineEdit" parent="."]
+offset_left = 526.0
+offset_top = 276.0
+offset_right = 626.0
+offset_bottom = 326.0
+
+[node name="GuessButton" type="Button" parent="."]
+offset_left = 643.0
+offset_top = 279.0
+offset_right = 683.0
+offset_bottom = 319.0
