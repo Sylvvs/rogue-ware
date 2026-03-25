@@ -13,7 +13,8 @@ extends Node2D
 	preload("res://scenes/minigames/PerfectCircle/PerfectCircle.tscn"),
 	preload("res://scenes/minigames/Math/MathQuiz.tscn"),
 	preload("res://scenes/minigames/PokerHand/PokerHand.tscn"),
-	preload("res://scenes/minigames/GætEtTal/GætEtTal.tscn")
+	preload("res://scenes/minigames/GætEtTal/GætEtTal.tscn"),
+	preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn")
 ]
 
 var current_minigame = null
