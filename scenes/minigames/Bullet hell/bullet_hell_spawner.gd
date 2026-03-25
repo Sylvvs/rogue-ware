@@ -2,42 +2,42 @@ extends Minigame
 
 @onready var center = $Area2D
 @export var bullet_scene: PackedScene
+@onready var node_center = $"."
+@onready var anim = $"../BulletHellGuy/AnimationPlayer"
+
 
 var spawn_timer = 0.0
 var time_passed = 0.0
 var phase_timer = 0.0
-var current_phase = 2
+var current_phase = 1
 
 var phases = [
 	{
 		"name": "circle",
 		"duration": 3.0,
 		"bullets": 12,
-		"speed": 200
+		"speed": 300
 	},
 	{
 		"name": "petals",
-		"duration": 4.0,
+		"duration": 3.0,
 		"bullets": 16,
 		"speed": 300,
 		"k": 10
 	},
 	{
 		"name": "spiral",
-		"duration": 15.0,
+		"duration": 4.0,
 		"bullets": 20,
 		"speed": 300
 	}
 ]
 
-func start():
-	instruction_text = "Dodge the bullets"
-	time_limit = 10
-
 func _process(delta):
 	spawn_timer += delta
 	time_passed += delta
 	phase_timer += delta
+	node_center.rotation += delta/4
 	
 	var phase = phases[current_phase]
 	
@@ -46,6 +46,7 @@ func _process(delta):
 		phase_timer = 0
 		current_phase = (current_phase + 1) % phases.size()
 	
+		
 	# spawn bullets
 	if spawn_timer >= 0.5:
 		spawn_timer = 0

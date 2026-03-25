@@ -14,7 +14,8 @@ extends Node2D
 	preload("res://scenes/minigames/Math/MathQuiz.tscn"),
 	preload("res://scenes/minigames/PokerHand/PokerHand.tscn"),
 	preload("res://scenes/minigames/GætEtTal/GætEtTal.tscn"),
-	preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn")
+	preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn"),
+	preload("res://scenes/minigames/Bullet hell/BulletHell.tscn")
 ]
 
 var current_minigame = null
