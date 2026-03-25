@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://tx8u3gtshqiq"]
+
+[ext_resource type="Script" uid="uid://dv06aae3lrybc" path="res://scenes/minigames/TælObjekter/tæl_obejtker.gd" id="1_3tx8r"]
+[ext_resource type="Texture2D" uid="uid://d1i6qlv7hbl1" path="res://images/apple.png" id="2_g87wx"]
+[ext_resource type="Texture2D" uid="uid://lc3fpi1dv4ft" path="res://images/bomb sprite 3.png" id="3_qqxuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqxuq"]
+atlas = ExtResource("2_g87wx")
+region = Rect2(36, 24, 216, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g87wx"]
+atlas = ExtResource("3_qqxuq")
+region = Rect2(3, 6, 16, 16)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_3tx8r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.4774, 0.70660335, 0.77, 1)
+
+[node name="Apple" type="TextureRect" parent="."]
+visible = false
+offset_right = 100.0
+offset_bottom = 100.0
+texture = SubResource("AtlasTexture_qqxuq")
+expand_mode = 1
+
+[node name="Bomb" type="TextureRect" parent="."]
+visible = false
+offset_right = 100.0
+offset_bottom = 100.0
+texture = SubResource("AtlasTexture_g87wx")
+expand_mode = 1
+
+[node name="Shoe" type="TextureRect" parent="."]
+visible = false
+
+[node name="Hairtie" type="TextureRect" parent="."]
+visible = false
+
+[node name="NumberInput" type="LineEdit" parent="."]
+offset_left = 504.0
+offset_top = 522.0
+offset_right = 572.5625
+offset_bottom = 553.0
