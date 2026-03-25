@@ -1,9 +1,180 @@
-[gd_scene load_steps=3 format=3 uid="uid://b43he8ihxipud"]
+[gd_scene load_steps=4 format=3 uid="uid://b43he8ihxipud"]
 
-[ext_resource type="Script" path="res://scenes/minigames/Platformer/platformer.gd" id="1_uj6ll"]
+[ext_resource type="Script" uid="uid://cj0y867lcgv70" path="res://scenes/minigames/Platformer/platformer.gd" id="1_uj6ll"]
 [ext_resource type="PackedScene" uid="uid://c15ycibi734p8" path="res://scenes/minigames/Platformer/player.tscn" id="2_yxpt3"]
+
+[sub_resource type="GDScript" id="GDScript_grvlt"]
+script/source = "extends CharacterBody2D
+
+const SPEED_ACC = 25
+const SPEED_MAX = 100
+const JUMP_FORCE = -175
+const GRAVITY = 7
+const COYOTE_TIME = 0.2
+
+# Dash
+const DASH_SPEED = 300
+const DASH_TIME = 0.20
+
+var dashes := 1
+var dash_timer := DASH_TIME
+var dash_dir := Vector2.ZERO
+
+var coyote_timer = 0
+
+var last_x_dir := 0
+var last_y_dir := 0
+var direction := 1
+var is_loading = false;
+
+#@onready var animation_tree = $AnimationTree
+#@onready var sprite = $Sprite2D
+#@onready var SFX = $SFXHandler/Jump
+
+
+func _physics_process(delta: float) -> void:
+	var input_vec := get_input_vector()
+	
+	if dash_timer >= DASH_TIME:
+		if input_vec.x == -1:
+			if velocity.x > -SPEED_MAX: velocity.x -= SPEED_ACC
+		elif velocity.x < 0: velocity.x += SPEED_ACC
+		if input_vec.x == 1:
+			if velocity.x < SPEED_MAX: velocity.x += SPEED_ACC
+		elif velocity.x > 0: velocity.x -= SPEED_ACC
+	if abs(velocity.x) < SPEED_ACC:
+		velocity.x = 0
+
+	if is_on_floor() and dash_timer >= DASH_TIME:
+		var friction = SPEED_ACC
+		if velocity.x > SPEED_MAX:
+			velocity.x = min(velocity.x - friction, SPEED_MAX)
+		elif velocity.x < -SPEED_MAX:
+			velocity.x = max(velocity.x + friction, -SPEED_MAX)
+
+
+	if Input.is_action_just_pressed(\"jump\") and (is_on_floor() or coyote_timer < COYOTE_TIME):
+		#animation_tree[\"parameters/conditions/jumping\"] = true
+		#animation_tree[\"parameters/conditions/dashing\"] = false
+		#SFX.play()
+		velocity.y = JUMP_FORCE
+		dash_timer = DASH_TIME
+		coyote_timer = COYOTE_TIME
+	if Input.is_action_just_pressed(\"jump\") and is_on_wall() and not is_on_floor():
+		#animation_tree[\"parameters/conditions/jumping\"] = true
+		#animation_tree[\"parameters/conditions/sliding\"] = false
+		velocity.y = JUMP_FORCE - 50
+		dash_timer = DASH_TIME
+		velocity.x = -direction * SPEED_MAX * 2.3
+		pass
+	if Input.is_action_just_released(\"jump\") and velocity.y < 0 and dash_timer >= DASH_TIME:
+		velocity.y = 0
+
+
+	if Input.is_action_just_pressed(\"dash\") and dashes > 0 and dash_timer >= DASH_TIME:
+		disable_conditions([\"jumping\",\"idle\"])
+		#animation_tree[\"parameters/conditions/dashing\"] = true
+		dashes -= 1
+		dash_timer = 0.0
+		velocity = Vector2.ZERO
+		dash_dir = input_vec
+		if dash_dir == Vector2.ZERO:
+			if velocity.x != 0:
+				dash_dir = Vector2(sign(velocity.x), 0)
+			else:
+				dash_dir = Vector2.RIGHT
+		dash_dir = dash_dir.normalized()
+		velocity += dash_dir * DASH_SPEED
+
+	if dash_timer < DASH_TIME:
+		dash_timer += delta
+		if dash_timer >= DASH_TIME:
+			velocity = Vector2.ZERO
+			dash_timer = DASH_TIME
+			#animation_tree[\"parameters/conditions/dashing\"] = false
+
+	if dash_timer >= DASH_TIME and !is_on_floor():
+		if Input.is_action_pressed('down'):
+			velocity.y += GRAVITY
+		velocity.y += GRAVITY 
+		 
+	if dash_timer >= DASH_TIME and is_on_floor():
+		dashes = 1
+
+	move_and_slide()
+	
+	if velocity.x > 0:
+		#sprite.flip_h = false
+		direction = 1
+	elif velocity.x < 0:
+		#sprite.flip_h = true
+		direction = -1
+		
+		
+	if is_on_wall():
+		dashes = 1
+		
+	if is_on_floor():
+		disable_conditions([\"jumping\",\"falling\",\"sliding\"])
+		coyote_timer = 0
+	else:
+		disable_conditions([\"running\",\"idle\"])
+		coyote_timer += delta
+	
+	if velocity.y > 0 and is_on_wall():
+		#animation_tree[\"parameters/conditions/sliding\"] = true
+		disable_conditions(['dashing','falling','jumping'])
+	elif velocity.y > 0:
+		#animation_tree[\"parameters/conditions/falling\"] = true
+		disable_conditions(['jumping','sliding'])
+		
+	#if abs(velocity.x) > 0 and is_on_floor():
+	#	animation_tree[\"parameters/conditions/running\"] = true
+		#animation_tree[\"parameters/conditions/idle\"] = false
+	#elif is_on_floor():
+		#animation_tree[\"parameters/conditions/running\"] = false
+		#animation_tree[\"parameters/conditions/idle\"] = true
+		
+func get_input_vector() -> Vector2:
+	last_x_dir = get_axis_dir(\"walk_left\", \"walk_right\", last_x_dir)
+	last_y_dir = get_axis_dir(\"up\", \"down\", last_y_dir)
+	return Vector2(last_x_dir, last_y_dir)
+
+func get_axis_dir(neg_action: String, pos_action: String, last_dir: int) -> int:
+	if Input.is_action_just_pressed(neg_action):
+		last_dir = -1
+	elif Input.is_action_just_pressed(pos_action):
+		last_dir = 1
+
+	elif Input.is_action_just_released(neg_action):
+		if Input.is_action_pressed(pos_action):
+			last_dir = 1
+		else:
+			last_dir = 0
+	elif Input.is_action_just_released(pos_action):
+		if Input.is_action_pressed(neg_action):
+			last_dir = -1
+		else:
+			last_dir = 0
+
+	return last_dir
+
+func get_global_rect() -> Rect2:
+	var shape = $Hitbox.shape as RectangleShape2D
+	return Rect2(global_position - shape.extents, shape.extents * 2.0)
+
+func disable_conditions(_conditions=[]):
+	pass
+	#var thing = \"parameters/conditions/\"
+	#for condition in conditions:
+	#	var key = thing + condition
+	#	if condition == \"sliding\" and animation_tree[key]:
+		#	sprite.flip_h = !sprite.flip_h
+	#	animation_tree[key] = false
+"
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uj6ll")
 
 [node name="Player" parent="." instance=ExtResource("2_yxpt3")]
+script = SubResource("GDScript_grvlt")

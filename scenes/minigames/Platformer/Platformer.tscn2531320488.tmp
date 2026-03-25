@@ -1,12 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckh1wll4n5vgq"]
+[gd_scene load_steps=3 format=3 uid="uid://b43he8ihxipud"]
 
 [ext_resource type="Script" uid="uid://cj0y867lcgv70" path="res://scenes/minigames/Platformer/platformer.gd" id="1_uj6ll"]
 [ext_resource type="PackedScene" uid="uid://c15ycibi734p8" path="res://scenes/minigames/Platformer/player.tscn" id="2_yxpt3"]
-[ext_resource type="PackedScene" uid="uid://kf667j84c60h" path="res://scenes/minigames/Platformer/test_leve.tscn" id="3_m4m7r"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uj6ll")
 
 [node name="Player" parent="." instance=ExtResource("2_yxpt3")]
-
-[node name="Node2D" parent="." instance=ExtResource("3_m4m7r")]
