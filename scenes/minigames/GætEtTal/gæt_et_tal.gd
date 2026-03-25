@@ -2,7 +2,7 @@ extends Minigame
 
 @onready var feedback_label: Label = $FeedbackLabel
 @onready var number_input: LineEdit = $NumberInput
-@onready var guess_button: Button = $GuessButton
+@onready var guess_button: TextureButton = $GuessButton
 
 var secret_number: int;
 

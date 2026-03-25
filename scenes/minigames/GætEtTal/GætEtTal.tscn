@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvo0ttqbt2tvf"]
+[gd_scene load_steps=4 format=3 uid="uid://dvo0ttqbt2tvf"]
 
 [ext_resource type="Script" uid="uid://d14nwq30isxq7" path="res://scenes/minigames/GætEtTal/gæt_et_tal.gd" id="1_oyn7n"]
+[ext_resource type="Texture2D" uid="uid://dy3fstcbsbcwr" path="res://images/ButtonUp.png" id="2_m2cik"]
+[ext_resource type="Texture2D" uid="uid://de3qjlcooydsc" path="res://images/ButtonDown.png" id="2_tnvsv"]
 
 [node name="GætEtTal" type="CanvasLayer"]
 script = ExtResource("1_oyn7n")
@@ -26,8 +28,11 @@ offset_top = 276.0
 offset_right = 626.0
 offset_bottom = 326.0
 
-[node name="GuessButton" type="Button" parent="."]
-offset_left = 643.0
-offset_top = 279.0
-offset_right = 683.0
-offset_bottom = 319.0
+[node name="GuessButton" type="TextureButton" parent="."]
+offset_left = 636.0
+offset_top = 240.0
+offset_right = 894.0
+offset_bottom = 516.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_m2cik")
+texture_pressed = ExtResource("2_tnvsv")
