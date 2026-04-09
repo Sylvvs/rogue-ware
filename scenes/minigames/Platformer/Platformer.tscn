@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b43he8ihxipud"]
+[gd_scene load_steps=5 format=3 uid="uid://b43he8ihxipud"]
 
 [ext_resource type="Script" uid="uid://cj0y867lcgv70" path="res://scenes/minigames/Platformer/platformer.gd" id="1_uj6ll"]
 [ext_resource type="PackedScene" uid="uid://c15ycibi734p8" path="res://scenes/minigames/Platformer/player.tscn" id="2_yxpt3"]
@@ -7,13 +7,13 @@
 script/source = "extends CharacterBody2D
 
 const SPEED_ACC = 25
-const SPEED_MAX = 100
-const JUMP_FORCE = -175
+const SPEED_MAX = 200
+const JUMP_FORCE = -250
 const GRAVITY = 7
 const COYOTE_TIME = 0.2
 
 # Dash
-const DASH_SPEED = 300
+const DASH_SPEED = 500
 const DASH_TIME = 0.20
 
 var dashes := 1
@@ -173,8 +173,27 @@ func disable_conditions(_conditions=[]):
 	#	animation_tree[key] = false
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grvlt"]
+size = Vector2(213.25, 98.5)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uj6ll")
 
-[node name="Player" parent="." instance=ExtResource("2_yxpt3")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_yxpt3")]
 script = SubResource("GDScript_grvlt")
+
+[node name="Wincondition" type="Area2D" parent="."]
+position = Vector2(100, 747)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wincondition"]
+shape = SubResource("RectangleShape2D_grvlt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -3
+offset_left = -2185.0
+offset_top = -1636.0
+offset_right = 11742.0
+offset_bottom = 5578.0
+color = Color(0, 0.73, 0.64483345, 0.5647059)
+
+[connection signal="body_entered" from="Wincondition" to="." method="_on_wincondition_body_entered"]
