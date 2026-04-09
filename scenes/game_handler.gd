@@ -1,5 +1,5 @@
 extends Node2D
-
+var health = 3
 @onready var MinigameContainer: Node2D = $MinigameContainer
 @onready var UIContainer: CanvasLayer = $UIContainer
 @onready var intermission = $IntermissionTime
@@ -67,6 +67,7 @@ func _on_game_won():
 	stop_game()
 
 func _on_game_lost():
+	health -= 1
 	print("holy washed")
 	stop_game()
 	
