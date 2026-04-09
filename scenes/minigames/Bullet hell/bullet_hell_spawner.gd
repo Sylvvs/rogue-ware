@@ -3,7 +3,7 @@ extends Minigame
 @onready var center = $Area2D
 @export var bullet_scene: PackedScene
 @onready var node_center = $"."
-@onready var anim = $"../BulletHellGuy/AnimationPlayer"
+
 
 
 var spawn_timer = 0.0

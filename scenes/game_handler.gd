@@ -6,17 +6,17 @@ extends Node2D
 @onready var HUD = preload("res://scenes/UI/hud.tscn")
 
 @onready var MINIGAMES = [
-	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
-	preload("res://scenes/minigames/Spamclick/SpamClick.tscn"),
-	preload("res://scenes/minigames/SimonSays/SimonSays.tscn"),
-	preload("res://scenes/minigames/TeachesTyping/Typing.tscn"),
-	preload("res://scenes/minigames/PerfectCircle/PerfectCircle.tscn"),
-	preload("res://scenes/minigames/Math/MathQuiz.tscn"),
-	preload("res://scenes/minigames/PokerHand/PokerHand.tscn"),
-	preload("res://scenes/minigames/GætEtTal/GætEtTal.tscn"),
-	preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn"),
+	#preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
+	#preload("res://scenes/minigames/Spamclick/SpamClick.tscn"),
+	#preload("res://scenes/minigames/SimonSays/SimonSays.tscn"),
+	#preload("res://scenes/minigames/TeachesTyping/Typing.tscn"),
+	#preload("res://scenes/minigames/PerfectCircle/PerfectCircle.tscn"),
+	#preload("res://scenes/minigames/Math/MathQuiz.tscn"),
+	#preload("res://scenes/minigames/PokerHand/PokerHand.tscn"),
+	#preload("res://scenes/minigames/GætEtTal/GætEtTal.tscn"),
+	#preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn"),
 	preload("res://scenes/minigames/Bullet hell/BulletHell.tscn"),
-	preload("res://scenes/minigames/Platformer/Platformer.tscn")
+	#preload("res://scenes/minigames/Platformer/Platformer.tscn")
 ]
 
 var current_minigame = null

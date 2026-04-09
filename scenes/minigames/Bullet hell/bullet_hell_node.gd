@@ -9,8 +9,6 @@ func _process(delta: float) -> void:
 	if bullet_hell_guy.health <= 0:
 		die()
 		return
-	if bullet_hell_guy.health - 1:
-		anim.play("Hit")
 func stop():
 	emit_signal("game_won")
 
