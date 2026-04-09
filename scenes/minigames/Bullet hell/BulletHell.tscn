@@ -1,15 +1,149 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0qskxcf5qsp4"]
+[gd_scene load_steps=16 format=3 uid="uid://d0qskxcf5qsp4"]
 
+[ext_resource type="Script" uid="uid://couwt1pqhqpcy" path="res://scenes/minigames/Bullet hell/bullet_hell_node.gd" id="1_4ghpt"]
 [ext_resource type="Script" uid="uid://dqhdx4gcly5ei" path="res://scenes/minigames/Bullet hell/bullet_hell_spawner.gd" id="1_mfe8g"]
 [ext_resource type="PackedScene" uid="uid://t0j1vjscijsw" path="res://scenes/minigames/Bullet hell/Bullet.tscn" id="2_mfe8g"]
 [ext_resource type="Script" uid="uid://cbl1pjaihh6rg" path="res://scenes/minigames/Bullet hell/bullet_hell_guy.gd" id="3_riwru"]
+[ext_resource type="Texture2D" uid="uid://45bwgcne14tq" path="res://images/prototype_character_green.png" id="5_1057j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfe8g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riwru"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="Animation" id="Animation_1057j"]
+resource_name = "Run_Right"
+length = 0.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_fikdt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_a11hq"]
+resource_name = "Run_Down"
+length = 0.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_aintk"]
+resource_name = "Run_Up"
+length = 0.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_vwk6o"]
+resource_name = "Die"
+length = 0.5000125
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43]
+}
+
+[sub_resource type="Animation" id="Animation_o5a6a"]
+resource_name = "Idle"
+length = 0.2500125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_dmvit"]
+resource_name = "Hit"
+length = 0.2500125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [32, 33]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5a6a"]
+_data = {
+&"Die": SubResource("Animation_vwk6o"),
+&"Hit": SubResource("Animation_dmvit"),
+&"Idle": SubResource("Animation_o5a6a"),
+&"RESET": SubResource("Animation_fikdt"),
+&"Run_Down": SubResource("Animation_a11hq"),
+&"Run_Right": SubResource("Animation_1057j"),
+&"Run_Up": SubResource("Animation_aintk")
+}
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(579, 142)
+script = ExtResource("1_4ghpt")
 
 [node name="BulletSpawner" type="Node2D" parent="."]
 script = ExtResource("1_mfe8g")
@@ -26,5 +160,19 @@ shape = SubResource("RectangleShape2D_mfe8g")
 position = Vector2(13, 303)
 script = ExtResource("3_riwru")
 
+[node name="Sprite2D" type="Sprite2D" parent="BulletHellGuy"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_1057j")
+hframes = 4
+vframes = 12
+frame = 16
+region_rect = Rect2(0.13, 165, 32, 25)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHellGuy"]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_riwru")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BulletHellGuy"]
+libraries = {
+&"": SubResource("AnimationLibrary_o5a6a")
+}
