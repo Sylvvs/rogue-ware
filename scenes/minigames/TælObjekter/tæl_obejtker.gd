@@ -9,7 +9,7 @@ extends Minigame
 var rng = RandomNumberGenerator.new()
 var objects = ["apples","bombs","shoes","hairties"]
 
-var random_number = randi_range(0,4)
+var random_number = randi_range(0,3)
 var chosen_object = objects[random_number]
 var apple_amount = randi_range(2,7)
 var bomb_amount = randi_range(2,7)
