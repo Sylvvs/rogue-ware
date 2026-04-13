@@ -67,5 +67,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_entered" from="MusicPopUp/Panel" to="." method="_on_panel_mouse_entered"]
 [connection signal="mouse_exited" from="MusicPopUp/Panel" to="." method="_on_panel_mouse_exited"]
