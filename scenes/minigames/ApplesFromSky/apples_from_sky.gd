@@ -9,7 +9,7 @@ var screen_width
 
 func start():
 	instruction_text = "Catch the apples!"
-	time_limit = 60
+	time_limit = 20
 	
 	get_tree().root.connect("size_changed", _on_screen_resized)
 	
