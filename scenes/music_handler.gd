@@ -65,7 +65,8 @@ func show_credits():
 	
 	var start_pos = popup.position
 	
-	var end_pos = start_pos + Vector2(-popup_text.size.x, 0)
+	var end_pos = start_pos + Vector2(-(popup_text.size.x + record.size.x), 0)
+	print(popup_text.size.x)
 	
 	var spin_tween = create_tween().set_loops()
 
@@ -82,3 +83,11 @@ func show_credits():
 	tween.tween_property(popup, "position", start_pos, 0.5)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN)
+
+func _on_panel_mouse_entered() -> void:
+	var tween = create_tween()
+	tween.tween_property(popup, "modulate:a", 0.2, 0.1)
+
+func _on_panel_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property(popup, "modulate:a", 1.0, 0.1)
