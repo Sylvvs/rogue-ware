@@ -1,19 +1,88 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0ewflca406h2"]
+[gd_scene load_steps=7 format=3 uid="uid://c0ewflca406h2"]
+
+[ext_resource type="Script" uid="uid://de7aqdc866ibc" path="res://scenes/minigames/ApplesFromSky/player.gd" id="1_841kh"]
+[ext_resource type="Texture2D" uid="uid://c03hvpbitm6ej" path="res://images/PlayerSprites/basket.png" id="2_1l40y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0rt6"]
+size = Vector2(27, 47)
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i53fp"]
-graph_offset = Vector2(-196, -123)
+[sub_resource type="Animation" id="Animation_e0rt6"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 16, 24), Rect2(16, 0, 16, 24), Rect2(32, 0, 16, 24), Rect2(48, 0, 16, 24), Rect2(64, 0, 16, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1l40y")]
+}
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_s7lmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1l40y")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i53fp"]
+_data = {
+&"RESET": SubResource("Animation_s7lmn"),
+&"idle": SubResource("Animation_e0rt6")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_841kh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_e0rt6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_i53fp")
-anim_player = NodePath("../AnimationPlayer")
+scale = Vector2(2, 2)
+texture = ExtResource("2_1l40y")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 24)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i53fp")
+}
+autoplay = "idle"
