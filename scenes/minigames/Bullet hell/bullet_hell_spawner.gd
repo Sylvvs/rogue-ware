@@ -16,36 +16,36 @@ var phases = [
 	{
 		"name": "circle",
 		"duration": 3.0,
-		"bullets": 12,
+		"bullets": 32,
 		"lifetime": 10,
-		"speed": 300,
+		"speed": 200,
 		"multiplier": 1
 	},
 	{
 		"name": "petals",
 		"duration": 3.0,
-		"bullets": 16,
+		"bullets": 32,
 		"speed": 300,
-		"lifetime": 10,
+		"lifetime": 5,
 		"k": 10,
 		"multiplier": 1
 	},
 	{
 		"name": "spiral",
 		"duration": 4.0,
-		"bullets": 20,
+		"bullets": 32,
 		"lifetime": 10,
-		"speed": 300,
+		"speed": 200,
 		"multiplier": 1
 	},
 	{
 		"name": "beam",
-		"duration": 50,
-		"bullets": 12,
-		"num_beams": 12,
-		"lifetime": 100,
+		"duration": 3,
+		"bullets": 24,
+		"num_beams": 8,
+		"lifetime": 3,
 		"speed": 1,
-		"multiplier": 2.5
+		"multiplier": 2
 	}
 ]
 
@@ -62,7 +62,6 @@ func _process(delta):
 	if phase_timer >= phase.duration:
 		phase_timer = 0
 		current_phase = (current_phase + 1) % phases.size()
-	
 		
 	# spawn bullets
 	if spawn_timer >= 0.5:
@@ -86,7 +85,7 @@ func spawn_circle(phase):
 		
 		var angle = i * TAU / phase.bullets
 		var dir = Vector2(cos(angle), sin(angle))
-		
+		bullet.lifetime = phase.lifetime
 		bullet.position = center.position
 		bullet.bullet_direction = dir * phase.speed
 		
@@ -100,9 +99,9 @@ func spawn_petals(phase):
 		
 		var base_angle = i * TAU / phase.bullets
 		var r = cos(k * base_angle + time_passed)
-		
+		r = sign(r) * max(abs(r), 0.3)
 		var dir = Vector2(cos(base_angle), sin(base_angle)) * r
-		
+		bullet.lifetime = phase.lifetime
 		bullet.position = center.position
 		bullet.bullet_direction = dir * phase.speed
 		
@@ -115,17 +114,15 @@ func spawn_spiral(phase):
 		var angle = i * TAU / phase.bullets + time_passed * 1.8
 		
 		var dir = Vector2(cos(angle), sin(angle))
-		
+		bullet.lifetime = phase.lifetime
 		bullet.position = center.position
 		bullet.bullet_direction += dir * phase.speed
 		
 		add_child(bullet)
 
 func spawn_beam(phase):
-	
-	
 	var beams = get_tree().get_nodes_in_group('beam')
-	if beams.size() >= 12:
+	if beams.size() >= 24:
 		return
 	
 	for b in range(phase.num_beams):

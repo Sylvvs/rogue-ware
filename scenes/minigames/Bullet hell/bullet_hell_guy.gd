@@ -3,6 +3,9 @@ extends CharacterBody2D
 @export var health = 3
 const SPEED = 300
 const slow_speed = 100
+var invincible = false
+var invincible_timer = 0.0
+const invincible_duration = 1.0
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 
@@ -29,7 +32,12 @@ func _physics_process(delta: float) -> void:
 		play_anim("Idle")
 
 	move_and_slide()
-
+	if invincible:
+		invincible_timer += delta
+		print(invincible_timer)
+		if invincible_timer >= invincible_duration:
+			invincible = false
+			invincible_timer = 0.0
 
 func play_anim(name: String):
 	if anim.current_animation == "Hit":
