@@ -4,6 +4,7 @@
 
 [node name="PerfectCircle" type="CanvasLayer"]
 script = ExtResource("1_hwnaj")
+priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
