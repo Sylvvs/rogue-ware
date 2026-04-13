@@ -136,7 +136,7 @@ func _on_game_lost():
 	health -= 1
 	music.play_error_sound()
 	print("holy washed")
-	print('You beat: ' + minigames_beaten)
+	print('You beat: ' + JSON.stringify(minigames_beaten))
 	minigames_beaten = 0
 	stop_game()
 	
