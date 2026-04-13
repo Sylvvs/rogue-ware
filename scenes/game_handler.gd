@@ -40,7 +40,7 @@ var current_timer = null
 var game_seed: int = 0
 
 func _ready() -> void:
-	apply_seed(6767)
+	apply_seed(randi())
 	music.play_random_track()
 	intermission.start()
 
