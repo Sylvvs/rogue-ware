@@ -15,7 +15,7 @@ func start():
 	
 	screen_width = get_viewport().size.x
 	print(screen_width)
-	$Timer.wait_time = 3
+	$Timer.wait_time = 1.5
 	$Timer.start()
 
 func _on_timer_timeout():

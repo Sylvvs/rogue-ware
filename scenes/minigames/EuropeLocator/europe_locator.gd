@@ -30,8 +30,7 @@ var _label_score: Label
 var _label_feedback: Label
 var _feedback_timer: Timer
 
-func _ready() -> void:
-	start()
+
 
 func start() -> void:
 	instruction_text = "Type the name of the highlighted country!"
