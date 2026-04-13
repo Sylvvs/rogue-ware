@@ -12,6 +12,7 @@ var in_shop = false
 @onready var MinigameContainer: Node2D = $MinigameContainer
 @onready var UIContainer: CanvasLayer = $UIContainer
 @onready var intermission = $IntermissionTime
+@onready var music = $MusicHandler
 @onready var HUD = preload("res://scenes/UI/hud.tscn")
 
 @onready var MINIGAMES = [
@@ -35,6 +36,7 @@ var current_minigame = null
 var current_timer = null
 
 func _ready() -> void:
+	music.play_random_track()
 	intermission.start()
 
 func _hard_game_count() -> int:

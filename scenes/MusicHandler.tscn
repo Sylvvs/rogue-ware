@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://x5ywo0qflrca"]
+
+[ext_resource type="Script" uid="uid://s6bomjssdcw8" path="res://scenes/music_handler.gd" id="1_s6e27"]
+[ext_resource type="Texture2D" uid="uid://d1wuf5kmxemne" path="res://images/record.png" id="2_r8afn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x04ax"]
+bg_color = Color(0.64010274, 0.51717174, 0.80737025, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="FontFile" id="FontFile_1b0gh"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="MusicHandler" type="CanvasLayer"]
+script = ExtResource("1_s6e27")
+
+[node name="MusicPopUp" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1154.0
+offset_top = 99.0
+offset_right = 1194.0
+offset_bottom = 139.0
+
+[node name="Panel" type="Panel" parent="MusicPopUp"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x04ax")
+
+[node name="TextureRect" type="TextureRect" parent="MusicPopUp/Panel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_r8afn")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MusicPopUp/Panel"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 100.0
+offset_right = 140.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = SubResource("FontFile_1b0gh")
+bbcode_enabled = true
+text = "what do you mean"
+fit_content = true
+autowrap_mode = 0
