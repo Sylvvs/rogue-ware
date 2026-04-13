@@ -37,9 +37,16 @@ var in_shop = false
 var current_minigame = null
 var current_timer = null
 
+var game_seed: int = 0
+
 func _ready() -> void:
+	apply_seed(6767)
 	music.play_random_track()
 	intermission.start()
+
+func apply_seed(s: int) -> void:
+	game_seed = s
+	seed(game_seed)
 
 func _hard_game_count() -> int:
 	return 1 + loop
