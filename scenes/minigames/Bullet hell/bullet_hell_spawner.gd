@@ -10,7 +10,7 @@ extends Minigame
 var spawn_timer = 0.0
 var time_passed = 0.0
 var phase_timer = 0.0
-var current_phase = 3
+var current_phase = 0
 
 var phases = [
 	{
