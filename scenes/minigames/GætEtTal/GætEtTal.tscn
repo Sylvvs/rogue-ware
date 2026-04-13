@@ -6,7 +6,6 @@
 
 [node name="GætEtTal" type="CanvasLayer"]
 script = ExtResource("1_oyn7n")
-priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
