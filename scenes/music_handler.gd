@@ -27,7 +27,7 @@ func play_track(base_path: String) -> void:
 	current_track = AudioStreamPlayer.new()
 	current_track.stream = stream
 	add_child(current_track)
-	current_track.volume_db = -25
+	current_track.bus = "Music"
 	current_track.play()
 
 	show_credits()
@@ -91,3 +91,35 @@ func _on_panel_mouse_entered() -> void:
 func _on_panel_mouse_exited() -> void:
 	var tween = create_tween()
 	tween.tween_property(popup, "modulate:a", 1.0, 0.1)
+
+func play_error_sound():
+	current_track.pitch_scale = 1.0
+
+	var bus_idx = AudioServer.get_bus_index("SFX Error")
+	
+	var distortion = AudioServer.get_bus_effect(bus_idx, 0)
+	var lowpass = AudioServer.get_bus_effect(bus_idx, 1)
+	
+	lowpass.cutoff_hz = 20000
+	
+	var tween = create_tween()
+	
+	tween.tween_property(current_track, "pitch_scale", 0.7, 0.5)
+	
+	tween.parallel().tween_property(lowpass, "cutoff_hz", 800, 0.5)
+	tween.tween_property(lowpass, "cutoff_hz", 20000, 0.7)
+
+func recover_error_sound():
+	var bus_idx = AudioServer.get_bus_index("SFX Error")
+	
+	var lowpass = AudioServer.get_bus_effect(bus_idx, 1)
+	
+	var tween = create_tween()
+	
+	tween.tween_property(current_track, "pitch_scale", 1.0, 0.4)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+	
+	tween.parallel().tween_property(lowpass, "cutoff_hz", 20000, 0.4)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)

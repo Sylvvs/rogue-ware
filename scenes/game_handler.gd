@@ -133,10 +133,12 @@ func _on_game_won():
 
 func _on_game_lost():
 	health -= 1
+	music.play_error_sound()
 	print("holy washed")
 	stop_game()
 	
 func _on_intermission_time_timeout() -> void:
 	if in_shop:
 		in_shop = false
+	music.recover_error_sound()
 	_advance_and_decide()
