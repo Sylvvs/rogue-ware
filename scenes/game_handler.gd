@@ -6,7 +6,7 @@ const HARD_GAME_INDEX = 4
 var health = 3
 var loop = 0
 var block_position = 0
-
+var minigames_beaten = 0
 var in_shop = false
 
 @onready var MinigameContainer: Node2D = $MinigameContainer
@@ -130,11 +130,14 @@ func _on_timer_finished():
 func _on_game_won():
 	print("yay u did it")
 	stop_game()
+	minigames_beaten += 1
 
 func _on_game_lost():
 	health -= 1
 	music.play_error_sound()
 	print("holy washed")
+	print('You beat: ' + minigames_beaten)
+	minigames_beaten = 0
 	stop_game()
 	
 func _on_intermission_time_timeout() -> void:
