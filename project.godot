@@ -15,6 +15,10 @@ run/main_scene="uid://dhnqrkpp0ckqv"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Conductor="*res://scenes/minigames/Rhytia/rhytia_conductor.tscn"
+
 [display]
 
 window/size/resizable=false

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c151b2mlsojxn"]
+
+[ext_resource type="Script" uid="uid://sgbkv8thdlko" path="res://scenes/minigames/Rhytia/rhytia_conductor.gd" id="1_jyjr8"]
+
+[node name="RhytiaConductor" type="Node"]
+script = ExtResource("1_jyjr8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -7.633
