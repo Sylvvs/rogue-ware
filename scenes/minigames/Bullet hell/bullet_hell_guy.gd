@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var health = 3
 const SPEED = 300
-const slow_speed = 100
+const slow_speed = 150
 var invincible = false
 var invincible_timer = 0.0
 const invincible_duration = 1.0
