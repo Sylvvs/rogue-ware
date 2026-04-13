@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btm3w8fsguv32" path="res://scenes/minigames/Math/Math.gd" id="1_telvp"]
 
-[node name="MathQuiz" type="CanvasLayer"]
+[node name="ColorMatch" type="CanvasLayer"]
 script = ExtResource("1_telvp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
