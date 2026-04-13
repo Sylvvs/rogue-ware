@@ -12,12 +12,11 @@ var current_meta: Dictionary = {}
 	"res://music/Green&Purple/"
 ]
 
-# Call this with e.g. "res://music/cool_track/cool_track"  (no extension)
 func play_track(base_path: String) -> void:
-	# Load audio
+	
 	var stream = load(base_path + ".mp3")
 
-	# Load metadata
+
 	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
 	current_meta = JSON.parse_string(json_text)
 
@@ -28,9 +27,14 @@ func play_track(base_path: String) -> void:
 	current_track.stream = stream
 	add_child(current_track)
 	current_track.bus = "Music"
+	current_track.finished.connect(_on_track_finished)
+	
 	current_track.play()
 
 	show_credits()
+
+func _on_track_finished() -> void:
+	play_random_track()
 
 func get_credit_string() -> String:
 	if current_meta.is_empty():
@@ -56,33 +60,37 @@ func play_random_track() -> void:
 		return
 	play_track(base)
 
+var spin_tween: Tween
+var popup_tween: Tween
 
 func show_credits():
+	if spin_tween:
+		spin_tween.kill()
+	if popup_tween:
+		popup_tween.kill()
+
 	record.pivot_offset = record.size / 2
 	popup_text.text = get_credit_string()
 	await get_tree().process_frame
-	var tween = create_tween()
-	
+
 	var start_pos = popup.position
-	
 	var end_pos = start_pos + Vector2(-(popup_text.size.x + record.size.x), 0)
-	print(popup_text.size.x)
-	
-	var spin_tween = create_tween().set_loops()
 
-	spin_tween.tween_property(record, "rotation_degrees", record.rotation_degrees + 360, 1.0)\
-		.as_relative()\
-		.set_trans(Tween.TRANS_LINEAR)
-
-	tween.tween_property(popup, "position", end_pos, 0.5)\
+	popup_tween = create_tween()
+	popup_tween.tween_property(popup, "position", end_pos, 0.5)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_OUT)
-	
-	tween.tween_interval(2.0)
-	
-	tween.tween_property(popup, "position", start_pos, 0.5)\
+
+	popup_tween.tween_interval(2.0)
+
+	popup_tween.tween_property(popup, "position", start_pos, 0.5)\
 		.set_trans(Tween.TRANS_SINE)\
 		.set_ease(Tween.EASE_IN)
+
+	spin_tween = create_tween().set_loops()
+	spin_tween.tween_property(record, "rotation_degrees", 360, 1.0)\
+		.as_relative()\
+		.set_trans(Tween.TRANS_LINEAR)
 
 func _on_panel_mouse_entered() -> void:
 	var tween = create_tween()
