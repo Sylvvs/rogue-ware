@@ -9,7 +9,12 @@ var current_meta: Dictionary = {}
 @onready var ALL_TRACKS = [
 	"res://music/Flocci/",
 	"res://music/Red&Blue/",
-	"res://music/Green&Purple/"
+	"res://music/Green&Purple/",
+	"res://music/NoDuh/",
+	"res://music/TVWorld/",
+	"res://music/RudeBuster/",
+	"res://music/GreenGo/",
+	"res://music/DesertScramble/"
 ]
 
 func play_track(base_path: String) -> void:
