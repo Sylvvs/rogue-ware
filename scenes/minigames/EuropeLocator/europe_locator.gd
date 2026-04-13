@@ -67,7 +67,7 @@ func _build_ui() -> void:
 	add_child(_label_score)
 
 	_input_field = LineEdit.new()
-	_input_field.position = Vector2(326, 612)
+	_input_field.position = Vector2(725, 500)
 	_input_field.size = Vector2(400, 34)
 	_input_field.add_theme_font_size_override("font_size", 22)
 	_input_field.placeholder_text = "Type the country name..."
@@ -75,7 +75,7 @@ func _build_ui() -> void:
 	add_child(_input_field)
 
 	_label_feedback = Label.new()
-	_label_feedback.position = Vector2(740, 612)
+	_label_feedback.position = Vector2(725, 465)
 	_label_feedback.size = Vector2(380, 34)
 	_label_feedback.add_theme_font_size_override("font_size", 22)
 	add_child(_label_feedback)
@@ -119,7 +119,7 @@ func _handle_correct() -> void:
 	_round_index += 1
 	_label_score.text = "Score: %d  Round: %d/%d" % [_score, _round_index, MAX_ROUNDS]
 	_label_feedback.text = "✓ Correct!"
-	_label_feedback.add_theme_color_override("font_color", Color(0.155, 0.616, 0.151, 1.0))
+	_label_feedback.add_theme_color_override("font_color", Color(0.2, 0.9, 0.2))
 	_current_name = ""
 	_feedback_timer.start()
 
