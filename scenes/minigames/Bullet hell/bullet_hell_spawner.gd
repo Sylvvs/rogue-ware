@@ -19,6 +19,7 @@ var phases = [
 		"bullets": 12,
 		"lifetime": 10,
 		"speed": 300,
+		"multiplier": 1
 	},
 	{
 		"name": "petals",
@@ -26,7 +27,8 @@ var phases = [
 		"bullets": 16,
 		"speed": 300,
 		"lifetime": 10,
-		"k": 10
+		"k": 10,
+		"multiplier": 1
 	},
 	{
 		"name": "spiral",
@@ -34,24 +36,28 @@ var phases = [
 		"bullets": 20,
 		"lifetime": 10,
 		"speed": 300,
+		"multiplier": 1
 	},
 	{
 		"name": "beam",
 		"duration": 50,
 		"bullets": 12,
 		"num_beams": 12,
-		"lifetime": 10,
-		"speed": 1000,
+		"lifetime": 100,
+		"speed": 1,
+		"multiplier": 2.5
 	}
 ]
 
 func _process(delta):
+	var phase = phases[current_phase]
+	
 	spawn_timer += delta 
 	time_passed += delta
 	phase_timer += delta
-	node_center.rotation += delta/4
+	node_center.rotation += delta/4 * phase.multiplier
 	
-	var phase = phases[current_phase]
+	
 	# switch phase
 	if phase_timer >= phase.duration:
 		phase_timer = 0
@@ -116,13 +122,21 @@ func spawn_spiral(phase):
 		add_child(bullet)
 
 func spawn_beam(phase):
+	
+	
+	var beams = get_tree().get_nodes_in_group('beam')
+	if beams.size() >= 12:
+		return
+	
 	for b in range(phase.num_beams):
 		var angle = b * TAU / phase.num_beams + node_center.rotation
 		var dir = Vector2(cos(angle), sin(angle))
 		
 		for i in range(phase.bullets / phase.num_beams):
 			var beam = beam_scene.instantiate()
+			beam.lifetime = phase.lifetime
 			beam.position = center.position + dir * i * 8.0
 			beam.rotation = angle
 			beam.bullet_direction = dir * phase.speed
 			add_child(beam)
+			
