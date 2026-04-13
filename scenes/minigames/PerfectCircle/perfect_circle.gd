@@ -46,24 +46,31 @@ func evaluate_circle():
 	var center = get_center()
 	var radius = get_radius(center)
 	
-	if radius < 50 or points.size() < 5:
+	if points.size() < 20:
+		label.text = "Draw more!"
+		return
+	if radius < 50:
 		label.text = "Too small!"
 		return
 	
-	var error = 0.0
-	var deviance = 0.0
+	# Check the drawing actually wraps around (start and end are close)
+	var gap = points[0].distance_to(points[-1])
+	if gap > radius * 0.8:
+		label.text = "Close the circle!"
+		return
+	
+	var variance = 0.0
 	for p in points:
-		var dist = p.distance_to(center)
-		error += abs(dist - radius)
-		if dist > deviance:
-			deviance = dist
+		var diff = p.distance_to(center) - radius
+		variance += diff * diff
+	variance /= points.size()
+	var std_dev = sqrt(variance)
+	var score = std_dev / radius  # ~0.0 (perfect) og ~0.3+ (washed)
 	
-	error /= points.size()
-	var score = deviance/(2*radius)
-	#print(score)
+	var percent = int((1.0 - clamp(score / 0.3, 0.0, 1.0)) * 150)
+	label.text = "%d%%" % percent
 	
-	if score > 0.65:
-		label.text = "Not good enough!"
-	if score <= 0.65:
+	if score < 0.12:
 		emit_signal("game_won")
-	
+	else:
+		label.text = label.text + "\nNot round enough!"
