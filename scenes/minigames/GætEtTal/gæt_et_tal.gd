@@ -1,8 +1,10 @@
 extends Minigame
 
 @onready var feedback_label: Label = $FeedbackLabel
+@onready var previous_feedback: RichTextLabel = $RichTextLabel
 @onready var number_input: LineEdit = $NumberInput
 @onready var guess_button: TextureButton = $GuessButton
+@onready var feedback_container: VBoxContainer = $VBoxContainer
 
 var secret_number: int;
 
@@ -43,8 +45,10 @@ func OnGuessSumbitted(text: String):
 	
 	if guess < secret_number:
 		feedback_label.text = "The number is higher!📈!"
+		add_previous_feedback(guess)
 	elif guess > secret_number:
 		feedback_label.text = "The number is lower!📉"
+		add_previous_feedback(guess)
 	else:
 		feedback_label.text = "Correct!🎉!"
 		emit_signal("game_won")
@@ -52,6 +56,14 @@ func OnGuessSumbitted(text: String):
 	number_input.text = ""
 	number_input.call_deferred("grab_focus")
 
+func add_previous_feedback(guess):
+	var new_feedback = previous_feedback.duplicate()
+	var arrow = " [color=green]↑[/color]"
+	if guess > secret_number:
+		arrow = " [color=red]↓[/color]"
+	new_feedback.text = JSON.stringify(guess) + arrow
+	feedback_container.add_child(new_feedback)
+	feedback_container.move_child(new_feedback, 0)
 
 func stop():
 	emit_signal("game_lost")
