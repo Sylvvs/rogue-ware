@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0qskxcf5qsp4"]
+[gd_scene load_steps=16 format=3 uid="uid://d0qskxcf5qsp4"]
 
 [ext_resource type="Script" uid="uid://couwt1pqhqpcy" path="res://scenes/minigames/Bullet hell/bullet_hell_node.gd" id="1_4ghpt"]
 [ext_resource type="Script" uid="uid://dqhdx4gcly5ei" path="res://scenes/minigames/Bullet hell/bullet_hell_spawner.gd" id="1_mfe8g"]
 [ext_resource type="PackedScene" uid="uid://t0j1vjscijsw" path="res://scenes/minigames/Bullet hell/Bullet.tscn" id="2_mfe8g"]
 [ext_resource type="Script" uid="uid://cbl1pjaihh6rg" path="res://scenes/minigames/Bullet hell/bullet_hell_guy.gd" id="3_riwru"]
-[ext_resource type="PackedScene" uid="uid://cb57mk20h7t2m" path="res://scenes/minigames/Bullet hell/beam.tscn" id="4_fikdt"]
 [ext_resource type="Texture2D" uid="uid://45bwgcne14tq" path="res://images/prototype_character_green.png" id="5_1057j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfe8g"]
@@ -162,7 +161,6 @@ priority = true
 [node name="BulletSpawner" type="Node2D" parent="."]
 script = ExtResource("1_mfe8g")
 bullet_scene = ExtResource("2_mfe8g")
-beam_scene = ExtResource("4_fikdt")
 
 [node name="Area2D" type="Area2D" parent="BulletSpawner"]
 collision_layer = 0

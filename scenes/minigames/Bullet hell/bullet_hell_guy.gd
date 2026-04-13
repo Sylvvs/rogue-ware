@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
 @export var health = 3
-const SPEED = 300.0
-
+const SPEED = 300
+const slow_speed = 100
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Sprite2D
 
 
 func _physics_process(delta: float) -> void:
+	var current_speed = slow_speed if Input.is_key_pressed(KEY_CTRL) else SPEED
 	var direction = Vector2(Input.get_axis("walk_left", "walk_right"), Input.get_axis("up", "down"))
 	if direction != Vector2.ZERO:
-		velocity = direction.normalized() * SPEED
-		
+		velocity = direction.normalized() * current_speed
 		if abs(direction.x) > abs(direction.y):
 			if direction.x > 0:
 				sprite.flip_h = false

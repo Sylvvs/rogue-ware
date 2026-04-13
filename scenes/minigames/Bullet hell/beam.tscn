@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb57mk20h7t2m"]
+
+[ext_resource type="Script" uid="uid://b28f3n0rjitvy" path="res://scenes/minigames/Bullet hell/bullet.gd" id="1_1bxpj"]
+[ext_resource type="Texture2D" uid="uid://01d2oci252yh" path="res://images/circle.png" id="2_i1fi2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xf3pr"]
+radius = 4.0
+height = 116.0
+
+[node name="BEAM" type="Area2D"]
+script = ExtResource("1_1bxpj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 0.84313726)
+position = Vector2(0, -5.722046e-06)
+scale = Vector2(10, 0.05)
+texture = ExtResource("2_i1fi2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(1, 17)
+shape = SubResource("CapsuleShape2D_xf3pr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
