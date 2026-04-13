@@ -9,6 +9,7 @@ signal game_lost
 var instruction_text := "something broke lol"
 var time_limit := 5
 var mult = 1
+@export var priority: bool = false
 
 func start():
 	pass

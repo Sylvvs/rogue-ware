@@ -63,10 +63,24 @@ func _advance_and_decide() -> void:
 		_start_normal_minigame()
 
 func _start_normal_minigame() -> void:
-	_launch(MINIGAMES.pick_random())
+	_launch(_get_pool(MINIGAMES).pick_random())
 
 func _start_hard_minigame() -> void:
-	_launch(HARD_MINIGAMES.pick_random())
+	_launch(_get_pool(HARD_MINIGAMES).pick_random())
+
+# THIS IS USED FOR DEBUG
+func _get_pool(scenes: Array) -> Array:
+	var priority = scenes.filter(func(s):
+		var tmp = s.instantiate()
+		var has = "priority" in tmp and tmp.priority == true
+		tmp.free()
+		return has
+	)
+	if priority.is_empty():
+		return scenes
+	var names = ", ".join(priority.map(func(s): return s.resource_path.get_file().get_basename()))
+	print("Forcing [%s] because they have priority!" % names)
+	return priority
 
 func _open_shop() -> void:
 	in_shop = true

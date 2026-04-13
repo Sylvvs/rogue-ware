@@ -3,19 +3,19 @@ extends Minigame
 @onready var apple = $Apple
 @onready var bomb = $Bomb
 @onready var green_apple = $"Green Apple"
-@onready var hairtie = $Hairtie
+@onready var shoe = $Shoe
 @onready var number_input = $NumberInput
 
 var rng = RandomNumberGenerator.new()
-var objects = ["apples","bombs","shoes","hairties"]
+var objects = ["red apples","bombs","green_apples","shoes"]
 
 var random_number = randi_range(0,3)
 var chosen_object = objects[random_number]
 var apple_amount = randi_range(2,7)
 var bomb_amount = randi_range(2,7)
 var green_apple_amount = randi_range(2,7)
-var hairtie_amount = randi_range(2,7)
-var amounts = [apple_amount, bomb_amount, green_apple_amount, hairtie_amount]
+var shoe_amount = randi_range(2,7)
+var amounts = [apple_amount, bomb_amount, green_apple_amount, shoe_amount]
 	
 func start():
 
@@ -39,11 +39,11 @@ func start():
 		add_child(new_green_apple)
 		new_green_apple.visible = true
 		new_green_apple.position = get_random_pos()
-	for i in range(hairtie_amount):
-		var new_hairtie = hairtie.duplicate()
-		add_child(new_hairtie)
-		new_hairtie.visible = true
-		new_hairtie.position = get_random_pos()
+	for i in range(shoe_amount):
+		var new_shoe = shoe.duplicate()
+		add_child(new_shoe)
+		new_shoe.visible = true
+		new_shoe.position = get_random_pos()
 	number_input.grab_focus()
 	
 func get_random_pos():
