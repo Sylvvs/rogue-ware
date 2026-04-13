@@ -5,8 +5,6 @@ extends Minigame
 @export var beam_scene: PackedScene
 @onready var node_center = $"."
 
-
-
 var spawn_timer = 0.0
 var time_passed = 0.0
 var phase_timer = 0.0
