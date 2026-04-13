@@ -14,7 +14,8 @@ var current_meta: Dictionary = {}
 	"res://music/TVWorld/",
 	"res://music/RudeBuster/",
 	"res://music/GreenGo/",
-	"res://music/DesertScramble/"
+	"res://music/DesertScramble/",
+	"res://music/BeCareful/"
 ]
 
 func play_track(base_path: String) -> void:
