@@ -1,6 +1,6 @@
 extends Minigame
 
-const MAX_ROUNDS := 10
+const MAX_ROUNDS := 5
 
 const COLOR_DEFAULT   := Color(0.0, 0.0, 0.0, 1.0)
 const COLOR_HIGHLIGHT := Color(1.0, 0.78, 0.0,  1.0)
@@ -55,8 +55,7 @@ func _set_color(code: String, color: Color) -> void:
 	if node and node.material:
 		(node.material as ShaderMaterial).set_shader_parameter("tint_color", color)
 
-func stop() -> void:
-	pass
+
 
 func _build_ui() -> void:
 	_label_score = Label.new()
