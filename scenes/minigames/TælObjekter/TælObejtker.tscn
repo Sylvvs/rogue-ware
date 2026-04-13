@@ -12,7 +12,6 @@ region = Rect2(3, 6, 16, 16)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_3tx8r")
-priority = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
