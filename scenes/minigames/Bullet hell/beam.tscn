@@ -7,7 +7,7 @@
 radius = 4.0
 height = 116.0
 
-[node name="BEAM" type="Area2D"]
+[node name="BEAM" type="Area2D" groups=["beam"]]
 script = ExtResource("1_1bxpj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

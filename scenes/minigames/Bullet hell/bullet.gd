@@ -1,10 +1,13 @@
 extends Area2D
 var bullet_direction = Vector2()
-
+var lifetime: float
 
 func _process(delta):
 	position += bullet_direction * delta
-	pass
+	lifetime -= delta
+	#print(lifetime)
+	if lifetime < 0:
+		queue_free()
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:
