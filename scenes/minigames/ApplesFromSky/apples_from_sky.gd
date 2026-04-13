@@ -3,10 +3,6 @@ extends Minigame
 @export var apple_scene: PackedScene
 var screen_width
 
-
-
-
-
 func start():
 	instruction_text = "Catch the apples!"
 	time_limit = 20
@@ -28,7 +24,8 @@ func spawn_apple():
 	
 func _on_screen_resized():
 	screen_width = get_viewport().size.x
-
+func stop():
+	emit_signal("game_won")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	emit_signal("game_lost")
