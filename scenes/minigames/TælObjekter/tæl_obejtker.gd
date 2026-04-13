@@ -2,7 +2,7 @@ extends Minigame
 
 @onready var apple = $Apple
 @onready var bomb = $Bomb
-@onready var shoe = $Shoe
+@onready var green_apple = $"Green Apple"
 @onready var hairtie = $Hairtie
 @onready var number_input = $NumberInput
 
@@ -13,9 +13,9 @@ var random_number = randi_range(0,3)
 var chosen_object = objects[random_number]
 var apple_amount = randi_range(2,7)
 var bomb_amount = randi_range(2,7)
-var shoe_amount = randi_range(2,7)
+var green_apple_amount = randi_range(2,7)
 var hairtie_amount = randi_range(2,7)
-var amounts = [apple_amount, bomb_amount, shoe_amount, hairtie_amount]
+var amounts = [apple_amount, bomb_amount, green_apple_amount, hairtie_amount]
 	
 func start():
 
@@ -34,11 +34,11 @@ func start():
 		add_child(new_bomb)
 		new_bomb.visible = true
 		new_bomb.position = get_random_pos()
-	for i in range(shoe_amount):
-		var new_shoe = shoe.duplicate()
-		add_child(new_shoe)
-		new_shoe.visible = true
-		new_shoe.position = get_random_pos()
+	for i in range(green_apple_amount):
+		var new_green_apple = green_apple.duplicate()
+		add_child(new_green_apple)
+		new_green_apple.visible = true
+		new_green_apple.position = get_random_pos()
 	for i in range(hairtie_amount):
 		var new_hairtie = hairtie.duplicate()
 		add_child(new_hairtie)

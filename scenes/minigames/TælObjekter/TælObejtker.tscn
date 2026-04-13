@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dv06aae3lrybc" path="res://scenes/minigames/TælObjekter/tæl_obejtker.gd" id="1_3tx8r"]
 [ext_resource type="Texture2D" uid="uid://d1i6qlv7hbl1" path="res://images/apple.png" id="2_g87wx"]
+[ext_resource type="Texture2D" uid="uid://cslgbaqh21dja" path="res://images/red_apple.png" id="2_qqxuq"]
 [ext_resource type="Texture2D" uid="uid://lc3fpi1dv4ft" path="res://images/bomb sprite 3.png" id="3_qqxuq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqxuq"]
-atlas = ExtResource("2_g87wx")
-region = Rect2(36, 24, 216, 252)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g87wx"]
 atlas = ExtResource("3_qqxuq")
@@ -24,7 +21,7 @@ color = Color(0.4774, 0.70660335, 0.77, 1)
 visible = false
 offset_right = 100.0
 offset_bottom = 100.0
-texture = SubResource("AtlasTexture_qqxuq")
+texture = ExtResource("2_qqxuq")
 expand_mode = 1
 
 [node name="Bomb" type="TextureRect" parent="."]
@@ -36,9 +33,11 @@ expand_mode = 1
 
 [node name="Shoe" type="TextureRect" parent="."]
 visible = false
+texture = ExtResource("2_g87wx")
 
-[node name="Hairtie" type="TextureRect" parent="."]
+[node name="Green Apple" type="TextureRect" parent="."]
 visible = false
+texture = ExtResource("2_g87wx")
 
 [node name="NumberInput" type="LineEdit" parent="."]
 offset_left = 504.0

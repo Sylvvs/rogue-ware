@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ewflca406h2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0rt6"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i53fp"]
+graph_offset = Vector2(-196, -123)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e0rt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_i53fp")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

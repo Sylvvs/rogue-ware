@@ -1,5 +1,5 @@
 extends Minigame
-
+@onready var player = $Player
 const MAP_PIECES = [
 	preload("res://scenes/minigames/Platformer/level.tscn"),
 	preload("res://scenes/minigames/Platformer/test_leve.tscn"),
@@ -20,6 +20,7 @@ func start():
 	time_limit = 180
 	instruction_text = "Get to the far right side as fast as possible"
 	
+	player.speed.connect(lost)
 	generate_map()
 	pass
 
@@ -59,3 +60,6 @@ func _on_wincondition_body_entered(body: Node2D) -> void:
 		return
 	
 	emit_signal("game_won")
+
+func lost():
+	emit_signal("game_lost")
