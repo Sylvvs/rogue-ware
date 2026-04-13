@@ -1,0 +1,285 @@
+[gd_scene load_steps=40 format=3 uid="uid://l022isk6djr8"]
+
+[ext_resource type="Script" uid="uid://cu42twdok4quj" path="res://scenes/minigames/EuropeLocator/europe_locator.gd" id="1_ffxx7"]
+[ext_resource type="Texture2D" uid="uid://cufwbjv115bhq" path="res://scenes/minigames/EuropeLocator/countries/de.png" id="2_tex_de"]
+[ext_resource type="Texture2D" uid="uid://ba1pw2nkrj0d1" path="res://scenes/minigames/EuropeLocator/countries/fr.png" id="3_tex_fr"]
+[ext_resource type="Texture2D" uid="uid://dpmkbwenurrnh" path="res://scenes/minigames/EuropeLocator/countries/es.png" id="4_tex_es"]
+[ext_resource type="Texture2D" uid="uid://dnevmv5w66b5p" path="res://scenes/minigames/EuropeLocator/countries/it.png" id="5_tex_it"]
+[ext_resource type="Texture2D" uid="uid://bsx8r5aqx43kt" path="res://scenes/minigames/EuropeLocator/countries/pl.png" id="6_tex_pl"]
+[ext_resource type="Texture2D" uid="uid://cs7ovrsvo6fit" path="res://scenes/minigames/EuropeLocator/countries/se.png" id="7_tex_se"]
+[ext_resource type="Texture2D" uid="uid://b4t7dgu0830ib" path="res://scenes/minigames/EuropeLocator/countries/no.png" id="8_tex_no"]
+[ext_resource type="Texture2D" uid="uid://bd4axxqdssel0" path="res://scenes/minigames/EuropeLocator/countries/fi.png" id="9_tex_fi"]
+[ext_resource type="Texture2D" uid="uid://1aevmrmpiph" path="res://scenes/minigames/EuropeLocator/countries/dk.png" id="10_tex_dk"]
+[ext_resource type="Texture2D" uid="uid://dxi0sero25uy3" path="res://scenes/minigames/EuropeLocator/countries/nl.png" id="11_tex_nl"]
+[ext_resource type="Texture2D" uid="uid://cvdytmhex5bjd" path="res://scenes/minigames/EuropeLocator/countries/be.png" id="12_tex_be"]
+[ext_resource type="Texture2D" uid="uid://djw6i3uenfuro" path="res://scenes/minigames/EuropeLocator/countries/at.png" id="13_tex_at"]
+[ext_resource type="Texture2D" uid="uid://codrcbg2qyjwr" path="res://scenes/minigames/EuropeLocator/countries/ch.png" id="14_tex_ch"]
+[ext_resource type="Texture2D" uid="uid://dy4b76c8178gd" path="res://scenes/minigames/EuropeLocator/countries/pt.png" id="15_tex_pt"]
+[ext_resource type="Texture2D" uid="uid://dssqc7wvmqe7b" path="res://scenes/minigames/EuropeLocator/countries/gr.png" id="16_tex_gr"]
+[ext_resource type="Texture2D" uid="uid://dfp8bryrt4xed" path="res://scenes/minigames/EuropeLocator/countries/ro.png" id="17_tex_ro"]
+[ext_resource type="Texture2D" uid="uid://cuhbhx3u6eby3" path="res://scenes/minigames/EuropeLocator/countries/hu.png" id="18_tex_hu"]
+[ext_resource type="Texture2D" uid="uid://c2om76j5msx3v" path="res://scenes/minigames/EuropeLocator/countries/cz.png" id="19_tex_cz"]
+[ext_resource type="Texture2D" uid="uid://uc76dfjw7v24" path="res://scenes/minigames/EuropeLocator/countries/sk.png" id="20_tex_sk"]
+[ext_resource type="Texture2D" uid="uid://bq5bu4u2oijh2" path="res://scenes/minigames/EuropeLocator/countries/hr.png" id="21_tex_hr"]
+[ext_resource type="Texture2D" uid="uid://bm6wgs0g32xax" path="res://scenes/minigames/EuropeLocator/countries/gb.png" id="22_tex_gb"]
+[ext_resource type="Texture2D" uid="uid://btids28tjoqmf" path="res://scenes/minigames/EuropeLocator/countries/ua.png" id="23_tex_ua"]
+[ext_resource type="Texture2D" uid="uid://wvcssvtonl85" path="res://scenes/minigames/EuropeLocator/countries/by.png" id="24_tex_by"]
+[ext_resource type="Texture2D" uid="uid://bgswwbplm062y" path="res://scenes/minigames/EuropeLocator/countries/lt.png" id="25_tex_lt"]
+[ext_resource type="Texture2D" uid="uid://cdcio8i3uck86" path="res://scenes/minigames/EuropeLocator/countries/lv.png" id="26_tex_lv"]
+[ext_resource type="Texture2D" uid="uid://b85k6jd06lgsh" path="res://scenes/minigames/EuropeLocator/countries/ee.png" id="27_tex_ee"]
+[ext_resource type="Texture2D" uid="uid://bcs0oe4yk4fow" path="res://scenes/minigames/EuropeLocator/countries/rs.png" id="28_tex_rs"]
+[ext_resource type="Texture2D" uid="uid://dsn8my7f6lf2k" path="res://scenes/minigames/EuropeLocator/countries/ba.png" id="29_tex_ba"]
+[ext_resource type="Texture2D" uid="uid://dvc72pocaq10f" path="res://scenes/minigames/EuropeLocator/countries/al.png" id="30_tex_al"]
+[ext_resource type="Texture2D" uid="uid://cs7p44ra6fakv" path="res://scenes/minigames/EuropeLocator/countries/bg.png" id="31_tex_bg"]
+[ext_resource type="Texture2D" uid="uid://imm8suwc5gii" path="res://scenes/minigames/EuropeLocator/countries/si.png" id="32_tex_si"]
+[ext_resource type="Texture2D" uid="uid://bd1to40nvxs14" path="res://scenes/minigames/EuropeLocator/countries/ie.png" id="33_tex_ie"]
+[ext_resource type="Texture2D" uid="uid://dr0pot7vk57fu" path="res://scenes/minigames/EuropeLocator/countries/is.png" id="34_tex_is"]
+[ext_resource type="Texture2D" uid="uid://cljx2q3xcpe11" path="res://scenes/minigames/EuropeLocator/countries/lu.png" id="35_tex_lu"]
+[ext_resource type="Texture2D" uid="uid://c6o7btb2oppn8" path="res://scenes/minigames/EuropeLocator/countries/md.png" id="36_tex_md"]
+[ext_resource type="Texture2D" uid="uid://6740ucqrviea" path="res://scenes/minigames/EuropeLocator/countries/me.png" id="37_tex_me"]
+[ext_resource type="Texture2D" uid="uid://bl1cety51gclw" path="res://scenes/minigames/EuropeLocator/countries/mk.png" id="38_tex_mk"]
+[ext_resource type="Texture2D" uid="uid://bej2s8jml1sox" path="res://scenes/minigames/EuropeLocator/countries/ru.png" id="39_umuk4"]
+
+[node name="EuropeLocator" type="CanvasLayer"]
+script = ExtResource("1_ffxx7")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5644, 0.66844004, 0.68, 1)
+
+[node name="de" type="Sprite2D" parent="."]
+position = Vector2(448.00006, 239.25455)
+scale = Vector2(0.4582, 0.4582)
+texture = ExtResource("2_tex_de")
+centered = false
+
+[node name="fr" type="Sprite2D" parent="."]
+position = Vector2(356, 302.25452)
+scale = Vector2(0.53652, 0.53652)
+texture = ExtResource("3_tex_fr")
+centered = false
+
+[node name="es" type="Sprite2D" parent="."]
+position = Vector2(291, 388.25452)
+scale = Vector2(0.5935, 0.5935)
+texture = ExtResource("4_tex_es")
+centered = false
+
+[node name="it" type="Sprite2D" parent="."]
+position = Vector2(453, 368.2545)
+scale = Vector2(0.57276, 0.57276)
+texture = ExtResource("5_tex_it")
+centered = false
+
+[node name="pl" type="Sprite2D" parent="."]
+position = Vector2(553, 230.25452)
+scale = Vector2(0.35546872, 0.43750018)
+texture = ExtResource("6_tex_pl")
+centered = false
+
+[node name="se" type="Sprite2D" parent="."]
+position = Vector2(454.9, 32.054523)
+scale = Vector2(0.80186, 0.80186)
+texture = ExtResource("7_tex_se")
+centered = false
+
+[node name="no" type="Sprite2D" parent="."]
+position = Vector2(450, -1.7454834)
+scale = Vector2(0.74458, 0.74458)
+texture = ExtResource("8_tex_no")
+centered = false
+
+[node name="fi" type="Sprite2D" parent="."]
+position = Vector2(529, 36.2545)
+rotation = -0.2443461
+scale = Vector2(0.5438473, 0.55632144)
+texture = ExtResource("9_tex_fi")
+centered = false
+
+[node name="dk" type="Sprite2D" parent="."]
+position = Vector2(480, 201.25452)
+scale = Vector2(0.17183, 0.17183)
+texture = ExtResource("10_tex_dk")
+centered = false
+
+[node name="nl" type="Sprite2D" parent="."]
+position = Vector2(428.99997, 261.25452)
+scale = Vector2(0.15624982, 0.15625009)
+texture = ExtResource("11_tex_nl")
+centered = false
+
+[node name="be" type="Sprite2D" parent="."]
+position = Vector2(422, 289.25452)
+rotation = -0.08726646
+scale = Vector2(0.13028042, 0.16462465)
+texture = ExtResource("12_tex_be")
+centered = false
+
+[node name="at" type="Sprite2D" parent="."]
+position = Vector2(506, 341.25452)
+scale = Vector2(0.2773436, 0.21969678)
+texture = ExtResource("13_tex_at")
+centered = false
+
+[node name="ch" type="Sprite2D" parent="."]
+position = Vector2(455.00003, 346.25446)
+rotation = -0.12217305
+scale = Vector2(0.17117316, 0.16727899)
+texture = ExtResource("14_tex_ch")
+centered = false
+
+[node name="pt" type="Sprite2D" parent="."]
+position = Vector2(266, 435.25452)
+scale = Vector2(0.2794, 0.2794)
+texture = ExtResource("15_tex_pt")
+centered = false
+
+[node name="gr" type="Sprite2D" parent="."]
+position = Vector2(621, 441.25452)
+scale = Vector2(0.38645, 0.38645)
+texture = ExtResource("16_tex_gr")
+centered = false
+
+[node name="ro" type="Sprite2D" parent="."]
+position = Vector2(610, 330.2545)
+scale = Vector2(0.34569, 0.34569)
+texture = ExtResource("17_tex_ro")
+centered = false
+
+[node name="hu" type="Sprite2D" parent="."]
+position = Vector2(576, 325.25452)
+scale = Vector2(0.21484347, 0.2421875)
+texture = ExtResource("18_tex_hu")
+centered = false
+
+[node name="cz" type="Sprite2D" parent="."]
+position = Vector2(531, 292.25452)
+scale = Vector2(0.21093747, 0.21484375)
+texture = ExtResource("19_tex_cz")
+centered = false
+
+[node name="sk" type="Sprite2D" parent="."]
+position = Vector2(573, 319.2545)
+scale = Vector2(0.13281244, 0.12890624)
+texture = ExtResource("20_tex_sk")
+centered = false
+
+[node name="hr" type="Sprite2D" parent="."]
+position = Vector2(537, 367.25452)
+scale = Vector2(0.27343717, 0.25952002)
+texture = ExtResource("21_tex_hr")
+centered = false
+
+[node name="gb" type="Sprite2D" parent="."]
+position = Vector2(310, 181.25452)
+scale = Vector2(0.51548, 0.51548)
+texture = ExtResource("22_tex_gb")
+centered = false
+
+[node name="ua" type="Sprite2D" parent="."]
+position = Vector2(628, 254.25452)
+scale = Vector2(0.6874999, 0.6835937)
+texture = ExtResource("23_tex_ua")
+centered = false
+
+[node name="by" type="Sprite2D" parent="."]
+position = Vector2(640, 232.25452)
+scale = Vector2(0.27734366, 0.2617187)
+texture = ExtResource("24_tex_by")
+centered = false
+
+[node name="lt" type="Sprite2D" parent="."]
+position = Vector2(612, 205.25452)
+scale = Vector2(0.23828097, 0.24609359)
+texture = ExtResource("25_tex_lt")
+centered = false
+
+[node name="lv" type="Sprite2D" parent="."]
+position = Vector2(621, 172.25449)
+scale = Vector2(0.21484382, 0.22860618)
+texture = ExtResource("26_tex_lv")
+centered = false
+
+[node name="ee" type="Sprite2D" parent="."]
+position = Vector2(625, 147.25452)
+scale = Vector2(0.20703128, 0.21189754)
+texture = ExtResource("27_tex_ee")
+centered = false
+
+[node name="rs" type="Sprite2D" parent="."]
+position = Vector2(597, 379.25452)
+scale = Vector2(0.17183, 0.17183)
+texture = ExtResource("28_tex_rs")
+centered = false
+
+[node name="ba" type="Sprite2D" parent="."]
+position = Vector2(572, 392.25452)
+scale = Vector2(0.13671881, 0.13281256)
+texture = ExtResource("29_tex_ba")
+centered = false
+
+[node name="al" type="Sprite2D" parent="."]
+position = Vector2(596, 439.25455)
+rotation = -0.4886922
+scale = Vector2(0.1501945, 0.15136279)
+texture = ExtResource("30_tex_al")
+centered = false
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(636, 388.25452)
+scale = Vector2(0.24999967, 0.2578126)
+texture = ExtResource("31_tex_bg")
+centered = false
+
+[node name="si" type="Sprite2D" parent="."]
+position = Vector2(540, 365.25452)
+scale = Vector2(0.08746, 0.08746)
+texture = ExtResource("32_tex_si")
+centered = false
+
+[node name="ie" type="Sprite2D" parent="."]
+position = Vector2(301, 241.25452)
+scale = Vector2(0.2291, 0.2291)
+texture = ExtResource("33_tex_ie")
+centered = false
+
+[node name="is" type="Sprite2D" parent="."]
+position = Vector2(105, 65.15452)
+scale = Vector2(0.25623, 0.25623)
+texture = ExtResource("34_tex_is")
+centered = false
+
+[node name="lu" type="Sprite2D" parent="."]
+position = Vector2(452.99997, 314.25452)
+scale = Vector2(0.04035888, 0.035156284)
+texture = ExtResource("35_tex_lu")
+centered = false
+
+[node name="md" type="Sprite2D" parent="."]
+position = Vector2(674, 346.25455)
+scale = Vector2(0.11455, 0.11455)
+texture = ExtResource("36_tex_md")
+centered = false
+
+[node name="me" type="Sprite2D" parent="."]
+position = Vector2(597, 414.25452)
+scale = Vector2(0.08984369, 0.085937575)
+texture = ExtResource("37_tex_me")
+centered = false
+
+[node name="mk" type="Sprite2D" parent="."]
+position = Vector2(620, 418.25452)
+scale = Vector2(0.066406295, 0.08203124)
+texture = ExtResource("38_tex_mk")
+centered = false
+
+[node name="ru" type="Sprite2D" parent="."]
+position = Vector2(935, -145.74551)
+rotation = -0.9948377
+texture = ExtResource("39_umuk4")

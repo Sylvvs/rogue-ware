@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://l022isk6djr8"]
+
+[ext_resource type="Script" uid="uid://cu42twdok4quj" path="res://scenes/minigames/EuropeLocator/europe_locator.gd" id="1_ffxx7"]
+
+[node name="EuropeLocator" type="CanvasLayer"]
+script = ExtResource("1_ffxx7")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
