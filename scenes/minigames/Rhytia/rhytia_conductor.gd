@@ -18,3 +18,8 @@ func stop():
 func _process(delta):
 	if is_playing:
 		current_time = audio_player.get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()
+		
+func get_song_length() -> float:
+	if audio_player.stream:
+		return audio_player.stream.get_length()
+	return 0.0

@@ -2,7 +2,7 @@ extends Node2D
 
 @export var note_scene: PackedScene
 @export var approach_duration = 1.0
-
+@export var song_path = "res://music/RudeBuster/RudeBuster.mp3"
 const grid_cols = 3
 const  grid_rows = 3
 const cell_size = 120
@@ -19,7 +19,6 @@ func _ready():
 	var json = JSON.new()
 	json.parse(file.get_as_text())
 	map = json.get_data()
-	Conductor.start(load("res://music/RudeBuster/RudeBuster.mp3"))
 	map.sort_custom(func(a, b): return a.time < b.time)
 
 func draw_grid():
@@ -35,14 +34,13 @@ func draw_grid():
 func _process(delta):
 	if not Conductor.is_playing:
 		return
-	# Spawn any notes that are due
 	while next_note_index < map.size():
 		var note_data = map[next_note_index]
 		if Conductor.current_time >= note_data.time - approach_duration:
 			spawn_note(note_data)
 			next_note_index += 1
 		else:
-			break  # notes are sorted so no point checking further
+			break
 
 func spawn_note(note_data: Dictionary):
 	var note = note_scene.instantiate()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://i7ii2lpg110w"
+path="res://.godot/imported/Vice Hit 19.ogg-27d98d8eabfec310b00b3afa83a5f52b.oggvorbisstr"
+
+[deps]
+
+source_file="res://SFX/Vice Hit 19.ogg"
+dest_files=["res://.godot/imported/Vice Hit 19.ogg-27d98d8eabfec310b00b3afa83a5f52b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

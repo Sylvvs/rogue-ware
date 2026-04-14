@@ -6,7 +6,8 @@ var has_been_hit = false
 var target_position: Vector2
 var initialized = false
 @onready var ring = $Ring      
-@onready var circle = $Circle   
+@onready var circle = $Circle  
+@onready var perfect_hit_sound = $PerfectHitSound
 
 const perfect_window = 0.08
 const good_window = 0.15
@@ -57,7 +58,9 @@ func try_hit():
 
 func register_hit(rating: String):
 	has_been_hit = true
+	perfect_hit_sound.play()
 	print(rating)
+	await perfect_hit_sound.finished
 	queue_free()
 
 func register_miss():

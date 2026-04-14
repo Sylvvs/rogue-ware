@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://croxgyitoi6a3"]
+[gd_scene load_steps=4 format=3 uid="uid://croxgyitoi6a3"]
 
 [ext_resource type="Script" uid="uid://cdc5dc6ucjc80" path="res://scenes/minigames/Rhytia/note.gd" id="1_60ilx"]
+[ext_resource type="AudioStream" uid="uid://i7ii2lpg110w" path="res://SFX/Vice Hit 19.ogg" id="2_j0we1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60ilx"]
 size = Vector2(110, 110)
@@ -25,5 +26,9 @@ color = Color(0.3372549, 0.7294118, 0.14117648, 0.14117648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_60ilx")
+
+[node name="PerfectHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_j0we1")
+volume_db = -20.513
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

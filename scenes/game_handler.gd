@@ -8,6 +8,7 @@ var loop = 0
 var block_position = 0
 var minigames_beaten = 0
 var in_shop = false
+var song_path: String = ""
 
 @onready var MinigameContainer: Node2D = $MinigameContainer
 @onready var UIContainer: CanvasLayer = $UIContainer
@@ -30,6 +31,7 @@ var in_shop = false
 	#preload("res://scenes/minigames/EuropeLocator/EuropeLocator.tscn"),
 	preload("res://scenes/minigames/ApplesFromSky/apples_from_sky.tscn"),
 	preload("res://scenes/minigames/ColorMatch/ColorMatch.tscn"),
+	preload("res://scenes/minigames/Rhytia/rhytia.tscn"),
 ]
 
 @onready var HARD_MINIGAMES = MINIGAMES
@@ -105,7 +107,11 @@ func _launch(scene: PackedScene) -> void:
 	var game = scene.instantiate()
 	MinigameContainer.add_child(game)
 	current_minigame = game
-
+	
+	if game.song_path != "":
+		music.play_track_with_conductor(game.song_path, Conductor)
+	else:
+		music.play_random_track()
 	game.game_won.connect(_on_game_won)
 	game.game_lost.connect(_on_game_lost)
 

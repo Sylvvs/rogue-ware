@@ -18,6 +18,11 @@ var current_meta: Dictionary = {}
 	"res://music/BeCareful/"
 ]
 
+var init_pos_popup
+
+func _ready() -> void:
+	init_pos_popup = popup.position
+
 func play_track(base_path: String) -> void:
 	
 	var stream = load(base_path + ".mp3")
@@ -48,7 +53,10 @@ func get_credit_string() -> String:
 	var title = "Now playing: %s (%s)" % [current_meta.title, int(current_meta.year)]
 	var composer = "Composed by: %s" %current_meta.composer
 	var album = "Song from: %s" %current_meta.album
-	return title + "\n" + composer + "\n" + album
+	var song_length = ""
+	if "song_length" in current_meta:
+		song_length = "\nLength: %s" % current_meta.song_length
+	return title + "\n" + composer + "\n" + album + song_length
 
 func _get_track_base(folder: String) -> String:
 	var dir = DirAccess.open(folder)
@@ -74,6 +82,7 @@ func show_credits():
 		spin_tween.kill()
 	if popup_tween:
 		popup_tween.kill()
+		popup.position = init_pos_popup
 
 	record.pivot_offset = record.size / 2
 	popup_text.text = get_credit_string()
@@ -97,6 +106,8 @@ func show_credits():
 	spin_tween.tween_property(record, "rotation_degrees", 360, 1.0)\
 		.as_relative()\
 		.set_trans(Tween.TRANS_LINEAR)
+	
+	popup_tween.finished.connect(func(): popup.position = init_pos_popup)
 
 func _on_panel_mouse_entered() -> void:
 	var tween = create_tween()
@@ -105,7 +116,16 @@ func _on_panel_mouse_entered() -> void:
 func _on_panel_mouse_exited() -> void:
 	var tween = create_tween()
 	tween.tween_property(popup, "modulate:a", 1.0, 0.1)
-
+	
+func play_track_with_conductor(base_path: String, conductor: Node) -> void: #specifikt til Rhytia
+	var stream = load(base_path + ".mp3")
+	if current_track:
+		current_track.queue_free()
+	conductor.start(stream)
+	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
+	current_meta = JSON.parse_string(json_text)
+	show_credits()
+	
 func play_error_sound():
 	current_track.pitch_scale = 1.0
 
