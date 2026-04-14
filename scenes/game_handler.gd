@@ -27,7 +27,7 @@ var in_shop = false
 	preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn"),
 	preload("res://scenes/minigames/Bullet hell/BulletHell.tscn"),
 	preload("res://scenes/minigames/Platformer/Platformer.tscn"),
-	#preload("res://scenes/minigames/EuropeLocator/EuropeLocator.tscn"),
+	preload("res://scenes/minigames/EuropeLocator/EuropeLocator.tscn"),
 	preload("res://scenes/minigames/ApplesFromSky/apples_from_sky.tscn"),
 	preload("res://scenes/minigames/ColorMatch/ColorMatch.tscn"),
 ]

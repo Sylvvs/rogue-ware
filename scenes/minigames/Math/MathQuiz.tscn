@@ -4,6 +4,7 @@
 
 [node name="ColorMatch" type="CanvasLayer"]
 script = ExtResource("1_telvp")
+priority = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1156, 648)

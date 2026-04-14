@@ -181,7 +181,6 @@ size = Vector2(213.25, 2068)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uj6ll")
-priority = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_yxpt3")]
 position = Vector2(-1, 0)
