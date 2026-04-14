@@ -11,7 +11,7 @@ script = ExtResource("1_1lqea")
 [node name="UIContainer" type="CanvasLayer" parent="."]
 
 [node name="IntermissionTime" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 2.0
 
 [node name="MusicHandler" parent="." instance=ExtResource("2_dmesk")]
 
