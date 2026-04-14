@@ -1,0 +1,32 @@
+[
+	{
+		"id": 0,
+		"name": "Test item",
+		"desc": "This is the item I use for testing purposes!\n It also doesn't do anything. Like at all. Soooo...",
+		"image": "res://images/apple.png",
+		"cost": 50
+	},
+	{
+		"id": 1,
+		"name": "Stopwatch",
+		"desc": "Adds 3 seconds to every minigame!",
+		"image": "res://images/red_apple.png",
+		"cost": 100,
+		"type": "passive",
+		"effect": {
+			"stat": "time_bonus",
+			"value": 3.0
+		}
+	},
+	{
+		"id": 2,
+		"name": "Skip",
+		"desc": "I don't really have a fun idea for this.",
+		"image": "res://images/record.png",
+		"cost": 200,
+		"type": "active",
+		"effect": {
+			"action": "skip_minigame"
+		}
+	}
+]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlui8d6lf80ff"]
+
+[ext_resource type="Script" uid="uid://b88sndxrpfdfq" path="res://scenes/UI/shop.gd" id="1_k04v8"]
+[ext_resource type="Texture2D" uid="uid://d1i6qlv7hbl1" path="res://images/apple.png" id="1_ywicn"]
+[ext_resource type="Texture2D" uid="uid://cslgbaqh21dja" path="res://images/red_apple.png" id="2_k04v8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ib7j"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[node name="Shop" type="CanvasLayer"]
+script = ExtResource("1_k04v8")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.9683333, 0.62, 1)
+
+[node name="Padding" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 25
+
+[node name="VBox" type="VBoxContainer" parent="Padding"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="RichTextLabel" parent="Padding/VBox"]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ib7j")
+bbcode_enabled = true
+text = "* Love yourself."
+
+[node name="Itembackground" type="ColorRect" parent="Padding/VBox"]
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 2
+color = Color(0.3328807, 0.33288068, 0.33288074, 1)
+
+[node name="Padding2" type="MarginContainer" parent="Padding/VBox/Itembackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ItemContainer" type="GridContainer" parent="Padding/VBox/Itembackground/Padding2"]
+layout_mode = 2
+theme_override_constants/h_separation = 80
+columns = 3
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Sign" type="TextureRect" parent="Control"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+texture = ExtResource("1_ywicn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="IdkGuy" type="TextureRect" parent="Control"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_k04v8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 30)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -35.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Continue"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

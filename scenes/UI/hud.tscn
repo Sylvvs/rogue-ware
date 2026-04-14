@@ -67,6 +67,23 @@ theme_override_font_sizes/normal_font_size = 40
 text = "KILL EVERYONE!!!!!"
 vertical_alignment = 1
 
+[node name="Skip" type="Button" parent="Label"]
+visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -15.5
+offset_right = -10.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Skip?"
+
 [node name="Bomb" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
 layout_direction = 2
@@ -124,6 +141,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
 text = "67"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -134,5 +152,6 @@ vertical_alignment = 1
 wait_time = 0.1
 autostart = true
 
+[connection signal="pressed" from="Label/Skip" to="." method="_on_skip_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FlickerTimer" to="." method="_on_flicker_timer_timeout"]
