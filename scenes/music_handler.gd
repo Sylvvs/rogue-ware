@@ -54,8 +54,6 @@ func get_credit_string() -> String:
 	var composer = "Composed by: %s" %current_meta.composer
 	var album = "Song from: %s" %current_meta.album
 	var song_length = ""
-	if "song_length" in current_meta:
-		song_length = "\nLength: %s" % current_meta.song_length
 	return title + "\n" + composer + "\n" + album + song_length
 
 func _get_track_base(folder: String) -> String:

@@ -117,10 +117,9 @@ func _launch(scene: PackedScene) -> void:
 	MinigameContainer.add_child(game)
 	current_minigame = game
 	
-	if game.song_path != "":
+	if "song_path" in game:
 		music.play_track_with_conductor(game.song_path, Conductor)
-	else:
-		music.play_random_track()
+		
 	game.game_won.connect(_on_game_won)
 	game.game_lost.connect(_on_game_lost)
 
