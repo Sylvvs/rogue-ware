@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccicc2vwates4"]
+
+[ext_resource type="Script" uid="uid://cnsbny1cst2v2" path="res://scenes/minigames/maze/cell.gd" id="1_wjacs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjacs"]
+size = Vector2(21, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k1c4"]
+size = Vector2(1, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dn1y"]
+size = Vector2(21, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ig12"]
+size = Vector2(1, 21)
+
+[node name="Cell" type="Node2D"]
+script = ExtResource("1_wjacs")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_wjacs")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_3k1c4")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_2dn1y")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-10, 0)
+shape = SubResource("RectangleShape2D_5ig12")
