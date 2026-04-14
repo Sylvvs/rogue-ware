@@ -1,6 +1,6 @@
 extends Node2D
 
-const BLOCK_SIZE = 1 #5
+const BLOCK_SIZE = 5
 const HARD_GAME_INDEX = 4
 
 var health = 3
