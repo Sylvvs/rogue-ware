@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yp2g0h4aufgn"
-path="res://.godot/imported/R.png-cf5e9e9646389fba94394c0e6bd32199.ctex"
+uid="uid://0tkony76iqio"
+path="res://.godot/imported/F3.png-660d0b430f2165ff03c9a8db05665275.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/minigames/Math/MatematikTing/7/R.png"
-dest_files=["res://.godot/imported/R.png-cf5e9e9646389fba94394c0e6bd32199.ctex"]
+source_file="res://scenes/minigames/Math/MatematikTing/8/F3.png"
+dest_files=["res://.godot/imported/F3.png-660d0b430f2165ff03c9a8db05665275.ctex"]
 
 [params]
 

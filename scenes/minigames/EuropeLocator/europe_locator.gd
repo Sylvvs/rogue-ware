@@ -1,6 +1,6 @@
 extends Minigame
 
-const MAX_ROUNDS := 5
+const MAX_ROUNDS := 10
 
 const COLOR_DEFAULT   := Color(0.0, 0.0, 0.0, 1.0)
 const COLOR_HIGHLIGHT := Color(1.0, 0.78, 0.0,  1.0)
@@ -19,18 +19,19 @@ const COUNTRIES = {
 	"me": "Montenegro",  "mk": "North Macedonia", "ru": "Russia",
 }
 
-var _round_countries: Array = []
-var _current_code: String = ""
-var _current_name: String = ""
-var _score: int = 0
-var _round_index: int = 0
+var round_countries: Array = []
+var current_code: String = ""
+var current_name: String = ""
+var score: int = 0
+var round_index: int = 0
 
-var _input_field: LineEdit
-var _label_score: Label
-var _label_feedback: Label
-var _feedback_timer: Timer
+var input_field: LineEdit
+var label_score: Label
+var label_feedback: Label
+var feedback_timer: Timer
 
-
+func _ready() -> void:
+	start()
 
 func start() -> void:
 	instruction_text = "Type the name of the highlighted country!"
@@ -55,71 +56,95 @@ func _set_color(code: String, color: Color) -> void:
 	if node and node.material:
 		(node.material as ShaderMaterial).set_shader_parameter("tint_color", color)
 
+func stop() -> void:
+	pass
 
+var hint_button: Button
+var label_hint: Label
 
 func _build_ui() -> void:
-	_label_score = Label.new()
-	_label_score.position = Vector2(20, 8)
-	_label_score.size = Vector2(500, 30)
-	_label_score.add_theme_font_size_override("font_size", 20)
-	add_child(_label_score)
+	label_score = Label.new()
+	label_score.position = Vector2(20, 8)
+	label_score.size = Vector2(500, 30)
+	label_score.add_theme_font_size_override("font_size", 20)
+	add_child(label_score)
 
-	_input_field = LineEdit.new()
-	_input_field.position = Vector2(725, 500)
-	_input_field.size = Vector2(400, 34)
-	_input_field.add_theme_font_size_override("font_size", 22)
-	_input_field.placeholder_text = "Type the country name..."
-	_input_field.text_changed.connect(_on_input_field_text_changed)
-	add_child(_input_field)
+	input_field = LineEdit.new()
+	input_field.position = Vector2(725, 500)
+	input_field.size = Vector2(400, 34)
+	input_field.add_theme_font_size_override("font_size", 22)
+	input_field.placeholder_text = "Type the country name..."
+	input_field.text_changed.connect(_on_input_field_text_changed)
+	add_child(input_field)
 
-	_label_feedback = Label.new()
-	_label_feedback.position = Vector2(725, 465)
-	_label_feedback.size = Vector2(380, 34)
-	_label_feedback.add_theme_font_size_override("font_size", 22)
-	add_child(_label_feedback)
+	hint_button = Button.new()
+	hint_button.position = Vector2(725, 463)
+	hint_button.size = Vector2(80, 28)
+	hint_button.text = "Hint"
+	hint_button.add_theme_font_size_override("font_size", 18)
+	hint_button.pressed.connect(_on_hint_pressed)
+	add_child(hint_button)
 
-	_feedback_timer = Timer.new()
-	_feedback_timer.wait_time = 1.2
-	_feedback_timer.one_shot = true
-	_feedback_timer.timeout.connect(_on_feedback_timer_timeout)
-	add_child(_feedback_timer)
+	label_hint = Label.new()
+	label_hint.position = Vector2(810, 463)
+	label_hint.size = Vector2(200, 28)
+	label_hint.add_theme_font_size_override("font_size", 20)
+	add_child(label_hint)
+
+	label_feedback = Label.new()
+	label_feedback.position = Vector2(725, 465)
+	label_feedback.size = Vector2(500, 34)
+	label_feedback.add_theme_font_size_override("font_size", 22)
+	add_child(label_feedback)
+
+	feedback_timer = Timer.new()
+	feedback_timer.wait_time = 1.2
+	feedback_timer.one_shot = true
+	feedback_timer.timeout.connect(_on_feedback_timer_timeout)
+	add_child(feedback_timer)
 
 func _pick_round_countries() -> void:
 	var all: Array = COUNTRIES.keys().duplicate()
 	all.shuffle()
-	_round_countries = all.slice(0, MAX_ROUNDS)
+	round_countries = all.slice(0, MAX_ROUNDS)
 
 func _next_round() -> void:
-	if _round_index >= MAX_ROUNDS:
+	if round_index >= MAX_ROUNDS:
 		_finish()
 		return
 
 	for code in COUNTRIES.keys():
 		_set_color(code, COLOR_DEFAULT)
 
-	_current_code = _round_countries[_round_index]
-	_current_name = COUNTRIES[_current_code]
-	_set_color(_current_code, COLOR_HIGHLIGHT)
+	current_code = round_countries[round_index]
+	current_name = COUNTRIES[current_code]
+	_set_color(current_code, COLOR_HIGHLIGHT)
 
-	_label_score.text = "Score: %d  Round: %d/%d" % [_score, _round_index + 1, MAX_ROUNDS]
-	_label_feedback.text = ""
-	_input_field.text = ""
-	_input_field.grab_focus()
+	label_score.text = "Score: %d  Round: %d/%d" % [score, round_index + 1, MAX_ROUNDS]
+	label_feedback.text = ""
+	label_hint.text = ""
+	hint_button.disabled = false
+	input_field.text = ""
+	input_field.grab_focus()
+
+func _on_hint_pressed() -> void:
+	label_hint.text = current_code.to_upper()
+	hint_button.disabled = true
 
 func _on_input_field_text_changed(new_text: String) -> void:
-	if _current_name == "":
+	if current_name == "":
 		return
-	if new_text.strip_edges().to_lower() == _current_name.to_lower():
+	if new_text.strip_edges().to_lower() == current_name.to_lower():
 		_handle_correct()
 
 func _handle_correct() -> void:
-	_score += 1
-	_round_index += 1
-	_label_score.text = "Score: %d  Round: %d/%d" % [_score, _round_index, MAX_ROUNDS]
-	_label_feedback.text = "✓ Correct!"
-	_label_feedback.add_theme_color_override("font_color", Color(0.2, 0.9, 0.2))
-	_current_name = ""
-	_feedback_timer.start()
+	score += 1
+	round_index += 1
+	label_score.text = "Score: %d  Round: %d/%d" % [score, round_index, MAX_ROUNDS]
+	label_feedback.text = "✓ Correct!"
+	label_feedback.add_theme_color_override("font_color", Color(0.2, 0.9, 0.2))
+	current_name = ""
+	feedback_timer.start()
 
 func _on_feedback_timer_timeout() -> void:
 	_next_round()
@@ -127,9 +152,9 @@ func _on_feedback_timer_timeout() -> void:
 func _finish() -> void:
 	for code in COUNTRIES.keys():
 		_set_color(code, COLOR_DEFAULT)
-	_label_feedback.text = ""
-	_label_score.text = "Score: %d/%d" % [_score, MAX_ROUNDS]
-	if _score >= MAX_ROUNDS / 2.0:
+	label_feedback.text = ""
+	label_score.text = "Score: %d/%d" % [score, MAX_ROUNDS]
+	if score >= MAX_ROUNDS / 2.0:
 		emit_signal("game_won")
 	else:
 		emit_signal("game_lost")

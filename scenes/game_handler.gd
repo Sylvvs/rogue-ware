@@ -15,6 +15,7 @@ var song_path: String = ""
 @onready var intermission = $IntermissionTime
 @onready var music = $MusicHandler
 @onready var HUD = preload("res://scenes/UI/hud.tscn")
+@onready var shop = preload("res://scenes/UI/Shop.tscn")
 
 @onready var MINIGAMES = [
 	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
@@ -28,16 +29,18 @@ var song_path: String = ""
 	preload("res://scenes/minigames/TælObjekter/TælObejtker.tscn"),
 	preload("res://scenes/minigames/Bullet hell/BulletHell.tscn"),
 	preload("res://scenes/minigames/Platformer/Platformer.tscn"),
-	#preload("res://scenes/minigames/EuropeLocator/EuropeLocator.tscn"),
+	preload("res://scenes/minigames/EuropeLocator/EuropeLocator.tscn"),
 	preload("res://scenes/minigames/ApplesFromSky/apples_from_sky.tscn"),
 	preload("res://scenes/minigames/ColorMatch/ColorMatch.tscn"),
 	preload("res://scenes/minigames/Rhytia/rhytia.tscn"),
+	preload("res://scenes/minigames/NumberMemory/NumberMemory.tscn")
 ]
 
 @onready var HARD_MINIGAMES = MINIGAMES
 
 var current_minigame = null
 var current_timer = null
+var current_shop = null
 
 var game_seed: int = 0
 
@@ -99,7 +102,13 @@ func _get_pool(scenes: Array) -> Array:
 func _open_shop() -> void:
 	in_shop = true
 	print("REST TIME! (loop %d complete)" % loop)
-	# TODO: the humble shop actually goes here
+	current_shop = shop.instantiate()
+	self.add_child(current_shop)
+	current_shop.shop_finished.connect(_close_shop)
+
+func _close_shop():
+	current_shop.queue_free()
+	in_shop = false
 	intermission.start()
 
 func _launch(scene: PackedScene) -> void:
@@ -120,10 +129,13 @@ func _launch(scene: PackedScene) -> void:
 	current_timer = timer
 
 	game.start()
-	timer.time = game.time_limit
+	timer.time = game.time_limit + int(Inventory.get_time_bonus())
+	timer.init_time = game.time_limit
 	timer.time_out.connect(_on_timer_finished)
+	timer.skipping.connect(_on_game_won)
 	timer.change_text(game.instruction_text)
 	timer.start()
+
 
 func clear_current_minigame():
 	if current_minigame:
@@ -155,6 +167,6 @@ func _on_game_lost():
 	
 func _on_intermission_time_timeout() -> void:
 	if in_shop:
-		in_shop = false
+		return
 	music.recover_error_sound()
 	_advance_and_decide()

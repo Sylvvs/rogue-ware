@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtqxn22vedsmk"]
+
+[ext_resource type="Script" uid="uid://bbqwt4xovgtmu" path="res://scenes/UI/item_holder.gd" id="1_k73u8"]
+
+[node name="ItemHolder" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_k73u8")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Image" type="TextureRect" parent="VBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="RichTextLabel" parent="VBox"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="RichTextLabel" parent="VBox"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
