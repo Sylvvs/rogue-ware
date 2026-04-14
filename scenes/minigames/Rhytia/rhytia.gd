@@ -6,5 +6,13 @@ func start():
 	mult = 1
 	time_limit = Conductor.get_song_length()
 
+func _process(delta: float) -> void:
+	if Conductor.notes_missed >= 15:
+		Conductor.stop()
+		lose()
+
+func lose():
+	emit_signal("game_lost")
+
 func stop():
 	emit_signal("game_won")

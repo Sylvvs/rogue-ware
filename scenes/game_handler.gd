@@ -119,7 +119,6 @@ func _launch(scene: PackedScene) -> void:
 	
 	if "song_path" in game:
 		music.play_track_with_conductor(game.song_path, Conductor)
-		
 	game.game_won.connect(_on_game_won)
 	game.game_lost.connect(_on_game_lost)
 

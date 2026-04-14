@@ -5,6 +5,7 @@ var approach_duration: float
 var has_been_hit = false
 var target_position: Vector2
 var initialized = false
+var notes_missed = 0
 @onready var ring = $Ring      
 @onready var circle = $Circle  
 @onready var perfect_hit_sound = $PerfectHitSound
@@ -12,6 +13,7 @@ var initialized = false
 const perfect_window = 0.08
 const good_window = 0.15
 const hit_radius = 62
+
 
 func _process(delta):
 	if not initialized:
@@ -54,16 +56,18 @@ func try_hit():
 	elif diff <= good_window:
 		register_hit("Good")
 	else:
+		notes_missed += 1
 		register_miss()
 
 func register_hit(rating: String):
 	has_been_hit = true
+	perfect_hit_sound.reparent(get_tree().current_scene)
 	perfect_hit_sound.play()
-	print(rating)
-	await perfect_hit_sound.finished
+	#print(rating)
 	queue_free()
 
 func register_miss():
 	has_been_hit = true
-	print("Miss")
+	Conductor.notes_missed += 1
+	#print("Miss:", Conductor.notes_missed)
 	queue_free()

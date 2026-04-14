@@ -119,14 +119,16 @@ func play_track_with_conductor(base_path: String, conductor: Node) -> void: #spe
 	var stream = load(base_path + ".mp3")
 	if current_track:
 		current_track.queue_free()
+		current_track = null
 	conductor.start(stream)
 	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
 	current_meta = JSON.parse_string(json_text)
 	show_credits()
 	
 func play_error_sound():
+	if current_track == null or not is_instance_valid(current_track):
+		return
 	current_track.pitch_scale = 1.0
-
 	var bus_idx = AudioServer.get_bus_index("SFX Error")
 	
 	var distortion = AudioServer.get_bus_effect(bus_idx, 0)
@@ -142,6 +144,8 @@ func play_error_sound():
 	tween.tween_property(lowpass, "cutoff_hz", 20000, 0.7)
 
 func recover_error_sound():
+	if current_track == null or not is_instance_valid(current_track):
+		return
 	var bus_idx = AudioServer.get_bus_index("SFX Error")
 	
 	var lowpass = AudioServer.get_bus_effect(bus_idx, 1)
