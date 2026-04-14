@@ -12,17 +12,27 @@ collision_mask = 0
 script = ExtResource("1_60ilx")
 
 [node name="Ring" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -57.0
+offset_top = -57.0
+offset_right = 57.0
+offset_bottom = 57.0
 color = Color(1, 1, 1, 0)
-metadata/_edit_use_anchors_ = true
 
 [node name="Circle" type="ColorRect" parent="."]
 offset_left = -55.0
 offset_top = -55.0
 offset_right = 55.0
 offset_bottom = 55.0
-color = Color(0.3372549, 0.7294118, 0.14117648, 0.14117648)
+color = Color(0.3372549, 0.7294118, 0.14117648, 0)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = -55.0
+offset_top = -56.0
+offset_right = 56.0
+offset_bottom = 55.0
+border_color = Color(0.19215687, 0.6313726, 0.39215687, 1)
+border_width = 5.0
+editor_only = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_60ilx")

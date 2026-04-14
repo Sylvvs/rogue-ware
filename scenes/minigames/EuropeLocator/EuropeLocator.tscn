@@ -42,7 +42,6 @@
 
 [node name="EuropeLocator" type="CanvasLayer"]
 script = ExtResource("1_ffxx7")
-priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15

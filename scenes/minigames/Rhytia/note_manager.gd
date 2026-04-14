@@ -24,11 +24,18 @@ func _ready():
 func draw_grid():
 	for row in range(grid_rows):
 		for col in range(grid_cols):
-			var marker = ColorRect.new()
+			var marker = Panel.new()
 			marker.size = Vector2(cell_size, cell_size)
 			var center = grid_to_screen(col, row)
 			marker.position = center - marker.size / 2
-			marker.color = Color(0.2, 0.2, 0.2, 0.2)
+			var style = StyleBoxFlat.new()
+			style.bg_color = Color(0, 0, 0, 0)
+			style.border_color = Color(1, 1, 1, 0.65)
+			style.border_width_left = 2 if col == 0 else 0
+			style.border_width_right = 2 if col == grid_cols - 1 else 0
+			style.border_width_top = 2 if row == 0 else 0
+			style.border_width_bottom = 2 if row == grid_rows - 1 else 0
+			marker.add_theme_stylebox_override("panel", style)
 			add_child(marker)
 
 func _process(delta):
