@@ -4,7 +4,6 @@
 
 [node name="NumberMemory" type="CanvasLayer"]
 script = ExtResource("1_8ihkt")
-priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
