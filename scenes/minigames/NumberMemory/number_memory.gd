@@ -22,9 +22,6 @@ func start() -> void:
 	build_ui()
 	next_level()
 
-func stop() -> void:
-	pass
-
 func build_ui() -> void:
 	var label_round := Label.new()
 	label_round.name = "LabelRound"

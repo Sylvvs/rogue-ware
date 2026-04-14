@@ -42,7 +42,7 @@ func play_track(base_path: String) -> void:
 	
 	current_track.play()
 
-	show_credits()
+	show_credits() 
 
 func _on_track_finished() -> void:
 	play_random_track()
@@ -120,6 +120,12 @@ func play_track_with_conductor(base_path: String, conductor: Node) -> void: #spe
 	if current_track:
 		current_track.queue_free()
 		current_track = null
+		
+	if conductor.audio_player.finished.is_connected(_on_track_finished):
+		conductor.audio_player.finished.disconnect(_on_track_finished)
+		
+	conductor.audio_player.finished.connect(_on_track_finished)
+	
 	conductor.start(stream)
 	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
 	current_meta = JSON.parse_string(json_text)

@@ -2,7 +2,7 @@ extends Node2D
 
 @export var note_scene: PackedScene
 @export var approach_duration = 1.0
-@export var song_path = "res://music/RudeBuster/RudeBuster.mp3"
+@export var song_path = "res://music/RudeBuster/RudeBuster"
 const grid_cols = 3
 const  grid_rows = 3
 const cell_size = 120

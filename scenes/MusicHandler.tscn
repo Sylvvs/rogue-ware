@@ -29,6 +29,7 @@ cache/0/20/0/underline_thickness = 0.0
 cache/0/20/0/scale = 1.0
 
 [node name="MusicHandler" type="CanvasLayer"]
+layer = 4
 script = ExtResource("1_s6e27")
 
 [node name="MusicPopUp" type="Control" parent="."]
