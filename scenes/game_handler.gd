@@ -30,6 +30,7 @@ var in_shop = false
 	preload("res://scenes/minigames/EuropeLocator/EuropeLocator.tscn"),
 	preload("res://scenes/minigames/ApplesFromSky/apples_from_sky.tscn"),
 	preload("res://scenes/minigames/ColorMatch/ColorMatch.tscn"),
+	preload("res://scenes/minigames/NumberMemory/NumberMemory.tscn")
 ]
 
 @onready var HARD_MINIGAMES = MINIGAMES
