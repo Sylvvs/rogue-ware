@@ -1,0 +1,141 @@
+[gd_scene load_steps=2 format=3 uid="uid://drpooejolh4gn"]
+
+[sub_resource type="GDScript" id="GDScript_qlxs6"]
+script/source = "extends Minigame
+
+const LANE_HEIGHT      := 80
+const LANE_COUNT       := 6
+const PAVEMENT_HEIGHT  := 80
+const GAME_WIDTH       := 1152
+
+var lane_index: int = 0
+var moving: bool = false
+var active_cars: Array = []
+
+@onready var player: CharacterBody2D = $PlayerBody
+
+var car_scene: PackedScene = preload(\"res://scenes/minigames/CrossyRoad/Car.tscn\")
+
+func start() -> void:
+	instruction_text = \"Kryds vejen uden at blive ramt!\"
+	time_limit = 60
+	_build_background()
+	player.position = _lane_center(0)
+	_spawn_cars_for_all_lanes()
+
+func stop() -> void:
+	pass
+
+func _build_background() -> void:
+	# Vej
+	var road := ColorRect.new()
+	road.color = Color(0.2, 0.2, 0.2)
+	road.size = Vector2(GAME_WIDTH, LANE_COUNT * LANE_HEIGHT)
+	road.position = Vector2(0, PAVEMENT_HEIGHT)
+	add_child(road)
+	move_child(road, 0)
+
+	# Fortov bund
+	var pave_bot := ColorRect.new()
+	pave_bot.color = Color(0.5, 0.5, 0.5)
+	pave_bot.size = Vector2(GAME_WIDTH, PAVEMENT_HEIGHT)
+	pave_bot.position = Vector2(0, PAVEMENT_HEIGHT + LANE_COUNT * LANE_HEIGHT)
+	add_child(pave_bot)
+	move_child(pave_bot, 0)
+
+	# Fortov top
+	var pave_top := ColorRect.new()
+	pave_top.color = Color(0.5, 0.5, 0.5)
+	pave_top.size = Vector2(GAME_WIDTH, PAVEMENT_HEIGHT)
+	pave_top.position = Vector2(0, 0)
+	add_child(pave_top)
+	move_child(pave_top, 0)
+
+	# Banelinjer
+	for i in range(1, LANE_COUNT):
+		var line := ColorRect.new()
+		line.color = Color(0.9, 0.9, 0.2, 0.4)
+		line.size = Vector2(GAME_WIDTH, 3)
+		line.position = Vector2(0, PAVEMENT_HEIGHT + i * LANE_HEIGHT)
+		add_child(line)
+		move_child(line, 0)
+
+func _lane_y(index: int) -> float:
+	match index:
+		0:
+			return PAVEMENT_HEIGHT + LANE_COUNT * LANE_HEIGHT + PAVEMENT_HEIGHT / 2.0
+		7:
+			return PAVEMENT_HEIGHT / 2.0
+		_:
+			return PAVEMENT_HEIGHT + (LANE_COUNT - index) * LANE_HEIGHT - LANE_HEIGHT / 2.0
+
+func _lane_center(index: int) -> Vector2:
+	return Vector2(GAME_WIDTH / 2.0, _lane_y(index))
+
+func _spawn_cars_for_all_lanes() -> void:
+	for i in range(1, LANE_COUNT + 1):
+		var go_right: bool = (i % 2 == 0)
+		var speed: float = randf_range(120.0, 260.0)
+		var interval: float = randf_range(1.5, 3.0)
+		_start_lane_spawner(i, go_right, speed, interval)
+
+func _start_lane_spawner(lane: int, go_right: bool, speed: float, interval: float) -> void:
+	var timer := Timer.new()
+	timer.wait_time = interval
+	timer.autostart = true
+	timer.timeout.connect(func(): _spawn_car(lane, go_right, speed))
+	add_child(timer)
+
+func _spawn_car(lane: int, go_right: bool, speed: float) -> void:
+	var car: Node2D = car_scene.instantiate()
+	car.speed = speed * (1.0 if go_right else -1.0)
+	car.position = Vector2(
+		-80.0 if go_right else GAME_WIDTH + 80.0,
+		_lane_y(lane)
+	)
+	active_cars.append(car)
+	add_child(car)
+
+func _process(delta: float) -> void:
+	for car in active_cars.duplicate():
+		if car.position.x < -200 or car.position.x > GAME_WIDTH + 200:
+			active_cars.erase(car)
+			car.queue_free()
+			continue
+
+		var diff: Vector2 = car.position - player.position
+		if abs(diff.x) < 50 and abs(diff.y) < 35:
+			_on_hit()
+			return
+
+func _unhandled_input(event: InputEvent) -> void:
+	if moving:
+		return
+	if event.is_action_pressed(\"ui_up\") and lane_index < 7:
+		_move_player(lane_index + 1)
+	elif event.is_action_pressed(\"ui_down\") and lane_index > 0:
+		_move_player(lane_index - 1)
+
+func _move_player(new_index: int) -> void:
+	moving = true
+	lane_index = new_index
+	var tween := create_tween()
+	tween.tween_property(player, \"position\", _lane_center(lane_index), 0.1)
+	tween.tween_callback(func():
+		moving = false
+		if lane_index == 7:
+			_on_win()
+	)
+
+func _on_hit() -> void:
+	emit_signal(\"game_lost\")
+
+func _on_win() -> void:
+	emit_signal(\"game_won\")
+"
+
+[node name="CrossyRoads" type="CanvasLayer"]
+script = SubResource("GDScript_qlxs6")
+priority = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

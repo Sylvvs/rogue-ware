@@ -66,7 +66,7 @@ layout_mode = 2
 
 [node name="PlayBtn" type="Button" parent="TopBar"]
 layout_mode = 2
-text = "▶ play"
+text = " play"
 
 [node name="Timestamp" type="SpinBox" parent="TopBar"]
 layout_mode = 2
@@ -75,7 +75,7 @@ step = 0.1
 
 [node name="StopBtn" type="Button" parent="TopBar"]
 layout_mode = 2
-text = "■ stop"
+text = "stop"
 
 [node name="Sep4" type="VSeparator" parent="TopBar"]
 layout_mode = 2
@@ -131,7 +131,13 @@ columns = 3
 layout_mode = 2
 text = "click cell → select
 click timeline → place
-right-click → delete"
+right-click → delete
+click without cell → time
+shift click → select
+click selected → drag
+ctrl + c → copy selected
+ctrl + v → paste selected
+backspace → delete selected"
 horizontal_alignment = 1
 autowrap_mode = 3
 
