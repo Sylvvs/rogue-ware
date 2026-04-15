@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xdntypw4u6ta"]
 
-[ext_resource type="Script" path="res://scenes/minigames/Rhytia/ChartEditor.gd" id="1_editor"]
+[ext_resource type="Script" uid="uid://dh6karsiol4ca" path="res://scenes/minigames/Rhytia/ChartEditor.gd" id="1_editor"]
 
 [node name="ChartEditor" type="Control"]
 layout_mode = 3
@@ -187,6 +187,7 @@ layout_mode = 2
 text = "no cell selected"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
 
 [node name="FileDialogOpen" type="FileDialog" parent="."]
 title = "Open a File"

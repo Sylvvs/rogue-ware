@@ -60,8 +60,8 @@ autoplay = "background_for_testmap"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -4096
-position = Vector2(576, 325)
-scale = Vector2(4.4230766, 2.5468748)
+position = Vector2(576.5, 325)
+scale = Vector2(4.5039063, 2.5468748)
 texture = ExtResource("4_2ymoa")
 hframes = 5
 vframes = 16
