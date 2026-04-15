@@ -1,12 +1,14 @@
 extends Minigame
 
+
 @onready var misses = $Misses
 @onready var combo_text = $Combo
 @onready var score_text = $Score
 @onready var accuracy_text = $Accuracy
 @onready var multiplier_text = $Multiplier
 
-@export var song_path = "res://music/RudeBuster/RudeBuster"
+
+@export var song_path = "res://music/TVWorld/TVWorld"
 
 func start():
 	
