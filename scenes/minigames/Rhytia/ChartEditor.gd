@@ -35,6 +35,15 @@ var flash_time := 0.12
 var last_flash_times := {}
 var active_flashes := {}
 
+var selected_notes: Array = []
+var is_drag_selecting := false
+var drag_start := Vector2.ZERO
+var drag_end := Vector2.ZERO
+var clipboard_notes: Array = []
+var is_dragging_notes := false
+var drag_start_mouse := Vector2.ZERO
+var drag_original_notes := []
+
 func _ready():
 	_build_grid()
 	_connect_signals()
@@ -149,8 +158,9 @@ func _draw_timeline():
 	for note in notes:
 		var x = time_to_x(note.time)
 		var y = note.row * row_h + row_h * 0.5
-		var col = Color("31a164")
 		var radius = min(row_h * 0.38, 14.0)
+		var is_selected = note in selected_notes
+		var col = Color("31a164") if not is_selected else Color(1, 0.8, 0.2)
 		timeline.draw_circle(Vector2(x, y), radius, Color(col.r, col.g, col.b, 0.8))
 		timeline.draw_arc(Vector2(x, y), radius, 0, TAU, 24, col, 1.5)
 		timeline.draw_string(
@@ -160,56 +170,146 @@ func _draw_timeline():
 			HORIZONTAL_ALIGNMENT_LEFT, -1, 9,
 			Color(1, 1, 1, 0.9)
 		)
+	
+	if is_drag_selecting:
+		var rect = Rect2(drag_start, drag_end - drag_start).abs()
+		timeline.draw_rect(rect, Color(0.2, 0.8, 0.4, 0.15), true)
+		timeline.draw_rect(rect, Color(0.2, 0.8, 0.4, 0.8), false, 2)
+
+func _get_note_at_pos(pos: Vector2):
+	var row_h = timeline.size.y / GRID_ROWS
+	var t = x_to_time(pos.x)
+	var row = int(pos.y / row_h)
+
+	for note in notes:
+		if note.row == row and abs(note.time - t) < 20.0 / zoom:
+			return note
+	return null
 
 func _on_timeline_input(event: InputEvent):
+
+	# MOUSE BUTTON
 	if event is InputEventMouseButton:
 		var pos = event.position
 		var t = x_to_time(pos.x)
 		var row_h = timeline.size.y / GRID_ROWS
 		var row = int(pos.y / row_h)
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+			if is_dragging_notes:
+				is_dragging_notes = false
+				return
 
-		if event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
-			play_time = x_to_time(pos.x)
-			time_stamp.value = play_time
-			_update_playhead()
-		
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# SHIFT 
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed and event.shift_pressed:
+				is_drag_selecting = true
+				drag_start = pos
+				drag_end = pos
+				selected_notes.clear()
+				return
+
+			if not event.pressed and is_drag_selecting:
+				is_drag_selecting = false
+				_select_notes_in_rect()
+				return
+
+		# NORMAL CLICK (NO SHIFT)
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not event.shift_pressed:
+			var clicked_note = _get_note_at_pos(pos)
+			if clicked_note and clicked_note in selected_notes:
+				is_dragging_notes = true
+				drag_start_mouse = pos
+				drag_original_notes.clear()
+				for note in selected_notes:
+					drag_original_notes.append(note.duplicate())
+				return
+			
+			if is_drag_selecting:
+				return
+
 			if selected_cell.x == -1:
-				play_time = x_to_time(pos.x)
+				play_time = t
 				time_stamp.value = play_time
 				_update_playhead()
 				return
+
 			if t < 0 or t > song_duration:
 				return
+
 			var snapped = snap_to_grid(t)
 			var r = selected_cell.x
 			var c = selected_cell.y
+
 			var existing = -1
 			for i in range(notes.size()):
 				if notes[i].row == r and notes[i].col == c and abs(notes[i].time - snapped) < 0.02:
 					existing = i
 					break
+
 			if existing >= 0:
 				notes.remove_at(existing)
 			else:
 				notes.append({ "time": snapped, "row": r, "col": c })
 				notes.sort_custom(func(a, b): return a.time < b.time)
+
 			note_count_label.text = "notes: %d" % notes.size()
 			timeline.queue_redraw()
 
+		# RIGHT CLICK DELETE
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			var closest = -1
 			var closest_dist = 999.0
+
 			for i in range(notes.size()):
 				if notes[i].row == row:
 					var d = abs(notes[i].time - t)
 					if d < closest_dist and d < 20.0 / zoom:
 						closest_dist = d
 						closest = i
+
 			if closest >= 0:
 				notes.remove_at(closest)
 				note_count_label.text = "notes: %d" % notes.size()
 				timeline.queue_redraw()
+			
+	elif event is InputEventMouseMotion:
+	
+		# 🟩 DRAG SELECTION BOX
+		if is_drag_selecting:
+			drag_end = event.position
+			timeline.queue_redraw()
+	
+		# 🟨 DRAG NOTES
+		elif is_dragging_notes:
+			var delta = event.position - drag_start_mouse
+	
+			var delta_time = delta.x / zoom
+			var row_h = timeline.size.y / GRID_ROWS
+			var delta_row = int(round(delta.y / row_h))
+	
+			for i in range(selected_notes.size()):
+				var original = drag_original_notes[i]
+				var note = selected_notes[i]
+	
+				note.time = snap_to_grid(original.time + delta_time)
+				note.row = clamp(original.row + delta_row, 0, GRID_ROWS - 1)
+	
+			timeline.queue_redraw()
+
+func _select_notes_in_rect():
+	selected_notes.clear()
+	var rect = Rect2(drag_start, drag_end - drag_start).abs()
+	var row_h = timeline.size.y / GRID_ROWS
+
+	for note in notes:
+		var x = time_to_x(note.time)
+		var y = note.row * row_h + row_h * 0.5
+		var pos = Vector2(x, y)
+
+		if rect.has_point(pos):
+			selected_notes.append(note)
+
+	timeline.queue_redraw()
 
 func _on_play_pressed():
 	if is_playing:
@@ -346,4 +446,47 @@ func _on_audio_loaded(path: String):
 func _on_clear_pressed():
 	notes.clear()
 	note_count_label.text = "notes: 0"
+	timeline.queue_redraw()
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.ctrl_pressed:
+			match event.keycode:
+				KEY_C:
+					_copy_selected()
+				KEY_V:
+					var mouse_pos = timeline.get_local_mouse_position()
+					var t = snap_to_grid(x_to_time(mouse_pos.x))
+					var row = 0
+					_paste_notes(t, row)
+		if event.keycode == KEY_BACKSPACE:
+			for note in selected_notes:
+				notes.erase(note)
+			selected_notes.clear()
+			timeline.queue_redraw()
+
+func _copy_selected():
+	clipboard_notes.clear()
+	for note in selected_notes:
+		clipboard_notes.append(note.duplicate())
+
+func _paste_notes(at_time: float, at_row: int):
+	if clipboard_notes.is_empty():
+		return
+
+	var base_time = clipboard_notes[0].time
+	var base_row = clipboard_notes[0].row
+
+	selected_notes.clear()
+
+	for note in clipboard_notes:
+		var new_note = {
+			"time": snap_to_grid(at_time + (note.time - base_time)),
+			"row": at_row + (note.row - base_row),
+			"col": note.col
+		}
+		notes.append(new_note)
+		selected_notes.append(new_note)
+
+	notes.sort_custom(func(a, b): return a.time < b.time)
 	timeline.queue_redraw()
