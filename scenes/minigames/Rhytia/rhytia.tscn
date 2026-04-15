@@ -5,6 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://croxgyitoi6a3" path="res://scenes/minigames/Rhytia/note.tscn" id="2_w2baf"]
 [ext_resource type="Texture2D" uid="uid://bwn7tht3ci1ns" path="res://scenes/minigames/Rhytia/Maps/Map image/Test.png" id="4_2ymoa"]
 
+[sub_resource type="Animation" id="Animation_x5a3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_w2baf"]
 resource_name = "background_for_testmap"
 length = 7.3636456
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 79]
 }
 
-[sub_resource type="Animation" id="Animation_x5a3y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ymoa"]
 _data = {
 &"RESET": SubResource("Animation_x5a3y"),
@@ -46,6 +46,7 @@ _data = {
 
 [node name="Rhytia" type="Node2D"]
 script = ExtResource("1_w2baf")
+priority = true
 
 [node name="NoteManager" type="Node2D" parent="."]
 position = Vector2(291, 79)
