@@ -20,6 +20,7 @@ func _ready():
 	json.parse(file.get_as_text())
 	map = json.get_data()
 	map.sort_custom(func(a, b): return a.time < b.time)
+	Conductor.total_notes = map.size()
 
 func draw_grid():
 	for row in range(grid_rows):

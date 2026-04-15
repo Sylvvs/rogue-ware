@@ -60,14 +60,31 @@ func try_hit():
 		register_miss()
 
 func register_hit(rating: String):
+	var i = Conductor.mult_levels.find(Conductor.multiplier)
 	has_been_hit = true
 	perfect_hit_sound.reparent(get_tree().current_scene)
 	perfect_hit_sound.play()
-	#print(rating)
+	Conductor.combo += 1
+	Conductor.successful_hits += 1
+	Conductor.total_notes += 1
+	if i < Conductor.mult_levels.size() - 1:
+		if Conductor.combo % 4 == 0: 
+			Conductor.multiplier = Conductor.mult_levels[i + 1]
+	var base_score = 115
+	
+	if rating == "Perfect":
+		base_score = 115
+		
+	Conductor.score += base_score * Conductor.multiplier
 	queue_free()
 
 func register_miss():
+	var i = Conductor.mult_levels.find(Conductor.multiplier)
 	has_been_hit = true
 	Conductor.notes_missed += 1
-	#print("Miss:", Conductor.notes_missed)
+	Conductor.total_notes += 1
+	Conductor.combo = 0
+	if i > 0:
+		Conductor.multiplier = Conductor.mult_levels[i - 1]
+	#Conductor.multiplier = max(1, Conductor.multiplier/2)
 	queue_free()

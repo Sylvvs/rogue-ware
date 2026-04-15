@@ -46,6 +46,7 @@ _data = {
 
 [node name="Rhytia" type="Node2D"]
 script = ExtResource("1_w2baf")
+priority = true
 
 [node name="NoteManager" type="Node2D" parent="."]
 position = Vector2(291, 79)
@@ -72,5 +73,40 @@ offset_left = 743.0
 offset_top = 290.0
 offset_right = 912.0
 offset_bottom = 362.0
+text = "test miss"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Combo" type="Label" parent="."]
+offset_left = 799.0
+offset_top = 388.0
+offset_right = 878.0
+offset_bottom = 411.0
+text = "test combo"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 799.0
+offset_top = 190.0
+offset_right = 881.0
+offset_bottom = 231.0
+text = "test score"
+
+[node name="Accuracy" type="Label" parent="."]
+offset_left = 319.0
+offset_top = 383.0
+offset_right = 414.0
+offset_bottom = 420.0
+text = "test acc"
+
+[node name="Multiplier" type="RichTextLabel" parent="."]
+offset_left = 302.0
+offset_top = 186.0
+offset_right = 416.0
+offset_bottom = 238.0
+text = "test multi"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 287.0
+offset_top = 144.0
+offset_right = 408.0
+offset_bottom = 230.0
