@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://disj3p34e6uh0"]
+
+[ext_resource type="Script" uid="uid://bugt01kieo6ld" path="res://scenes/minigames/CrossyRoad/car.gd" id="1_k8iib"]
+[ext_resource type="Texture2D" uid="uid://dfpcocm1tj61v" path="res://scenes/minigames/CrossyRoad/Cars1.png" id="2_gwt2o"]
+[ext_resource type="Texture2D" uid="uid://8ggrcb4xeubl" path="res://images/sprites/2DPixelCars/Cars2.png" id="3_hetrl"]
+[ext_resource type="Texture2D" uid="uid://cu51sqi0gxvjg" path="res://images/sprites/2DPixelCars/Cars3.png" id="4_tiw5f"]
+[ext_resource type="Texture2D" uid="uid://c34tdt8lo05t6" path="res://images/sprites/2DPixelCars/Cars4.png" id="5_irvue"]
+[ext_resource type="Texture2D" uid="uid://cit7k3e6ym7ol" path="res://images/sprites/2DPixelCars/Cars5.png" id="6_b3ap1"]
+[ext_resource type="Texture2D" uid="uid://8wcll6nftmnk" path="res://images/sprites/2DPixelCars/Cars6.png" id="7_jeh34"]
+[ext_resource type="Texture2D" uid="uid://xu3ofqli8dr" path="res://images/sprites/2DPixelCars/Cars7.png" id="8_kwnoa"]
+[ext_resource type="Texture2D" uid="uid://ug26ejh88ia2" path="res://images/sprites/2DPixelCars/Cars8.png" id="9_yhc1t"]
+[ext_resource type="Texture2D" uid="uid://bqb4xp57m07xm" path="res://images/sprites/2DPixelCars/Cars9.png" id="10_0u2r7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(70, 40)
+
+[node name="Car" type="Node2D"]
+script = ExtResource("1_k8iib")
+
+[node name="Car_1" type="Sprite2D" parent="."]
+texture = ExtResource("2_gwt2o")
+
+[node name="Car_2" type="Sprite2D" parent="."]
+texture = ExtResource("3_hetrl")
+
+[node name="Car_3" type="Sprite2D" parent="."]
+texture = ExtResource("4_tiw5f")
+
+[node name="Car_4" type="Sprite2D" parent="."]
+texture = ExtResource("5_irvue")
+
+[node name="Car_5" type="Sprite2D" parent="."]
+texture = ExtResource("6_b3ap1")
+
+[node name="Car_6" type="Sprite2D" parent="."]
+texture = ExtResource("7_jeh34")
+
+[node name="Car_7" type="Sprite2D" parent="."]
+texture = ExtResource("8_kwnoa")
+
+[node name="Car_8" type="Sprite2D" parent="."]
+texture = ExtResource("9_yhc1t")
+
+[node name="Car_9" type="Sprite2D" parent="."]
+texture = ExtResource("10_0u2r7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1")

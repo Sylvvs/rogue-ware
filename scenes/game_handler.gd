@@ -33,7 +33,8 @@ var song_path: String = ""
 	preload("res://scenes/minigames/ApplesFromSky/apples_from_sky.tscn"),
 	preload("res://scenes/minigames/ColorMatch/ColorMatch.tscn"),
 	preload("res://scenes/minigames/Rhytia/rhytia.tscn"),
-	preload("res://scenes/minigames/NumberMemory/NumberMemory.tscn")
+	preload("res://scenes/minigames/NumberMemory/NumberMemory.tscn"),
+	preload("res://scenes/minigames/CrossyRoad/CrossyRoad.tscn")
 ]
 
 @onready var HARD_MINIGAMES = MINIGAMES
