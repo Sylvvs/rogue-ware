@@ -46,5 +46,5 @@ func get_accuracy() -> float:
 
 func get_song_length() -> float:
 	if audio_player.stream:
-		return audio_player.stream.get_length() - 70 # lol
+		return audio_player.stream.get_length() # lol
 	return 0.0

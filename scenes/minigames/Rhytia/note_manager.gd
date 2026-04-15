@@ -15,7 +15,7 @@ func grid_to_screen(col, row) -> Vector2:
 
 func _ready():
 	draw_grid()
-	var file = FileAccess.open("res://scenes/minigames/Rhytia/Maps/TVWorld.json", FileAccess.READ)
+	var file = FileAccess.open("res://scenes/minigames/Rhytia/Maps/RudeBuster.json", FileAccess.READ)
 	var json = JSON.new()
 	json.parse(file.get_as_text())
 	map = json.get_data()

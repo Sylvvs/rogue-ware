@@ -8,7 +8,7 @@ extends Minigame
 @onready var multiplier_text = $Multiplier
 
 
-@export var song_path = "res://music/TVWorld/TVWorld"
+@export var song_path = "res://music/RudeBuster/RudeBuster"
 
 func start():
 	
