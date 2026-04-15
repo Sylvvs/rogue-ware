@@ -1,8 +1,11 @@
 extends Minigame
 
+
 @onready var misses = $Misses
 
-@export var song_path = "res://music/RudeBuster/RudeBuster"
+
+@export var song_path = "res://music/TVWorld/TVWorld"
+
 func start():
 	if mult == 1:
 		instruction_text = "Hit the block with your mouse " + "and don't miss more than 15"

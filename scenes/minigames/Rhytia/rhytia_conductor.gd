@@ -25,5 +25,5 @@ func _process(_delta):
 		
 func get_song_length() -> float:
 	if audio_player.stream:
-		return audio_player.stream.get_length()
+		return audio_player.stream.get_length() - 70 # lol
 	return 0.0

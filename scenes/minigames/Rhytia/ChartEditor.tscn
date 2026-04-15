@@ -1,0 +1,200 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfo3ujhgtwq3y"]
+
+[ext_resource type="Script" uid="uid://dh6karsiol4ca" path="res://scenes/minigames/Rhytia/ChartEditor.gd" id="1_editor"]
+
+[node name="ChartEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_editor")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 36.0
+theme_override_constants/separation = 8
+
+[node name="OpenBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "open map"
+
+[node name="SaveBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "save map"
+
+[node name="AudioBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "load audio"
+
+[node name="Sep1" type="VSeparator" parent="TopBar"]
+layout_mode = 2
+
+[node name="BPMLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "BPM"
+vertical_alignment = 1
+
+[node name="BPMSpin" type="SpinBox" parent="TopBar"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+min_value = 30.0
+max_value = 400.0
+value = 120.0
+
+[node name="Sep2" type="VSeparator" parent="TopBar"]
+layout_mode = 2
+
+[node name="ZoomLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "zoom"
+vertical_alignment = 1
+
+[node name="ZoomSlider" type="HSlider" parent="TopBar"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+min_value = 80.0
+max_value = 400.0
+step = 10.0
+value = 160.0
+
+[node name="Sep3" type="VSeparator" parent="TopBar"]
+layout_mode = 2
+
+[node name="PlayBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "▶ play"
+
+[node name="Timestamp" type="SpinBox" parent="TopBar"]
+layout_mode = 2
+max_value = 180.0
+step = 0.1
+
+[node name="StopBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "■ stop"
+
+[node name="Sep4" type="VSeparator" parent="TopBar"]
+layout_mode = 2
+
+[node name="ClearBtn" type="Button" parent="TopBar"]
+visible = false
+layout_mode = 2
+text = "clear all"
+
+[node name="Sep5" type="VSeparator" parent="TopBar"]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "speed"
+vertical_alignment = 1
+
+[node name="SpeedSlider" type="HSlider" parent="TopBar"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+min_value = 0.1
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = -28.0
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="VBoxContainer" parent="HBox"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="GridLabel" type="Label" parent="HBox/LeftPanel"]
+layout_mode = 2
+text = "select cell"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBox/LeftPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 3
+
+[node name="HintLabel" type="Label" parent="HBox/LeftPanel"]
+layout_mode = 2
+text = "click cell → select
+click timeline → place
+right-click → delete"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VSep" type="VSeparator" parent="HBox"]
+layout_mode = 2
+
+[node name="RightPanel" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TimelineScroll" type="ScrollContainer" parent="HBox/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 0
+
+[node name="Timeline" type="Control" parent="HBox/RightPanel/TimelineScroll"]
+custom_minimum_size = Vector2(640, 200)
+layout_mode = 2
+
+[node name="Playhead" type="Panel" parent="HBox/RightPanel/TimelineScroll/Timeline"]
+modulate = Color(0.886, 0.294, 0.29, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 2.0
+
+[node name="BottomBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+theme_override_constants/separation = 16
+
+[node name="TimeLabel" type="Label" parent="BottomBar"]
+layout_mode = 2
+text = "0.000s"
+
+[node name="NoteCountLabel" type="Label" parent="BottomBar"]
+layout_mode = 2
+text = "notes: 0"
+
+[node name="SelLabel" type="Label" parent="BottomBar"]
+layout_mode = 2
+text = "no cell selected"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="FileDialogOpen" type="FileDialog" parent="."]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; JSON map files")
+
+[node name="FileDialogSave" type="FileDialog" parent="."]
+title = "Save Chart Map"
+access = 2
+filters = PackedStringArray("*.json ; JSON map files")
+
+[node name="AudioDialog" type="FileDialog" parent="."]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.ogg ; OGG Vorbis", "*.mp3 ; MP3", "*.wav ; WAV")

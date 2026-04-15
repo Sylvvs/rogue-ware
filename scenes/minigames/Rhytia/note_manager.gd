@@ -2,10 +2,10 @@ extends Node2D
 
 @export var note_scene: PackedScene
 @export var approach_duration = 1.0
-@export var song_path = "res://music/RudeBuster/RudeBuster"
+@export var song_path = "res://music/TVWorld/TVWorld"
 const grid_cols = 3
 const  grid_rows = 3
-const cell_size = 120
+const cell_size = 145
 const grid_offset = Vector2(100, 50)
 
 var map = []
@@ -15,7 +15,7 @@ func grid_to_screen(col, row) -> Vector2:
 
 func _ready():
 	draw_grid()
-	var file = FileAccess.open("res://scenes/minigames/Rhytia/Maps/testmap.json", FileAccess.READ)
+	var file = FileAccess.open("res://scenes/minigames/Rhytia/Maps/TVWorld.json", FileAccess.READ)
 	var json = JSON.new()
 	json.parse(file.get_as_text())
 	map = json.get_data()
