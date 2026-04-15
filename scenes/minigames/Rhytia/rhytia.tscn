@@ -66,3 +66,11 @@ texture = ExtResource("4_2ymoa")
 hframes = 5
 vframes = 16
 region_rect = Rect2(0, 0, 260.99762, 256)
+
+[node name="Misses" type="Label" parent="."]
+offset_left = 743.0
+offset_top = 290.0
+offset_right = 912.0
+offset_bottom = 362.0
+horizontal_alignment = 1
+vertical_alignment = 1

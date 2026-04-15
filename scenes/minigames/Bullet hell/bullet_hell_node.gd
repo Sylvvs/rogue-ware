@@ -1,11 +1,13 @@
 extends Minigame
 @onready var bullet_hell_guy = $BulletHellGuy
 @onready var anim = $BulletHellGuy/AnimationPlayer
+@onready var health_text = $Lives
 func start():
-	instruction_text = "Survive The Bullets"
+	instruction_text = "Survive The Bullets... and don't die"
 	time_limit = 20
 
 func _process(delta: float) -> void:
+	health_text.text = "Lives: " + str(bullet_hell_guy.health)
 	if bullet_hell_guy.health <= 0:
 		die()
 		return
