@@ -42,6 +42,7 @@
 
 [node name="EuropeLocator" type="CanvasLayer"]
 script = ExtResource("1_ffxx7")
+priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -51,7 +52,7 @@ offset_top = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5644, 0.66844004, 0.68, 1)
+color = Color(0.44650775, 0.54739285, 0.5590647, 1)
 
 [node name="de" type="Sprite2D" parent="."]
 position = Vector2(448.00006, 239.25455)

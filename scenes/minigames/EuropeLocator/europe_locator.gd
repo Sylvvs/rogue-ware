@@ -90,7 +90,7 @@ func _build_ui() -> void:
 	add_child(label_hint)
 
 	label_feedback = Label.new()
-	label_feedback.position = Vector2(725, 465)
+	label_feedback.position = Vector2(1015, 465)
 	label_feedback.size = Vector2(500, 34)
 	label_feedback.add_theme_font_size_override("font_size", 22)
 	add_child(label_feedback)
