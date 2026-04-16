@@ -14,6 +14,9 @@ const perfect_window = 0.25
 const good_window = 0.15
 const hit_radius = 100
 
+var last_seen_cursor = -99
+const grace_period = 0.1
+
 
 func _process(delta):
 	if not initialized:
@@ -21,6 +24,11 @@ func _process(delta):
 		scale = Vector2(0.1,0.1)
 		initialized = true
 		return
+	if hit_time - Conductor.current_time < grace_period:
+		var mouse_pos = get_global_mouse_position()
+		var dist = global_position.distance_to(mouse_pos)
+		if dist < hit_radius:
+			last_seen_cursor = Conductor.current_time
 
 	if has_been_hit:
 		return
@@ -35,11 +43,13 @@ func _process(delta):
 	if Conductor.current_time > hit_time:
 		var mouse_pos = get_global_mouse_position()
 		var dist = global_position.distance_to(mouse_pos)
-		print("dist: ", dist, " hit_radius: ", hit_radius)
 		if global_position.distance_to(mouse_pos) < hit_radius:
 			register_hit("Perfect")
 		else:
-			register_miss()
+			if Conductor.current_time - last_seen_cursor < grace_period:
+				register_hit("Perfect")
+			else:
+				register_miss()
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
