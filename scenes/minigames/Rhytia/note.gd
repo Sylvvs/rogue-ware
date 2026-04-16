@@ -44,7 +44,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var mouse_pos = get_global_mouse_position()
-		if position.distance_to(mouse_pos) < 60: 
+		if position.distance_to(mouse_pos) < hit_radius: 
 			try_hit()
 
 func try_hit():
