@@ -10,9 +10,9 @@ var notes_missed = 0
 @onready var circle = $Circle  
 @onready var perfect_hit_sound = $PerfectHitSound
 
-const perfect_window = 0.08
+const perfect_window = 0.25
 const good_window = 0.15
-const hit_radius = 62
+const hit_radius = 80
 
 
 func _process(delta):
