@@ -23,7 +23,9 @@ func _ready():
 	var songPath = filePath + song + ".json" 
 	var file = FileAccess.open(songPath, FileAccess.READ)
 	var json = JSON.new()
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Conductor.fake_mouse = fake_mouse
+	fake_mouse.global_position = grid_to_screen(1,1)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	json.parse(file.get_as_text())
 	map = json.get_data()
 	map.sort_custom(func(a, b): return a.time < b.time)
@@ -50,7 +52,6 @@ func _process(delta):
 	if not Conductor.is_playing:
 		return
 	
-	update_fake_cursor()
 	while next_note_index < map.size():
 		var note_data = map[next_note_index]
 		if Conductor.current_time >= note_data.time - approach_duration:
@@ -68,12 +69,10 @@ func spawn_note(note_data: Dictionary):
 	note.approach_duration = approach_duration
 	note.scale = Vector2(0.1, 0.1)
 
-func update_fake_cursor():
-	var mouse_pos = get_global_mouse_position()
-	var min_pos = grid_offset
-	var max_pos = grid_offset + Vector2(grid_cols * cell_size, grid_rows * cell_size)
-	
-	mouse_pos.x = clamp(mouse_pos.x, min_pos.x, max_pos.x - 1)
-	mouse_pos.y = clamp(mouse_pos.y, min_pos.y, max_pos.y -1)
-	
-	fake_mouse.global_position = mouse_pos
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		var min_pos = grid_offset
+		var max_pos = grid_offset + Vector2(grid_cols * cell_size, grid_rows * cell_size)
+		var new_pos = fake_mouse.global_position + event.relative
+		fake_mouse.global_position = new_pos.clamp(min_pos, max_pos - Vector2(1, 1))

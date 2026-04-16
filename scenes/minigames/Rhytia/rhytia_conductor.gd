@@ -10,6 +10,7 @@ var multiplier = 1
 var total_notes = 0
 var successful_hits = 0
 var mult_levels = [1, 2, 4, 8]
+var fake_mouse: Sprite2D = null
 @onready var audio_player = $AudioStreamPlayer
 
 func start(song: AudioStream):

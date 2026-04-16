@@ -9,7 +9,6 @@ var notes_missed = 0
 @onready var ring = $Ring      
 @onready var circle = $Circle  
 @onready var perfect_hit_sound = $PerfectHitSound
-
 const perfect_window = 0.25
 const good_window = 0.15
 const hit_radius = 100
@@ -25,7 +24,7 @@ func _process(delta):
 		initialized = true
 		return
 	if hit_time - Conductor.current_time < grace_period:
-		var mouse_pos = get_global_mouse_position()
+		var mouse_pos = Conductor.fake_mouse.global_position
 		var dist = global_position.distance_to(mouse_pos)
 		if dist < hit_radius:
 			last_seen_cursor = Conductor.current_time
@@ -41,7 +40,7 @@ func _process(delta):
 	
 	# Auto miss
 	if Conductor.current_time > hit_time:
-		var mouse_pos = get_global_mouse_position()
+		var mouse_pos = Conductor.fake_mouse.global_position
 		var dist = global_position.distance_to(mouse_pos)
 		if global_position.distance_to(mouse_pos) < hit_radius:
 			register_hit("Perfect")
