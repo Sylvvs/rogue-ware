@@ -30,9 +30,11 @@ func _process(delta: float) -> void:
 	accuracy_text.text = "Accuracy " + "\n" + str(snapped(Conductor.get_accuracy(), 0.1)) + "%"
 	multiplier_text.text = str(Conductor.multiplier) + "x"
 	if Conductor.notes_missed >= 15 and mult == 1:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Conductor.stop()
 		lose()
 	if Conductor.notes_missed >= 10 and mult == 2:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Conductor.stop()
 		lose()
 		
@@ -47,4 +49,5 @@ func lose():
 	emit_signal("game_lost")
 
 func stop():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	emit_signal("game_won")

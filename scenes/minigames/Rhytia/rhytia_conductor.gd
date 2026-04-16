@@ -7,7 +7,6 @@ var notes_missed = 0
 var score = 0
 var combo = 0
 var multiplier = 1
-
 var total_notes = 0
 var successful_hits = 0
 var mult_levels = [1, 2, 4, 8]
