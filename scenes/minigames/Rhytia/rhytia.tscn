@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ajv00jbp6eq"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ajv00jbp6eq"]
 
 [ext_resource type="Script" uid="uid://d3abrvjuvrpt0" path="res://scenes/minigames/Rhytia/rhytia.gd" id="1_w2baf"]
 [ext_resource type="Script" uid="uid://c42lj1ohxu71a" path="res://scenes/minigames/Rhytia/note_manager.gd" id="2_4rv6s"]
 [ext_resource type="PackedScene" uid="uid://croxgyitoi6a3" path="res://scenes/minigames/Rhytia/note.tscn" id="2_w2baf"]
 [ext_resource type="Texture2D" uid="uid://bwn7tht3ci1ns" path="res://scenes/minigames/Rhytia/Maps/Map image/Test.png" id="4_2ymoa"]
+[ext_resource type="Texture2D" uid="uid://bmfvdt2085rms" path="res://images/[CITYPNG.COM]White Outline Circle Transparent Background - 1500x1500.png" id="5_x5a3y"]
 
 [sub_resource type="Animation" id="Animation_x5a3y"]
 length = 0.001
@@ -68,45 +69,72 @@ hframes = 5
 vframes = 16
 region_rect = Rect2(0, 0, 260.99762, 256)
 
-[node name="Misses" type="Label" parent="."]
-offset_left = 743.0
-offset_top = 290.0
-offset_right = 912.0
-offset_bottom = 362.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Multiplier" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 88.000015
+offset_right = 329.0
+offset_bottom = 140.00002
+text = "test multi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Misses" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 262.0
+offset_right = 951.0
+offset_bottom = 334.0
 text = "test miss"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Combo" type="Label" parent="."]
-offset_left = 799.0
-offset_top = 388.0
-offset_right = 878.0
-offset_bottom = 411.0
+[node name="Combo" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 389.0
+offset_right = 908.0
+offset_bottom = 412.0
 text = "test combo"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Score" type="Label" parent="."]
-offset_left = 799.0
-offset_top = 190.0
-offset_right = 881.0
-offset_bottom = 231.0
+[node name="Score" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 86.0
+offset_right = 903.0
+offset_bottom = 127.0
 text = "test score"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Accuracy" type="Label" parent="."]
-offset_left = 319.0
-offset_top = 383.0
-offset_right = 414.0
-offset_bottom = 420.0
+[node name="Accuracy" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 380.0
+offset_right = 330.0
+offset_bottom = 417.0
 text = "test acc"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Multiplier" type="RichTextLabel" parent="."]
-offset_left = 302.0
-offset_top = 186.0
-offset_right = 416.0
-offset_bottom = 238.0
-text = "test multi"
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 287.0
-offset_top = 144.0
-offset_right = 408.0
-offset_bottom = 230.0
+[node name="MultiplierCircle" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 43.0
+offset_right = 1700.0
+offset_bottom = 1543.0
+scale = Vector2(0.1, 0.1)
+value = 25.0
+fill_mode = 4
+texture_under = ExtResource("5_x5a3y")
+texture_progress = ExtResource("5_x5a3y")
+tint_under = Color(18.892157, 18.892157, 18.892157, 1)
+tint_progress = Color(1, 0, 0, 1)

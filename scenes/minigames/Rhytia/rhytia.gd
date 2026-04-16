@@ -1,15 +1,18 @@
 extends Minigame
 
 
-@onready var misses = $Misses
-@onready var combo_text = $Combo
-@onready var score_text = $Score
-@onready var accuracy_text = $Accuracy
-@onready var multiplier_text = $Multiplier
+@onready var misses = $Control/Misses
+@onready var combo_text = $Control/Combo
+@onready var score_text = $Control/Score
+@onready var accuracy_text = $Control/Accuracy
+@onready var multiplier_text = $Control/Multiplier
+@onready var multiplier_circle = $Control/MultiplierCircle
 
 @export var song = "RudeBuster"
 const song_path = "res://music/"
 
+var max_mult = 8.0
+var last_multiplier = -1
 func start():
 	if mult == 1:
 		instruction_text = "Hit the block with your mouse " + "and don't miss more than 15"
@@ -32,6 +35,13 @@ func _process(delta: float) -> void:
 	if Conductor.notes_missed >= 10 and mult == 2:
 		Conductor.stop()
 		lose()
+		
+	if Conductor.multiplier != last_multiplier:
+		last_multiplier = Conductor.multiplier
+		var target = (Conductor.multiplier / max_mult) * 100.0
+		var tween = create_tween()
+		tween.tween_property(multiplier_circle, "value", target, 0.2)
+
 
 func lose():
 	emit_signal("game_lost")
