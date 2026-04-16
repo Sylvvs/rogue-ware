@@ -42,7 +42,6 @@
 
 [node name="EuropeLocator" type="CanvasLayer"]
 script = ExtResource("1_ffxx7")
-priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -208,7 +207,7 @@ texture = ExtResource("26_tex_lv")
 centered = false
 
 [node name="ee" type="Sprite2D" parent="."]
-position = Vector2(625, 147.25452)
+position = Vector2(619, 147)
 scale = Vector2(0.20703128, 0.21189754)
 texture = ExtResource("27_tex_ee")
 centered = false
@@ -281,6 +280,7 @@ texture = ExtResource("38_tex_mk")
 centered = false
 
 [node name="ru" type="Sprite2D" parent="."]
-position = Vector2(935, -145.74551)
-rotation = -0.9948377
+position = Vector2(893.99994, -205.00002)
+rotation = -1.1170107
+scale = Vector2(1.0598689, 1.1269025)
 texture = ExtResource("39_umuk4")

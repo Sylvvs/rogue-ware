@@ -35,7 +35,6 @@ func _lane_center(index: int) -> Vector2:
 	return Vector2(GAME_WIDTH / 2.0, _lane_y(index))
 
 func _build_background() -> void:
-	# Skakternede finish-linje øverst
 	var square_size := 20
 	var cols := int(GAME_WIDTH / square_size) + 1
 	var rows := int(LANE_HEIGHT / square_size) + 1
@@ -48,7 +47,6 @@ func _build_background() -> void:
 			add_child(sq)
 			move_child(sq, 0)
 
-	# Grå vej
 	var road := ColorRect.new()
 	road.color = Color(0.2, 0.2, 0.2)
 	road.size = Vector2(GAME_WIDTH, LANE_COUNT * LANE_HEIGHT)
@@ -56,7 +54,6 @@ func _build_background() -> void:
 	add_child(road)
 	move_child(road, 0)
 
-	# Grå fortov i bunden
 	var pave_start := ColorRect.new()
 	pave_start.color = Color(0.5, 0.5, 0.5)
 	pave_start.size = Vector2(GAME_WIDTH, LANE_HEIGHT)
@@ -64,7 +61,6 @@ func _build_background() -> void:
 	add_child(pave_start)
 	move_child(pave_start, 0)
 
-	# Stiplede linjer mellem banerne
 	for i in range(1, LANE_COUNT):
 		var x := 0.0
 		var dash_width := 40.0

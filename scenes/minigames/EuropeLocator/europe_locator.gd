@@ -54,8 +54,6 @@ func _set_color(code: String, color: Color) -> void:
 	if node and node.material:
 		(node.material as ShaderMaterial).set_shader_parameter("tint_color", color)
 
-func stop() -> void:
-	pass
 
 var hint_button: Button
 var label_hint: Label
