@@ -198,7 +198,12 @@ func _on_timeline_input(event: InputEvent):
 			if is_dragging_notes:
 				is_dragging_notes = false
 				return
-
+		# MIDDLE MOUSE
+		if event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
+			play_time = t
+			time_stamp.value = play_time
+			_update_playhead()
+		
 		# SHIFT 
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed and event.shift_pressed:
@@ -274,12 +279,10 @@ func _on_timeline_input(event: InputEvent):
 			
 	elif event is InputEventMouseMotion:
 	
-		# 🟩 DRAG SELECTION BOX
 		if is_drag_selecting:
 			drag_end = event.position
 			timeline.queue_redraw()
 	
-		# 🟨 DRAG NOTES
 		elif is_dragging_notes:
 			var delta = event.position - drag_start_mouse
 	
