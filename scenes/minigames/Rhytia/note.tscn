@@ -42,3 +42,5 @@ stream = ExtResource("2_j0we1")
 volume_db = -20.513
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_reference_rect_mouse_exited"]
