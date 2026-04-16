@@ -12,7 +12,7 @@ var notes_missed = 0
 
 const perfect_window = 0.25
 const good_window = 0.15
-const hit_radius = 80
+const hit_radius = 100
 
 
 func _process(delta):
@@ -44,7 +44,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var mouse_pos = get_global_mouse_position()
-		if position.distance_to(mouse_pos) < 60: 
+		if position.distance_to(mouse_pos) < hit_radius: 
 			try_hit()
 
 func try_hit():
