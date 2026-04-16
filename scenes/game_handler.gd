@@ -18,7 +18,7 @@ var song_path: String = ""
 @onready var shop = preload("res://scenes/UI/Shop.tscn")
 
 @onready var MINIGAMES = [
-	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
+	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),	
 	preload("res://scenes/minigames/Spamclick/SpamClick.tscn"),
 	preload("res://scenes/minigames/SimonSays/SimonSays.tscn"),
 	preload("res://scenes/minigames/TeachesTyping/Typing.tscn"),
