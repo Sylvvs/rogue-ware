@@ -5,7 +5,7 @@ extends Minigame
 
 var button_array = []
 var index = 0
-var memory_number = 3
+var memory_number = 5
 var game_state = false
 
 var style_clicked = StyleBoxFlat.new()

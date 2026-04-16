@@ -6,7 +6,8 @@ extends Node2D
 const grid_cols = 3
 const  grid_rows = 3
 const cell_size = 145
-const grid_offset = Vector2(100, 50)
+const grid_offset = Vector2(370, 75)
+
 
 var map = []
 var next_note_index = 0

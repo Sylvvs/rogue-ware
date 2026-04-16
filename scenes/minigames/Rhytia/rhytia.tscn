@@ -46,10 +46,10 @@ _data = {
 
 [node name="Rhytia" type="Node2D"]
 script = ExtResource("1_w2baf")
+song = "NoDuh"
 priority = true
 
 [node name="NoteManager" type="Node2D" parent="."]
-position = Vector2(291, 79)
 script = ExtResource("2_4rv6s")
 note_scene = ExtResource("2_w2baf")
 

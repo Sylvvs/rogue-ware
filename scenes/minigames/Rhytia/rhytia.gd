@@ -37,5 +37,4 @@ func lose():
 	emit_signal("game_lost")
 
 func stop():
-	mult += 1
 	emit_signal("game_won")
