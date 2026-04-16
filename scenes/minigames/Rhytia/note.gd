@@ -12,7 +12,7 @@ var notes_missed = 0
 
 const perfect_window = 0.25
 const good_window = 0.15
-const hit_radius = 80
+const hit_radius = 100
 
 
 func _process(delta):
