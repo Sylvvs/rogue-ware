@@ -6,7 +6,8 @@ extends Control
 @onready var quit_knap = $VBoxContainer/Quit
 @onready var tutorials_knap = $VBoxContainer/Tutorials
 @onready var high_detail = $HighDetail
-@onready var background = $Background
+@onready var background_high = $BackgroundHigh
+@onready var background_low = $BackgroundLow
 
 var background_on = false
 
@@ -19,10 +20,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if background_on == true:
-		background.visible = true
+		background_low.visible = false
+		background_high.visible = true
 	else: 
 		background_on = false
-		background.visible = false
+		background_low.visible = true
+		background_high.visible = false
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/GameHandler.tscn")

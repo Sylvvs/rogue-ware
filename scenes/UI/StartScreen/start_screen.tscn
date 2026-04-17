@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://vne6isy128c0"]
+[gd_scene load_steps=15 format=3 uid="uid://vne6isy128c0"]
 
 [ext_resource type="Script" uid="uid://bsh7vqyruq3o1" path="res://start_screen.gd" id="1_doawn"]
 [ext_resource type="Texture2D" uid="uid://bujdi2oglrx14" path="res://images/ondstjerne.png" id="2_doawn"]
 [ext_resource type="Texture2D" uid="uid://d2wepxmxewvw4" path="res://images/start background-table-427-240.png" id="3_scmhy"]
+[ext_resource type="Texture2D" uid="uid://kqy55q40huu1" path="res://images/square.png" id="4_cq8qc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scmhy"]
 bg_color = Color(0.8156863, 0.8156863, 0.8156863, 0.84705883)
@@ -27,7 +28,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background:frame")
+tracks/0/path = NodePath("BackgroundHigh:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +45,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background:frame")
+tracks/0/path = NodePath("BackgroundHigh:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +127,7 @@ position = Vector2(337.00003, 279)
 scale = Vector2(1.4133333, 1.3366667)
 texture = ExtResource("2_doawn")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="BackgroundHigh" type="Sprite2D" parent="."]
 visible = false
 z_index = -4096
 position = Vector2(574, 322.00003)
@@ -151,6 +152,13 @@ scale = Vector2(2, 2)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mn05p")
 text = "Turn on bagground
 (High Detail)"
+
+[node name="BackgroundLow" type="Sprite2D" parent="."]
+modulate = Color(0.25882354, 0.19215687, 0.24313726, 1)
+z_index = -4096
+position = Vector2(577, 323.50003)
+scale = Vector2(289.50003, 162.75)
+texture = ExtResource("4_cq8qc")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_start_pressed"]
