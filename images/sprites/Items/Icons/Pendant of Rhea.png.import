@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cta0wm8vrfaxm"
-path="res://.godot/imported/Pearl of gold.png-5cfe222f68fdb70865420ad41a5444d6.ctex"
+uid="uid://cfe1kp67q44mr"
+path="res://.godot/imported/Pendant of Rhea.png-97eddd5d68bf119861821767607176ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Pearl of gold.png"
-dest_files=["res://.godot/imported/Pearl of gold.png-5cfe222f68fdb70865420ad41a5444d6.ctex"]
+source_file="res://images/sprites/Items/Icons/Pendant of Rhea.png"
+dest_files=["res://.godot/imported/Pendant of Rhea.png-97eddd5d68bf119861821767607176ec.ctex"]
 
 [params]
 

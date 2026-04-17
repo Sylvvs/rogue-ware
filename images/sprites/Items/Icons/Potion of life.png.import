@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1urkciibpo5x"
-path="res://.godot/imported/Scroll of knowledge.png-421731fc3966218a83b8f793235c443b.ctex"
+uid="uid://dgve55r68cto6"
+path="res://.godot/imported/Potion of life.png-772d94bde1425846b271976597aa2b38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Scroll of knowledge.png"
-dest_files=["res://.godot/imported/Scroll of knowledge.png-421731fc3966218a83b8f793235c443b.ctex"]
+source_file="res://images/sprites/Items/Icons/Potion of life.png"
+dest_files=["res://.godot/imported/Potion of life.png-772d94bde1425846b271976597aa2b38.ctex"]
 
 [params]
 

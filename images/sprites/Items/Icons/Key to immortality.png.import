@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dujy3n14axqnb"
-path="res://.godot/imported/Throwing Stones.png-ba69c91ca1cdb4017a5eb470bc48983c.ctex"
+uid="uid://byj438pavuauf"
+path="res://.godot/imported/Key to immortality.png-cb7f6754bc16b80c4402c4ac7cc44ac3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Throwing Stones.png"
-dest_files=["res://.godot/imported/Throwing Stones.png-ba69c91ca1cdb4017a5eb470bc48983c.ctex"]
+source_file="res://images/sprites/Items/Icons/Key to immortality.png"
+dest_files=["res://.godot/imported/Key to immortality.png-cb7f6754bc16b80c4402c4ac7cc44ac3.ctex"]
 
 [params]
 

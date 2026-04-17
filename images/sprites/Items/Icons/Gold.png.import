@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://flm8encysyka"
-path="res://.godot/imported/Deck of cards.png-a8ff1aa54468e612be52c42c1d960422.ctex"
+uid="uid://dtsuggcl2f0ff"
+path="res://.godot/imported/Gold.png-fff28c643d0536f1dd71c0b42815fa0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Deck of cards.png"
-dest_files=["res://.godot/imported/Deck of cards.png-a8ff1aa54468e612be52c42c1d960422.ctex"]
+source_file="res://images/sprites/Items/Icons/Gold.png"
+dest_files=["res://.godot/imported/Gold.png-fff28c643d0536f1dd71c0b42815fa0e.ctex"]
 
 [params]
 

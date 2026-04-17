@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dys4nmliynm15"
-path="res://.godot/imported/Shroom of randomness.png-70b41d145b31a65a845132cee89db6ce.ctex"
+uid="uid://x4tbsf5k0tkd"
+path="res://.godot/imported/Stone Wall.png-6a94efa9cea97153ad16c9a3270cb51c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Shroom of randomness.png"
-dest_files=["res://.godot/imported/Shroom of randomness.png-70b41d145b31a65a845132cee89db6ce.ctex"]
+source_file="res://images/sprites/Items/Icons/Stone Wall.png"
+dest_files=["res://.godot/imported/Stone Wall.png-6a94efa9cea97153ad16c9a3270cb51c.ctex"]
 
 [params]
 

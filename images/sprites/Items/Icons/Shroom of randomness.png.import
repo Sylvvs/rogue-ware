@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgve55r68cto6"
-path="res://.godot/imported/Potion of life.png-479ee980ebad5ed1abf7b106bcb922e1.ctex"
+uid="uid://dys4nmliynm15"
+path="res://.godot/imported/Shroom of randomness.png-de727a8ded2afb8499f1dccf9f008fa7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Potion of life.png"
-dest_files=["res://.godot/imported/Potion of life.png-479ee980ebad5ed1abf7b106bcb922e1.ctex"]
+source_file="res://images/sprites/Items/Icons/Shroom of randomness.png"
+dest_files=["res://.godot/imported/Shroom of randomness.png-de727a8ded2afb8499f1dccf9f008fa7.ctex"]
 
 [params]
 

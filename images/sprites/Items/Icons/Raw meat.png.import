@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmk5877dh3xhv"
-path="res://.godot/imported/Odin's helmet.png-4b2fc59d81bfc7dd73b997c94d6b36c0.ctex"
+uid="uid://d00fg4cjawcnr"
+path="res://.godot/imported/Raw meat.png-d075d0452855474471f19a84df6bbf35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Odin's helmet.png"
-dest_files=["res://.godot/imported/Odin's helmet.png-4b2fc59d81bfc7dd73b997c94d6b36c0.ctex"]
+source_file="res://images/sprites/Items/Icons/Raw meat.png"
+dest_files=["res://.godot/imported/Raw meat.png-d075d0452855474471f19a84df6bbf35.ctex"]
 
 [params]
 
