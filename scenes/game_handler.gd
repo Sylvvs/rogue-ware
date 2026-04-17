@@ -1,6 +1,6 @@
 extends Node2D
 
-const BLOCK_SIZE = 5
+const BLOCK_SIZE = 1
 const HARD_GAME_INDEX = 4
 
 var health = 3
@@ -163,7 +163,10 @@ func _launch(scene: PackedScene) -> void:
 	current_timer = timer
 
 	game.start()
-	timer.time = (game.time_limit * next_timer_mult)  + int(Inventory.get_time_bonus())
+	var additional_time = int(Inventory.get_time_bonus())
+	if game.disable_timer_addition:
+		additional_time = 0
+	timer.time = int((game.time_limit * next_timer_mult) + additional_time)
 	timer.init_time = game.time_limit
 	timer.time_out.connect(_on_timer_finished)
 	timer.skipping.connect(_on_game_won)
@@ -192,7 +195,7 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
-	Inventory.coins += 50 * Inventory.get_coin_multiplier()
+	Inventory.coins += 500 * Inventory.get_coin_multiplier()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1

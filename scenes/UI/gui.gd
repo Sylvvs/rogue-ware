@@ -73,10 +73,11 @@ func _execute_action(effect: Dictionary):
 			var actions = ["skip_minigame", "double_points", "regain_life", "throwing_stone"]
 			_execute_action({"action": actions.pick_random()})
 		"regain_life":
-			if gh.health <= gh.max_healh:
+			if gh.health <= gh.max_health:
 				gh.health += 1
 		"raw_meat":
-			gh.health += 1
+			if gh.health <= gh.max_health:
+				gh.health += 1
 			gh.next_timer_mult *= 1.2
 		"double_gold":
 			print("doesnt work")
