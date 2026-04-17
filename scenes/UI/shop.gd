@@ -6,7 +6,7 @@ extends CanvasLayer
 signal shop_finished
 
 const ItemCard = preload("res://scenes/UI/ItemHolder.tscn")
-const SHOP_SIZE = 3  
+const SHOP_SIZE = 9  
 
 func _ready() -> void:
 	populate()
