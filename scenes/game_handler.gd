@@ -144,6 +144,7 @@ func _launch(scene: PackedScene) -> void:
 		current_minigame = game
 		
 		current_minigame.set_meta("viewport_wrapper", container)
+		
 	else:
 		MinigameContainer.add_child(game)
 		MinigameContainer.scale = Vector2(scale_factor, scale_factor)

@@ -88,7 +88,8 @@ func spawn_note(note_data: Dictionary):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		var min_pos = grid_offset
-		var max_pos = grid_offset + Vector2(grid_cols * cell_size, grid_rows * cell_size)
+		var min_pos = grid_to_screen(0,0) - Vector2(20,20)
+		var max_pos = grid_to_screen(2,2) + Vector2(20,20)
+		var offset = 	Vector2(get_viewport_rect().size.x * 0.1, get_viewport_rect().size.y * -0.09)
 		var new_pos = fake_mouse.global_position + event.relative
-		fake_mouse.global_position = new_pos.clamp(min_pos, max_pos - Vector2(1, 1))
+		fake_mouse.global_position = new_pos.clamp(offset + min_pos, offset + max_pos - Vector2(1, 1))
