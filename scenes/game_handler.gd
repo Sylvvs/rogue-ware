@@ -115,8 +115,34 @@ func _close_shop():
 func _launch(scene: PackedScene) -> void:
 	intermission.stop()
 	var game = scene.instantiate()
-	MinigameContainer.add_child(game)
 	current_minigame = game
+	var scale_factor = 0.8
+	if game is CanvasLayer or game is Control:
+		var screen_size = get_viewport().size
+		
+		var viewport = SubViewport.new()
+		var container = SubViewportContainer.new()
+		
+		# Viewport renders at FULL resolution internally
+		viewport.size = Vector2i(screen_size)
+		viewport.transparent_bg = true
+		
+		# Container displays it scaled down
+		container.stretch = true
+		container.size = screen_size  # natural size = full screen
+		container.scale = Vector2(scale_factor, scale_factor)  # then scale down
+		container.position = Vector2(screen_size.x * (1.0 - scale_factor), 0)  # push to top-right
+		
+		container.add_child(viewport)
+		viewport.add_child(game)
+		UIContainer.add_child(container)
+		current_minigame = game
+		
+		current_minigame.set_meta("viewport_wrapper", container)
+	else:
+		MinigameContainer.add_child(game)
+		MinigameContainer.scale = Vector2(scale_factor, scale_factor)
+		MinigameContainer.position = Vector2(get_viewport().size.x * (1-scale_factor), 0)
 	
 	if "song_path" in game:
 		game.song = music.get_track_name()
@@ -140,7 +166,10 @@ func _launch(scene: PackedScene) -> void:
 
 func clear_current_minigame():
 	if current_minigame:
-		current_minigame.queue_free()
+		if current_minigame.has_meta("viewport_wrapper"):
+			current_minigame.get_meta("viewport_wrapper").queue_free()
+		else:
+			current_minigame.queue_free()
 		current_minigame = null
 
 func stop_game():
