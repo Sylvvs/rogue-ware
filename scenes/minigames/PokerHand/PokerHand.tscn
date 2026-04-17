@@ -5,7 +5,6 @@
 
 [node name="PokerHand" type="CanvasLayer"]
 script = ExtResource("1_2c6e8")
-priority = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
