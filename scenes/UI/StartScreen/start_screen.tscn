@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vne6isy128c0"]
 
-[ext_resource type="Script" uid="uid://xehaise66k21" path="res://start_screen.gd" id="1_doawn"]
+[ext_resource type="Script" uid="uid://xehaise66k21" path="res://scenes/UI/StartScreen/start_screen.gd" id="1_doawn"]
 [ext_resource type="Texture2D" uid="uid://bujdi2oglrx14" path="res://images/ondstjerne.png" id="2_doawn"]
 
 [node name="StartScreen" type="Control"]
