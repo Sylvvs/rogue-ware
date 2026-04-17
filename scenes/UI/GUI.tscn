@@ -35,6 +35,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.8784314, 0.7764706, 0.5176471, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="SideBar"]

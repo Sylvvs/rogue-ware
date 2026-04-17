@@ -4,6 +4,7 @@ const BLOCK_SIZE = 5
 const HARD_GAME_INDEX = 4
 
 var health = 3
+var max_health = health
 var loop = 0
 var block_position = 0
 var minigames_beaten = 0
@@ -16,6 +17,8 @@ var song_path: String = ""
 @onready var music = $MusicHandler
 @onready var HUD = preload("res://scenes/UI/GUI.tscn")
 @onready var shop = preload("res://scenes/UI/Shop.tscn")
+
+var next_timer_mult = 1
 
 @onready var MINIGAMES = [
 	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),	
@@ -160,12 +163,13 @@ func _launch(scene: PackedScene) -> void:
 	current_timer = timer
 
 	game.start()
-	timer.time = game.time_limit + int(Inventory.get_time_bonus())
+	timer.time = (game.time_limit * next_timer_mult)  + int(Inventory.get_time_bonus())
 	timer.init_time = game.time_limit
 	timer.time_out.connect(_on_timer_finished)
 	timer.skipping.connect(_on_game_won)
 	timer.change_text(game.instruction_text)
 	timer.start()
+	next_timer_mult = 1
 
 
 func clear_current_minigame():
@@ -188,6 +192,7 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
+	Inventory.coins += 50 * Inventory.get_coin_multiplier()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1

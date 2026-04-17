@@ -4,6 +4,13 @@ var owned: Array[Dictionary] = []
 var all_items: Array = []
 
 signal inventory_changed
+signal coins_changed(amount: int)
+
+var coins = 0:
+	set(value):
+		coins = value
+		if coins < 0: coins = 0
+		emit_signal("coins_changed", coins)
 
 func _ready() -> void:
 	var text = FileAccess.open("res://scenes/UI/shop_items.json", FileAccess.READ).get_as_text()

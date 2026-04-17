@@ -5,12 +5,19 @@ extends Control
 @onready var activeItems =$SideBar/MarginContainer2/VBoxContainer/ActiveItemContainer
 
 var itemHolder = preload("res://scenes/UI/ItemHolder.tscn")
-signal using_item(string: String)
-var gameHandler = get_parent().get_parent()
+
 
 func _ready():
 	Inventory.inventory_changed.connect(refresh)
+	Inventory.coins_changed.connect(_on_coins_changed)
 	refresh()
+	_on_coins_changed(Inventory.coins)
+
+func _on_coins_changed(amount: int):
+	coinLabel.text = str(amount) + " Coins"
+
+func get_game_handler():
+	return get_parent().get_parent()
 
 func refresh():
 	for child in passiveItems.get_children():
@@ -24,14 +31,13 @@ func refresh():
 		var holder = itemHolder.instantiate()
 		if item.type == "active":
 			activeItems.add_child(holder)
-			holder.purchased.connect(_on_active_used)
+			holder.used.connect(_on_active_used)
 		else:
 			passiveItems.add_child(holder)
 			holder.disabled = true
 		holder.setup(item)
 		holder.get_node("VBox/Cost").hide()
 		holder.custom_minimum_size = Vector2(30, 30)
-		holder.disabled = true
 		holder.size_flags_horizontal = Control.SIZE_FILL | Control.SIZE_EXPAND
 		holder.size_flags_vertical = Control.SIZE_FILL | Control.SIZE_EXPAND
 
@@ -46,36 +52,43 @@ func get_stacked_items() -> Array:
 			stacks[id].count = 1
 	return stacks.values()
 
-func _on_active_used(id: int):
-	var item = Inventory.get_item(id)
+func _on_active_used(data):
+	var item = Inventory.get_item(data.id)
 	Inventory.consume_active(item.effect.get("action"))
 	_execute_action(item.effect)
 	refresh()
 
 func _execute_action(effect: Dictionary):
+	var gh = get_game_handler()
 	match effect.get("action"):
 		"skip_minigame":
-			
-			pass
+			gh._on_game_won()
 		"double_points":
-			pass
+			print("doesnt work")
 		"triple_points":
-			pass
+			print("doesnt work")
 		"freeze_timer":
-			pass
+			print("doesnt work")
 		"random_effect":
-			pass
+			var actions = ["skip_minigame", "double_points", "regain_life", "throwing_stone"]
+			_execute_action({"action": actions.pick_random()})
 		"regain_life":
-			pass
+			if gh.health <= gh.max_healh:
+				gh.health += 1
 		"raw_meat":
-			pass
+			gh.health += 1
+			gh.next_timer_mult *= 1.2
 		"double_gold":
-			pass
+			print("doesnt work")
 		"throwing_stone":
-			pass
+			if randi() % 2 == 0:
+				gh.current_timer.time += 10
+			else:
+				gh.current_timer.time -= 10
 		"deck_of_cards":
-			pass
+			var amount = randi_range(effect.get("min", -300), effect.get("max", 600))
+			Inventory.coins += amount
 		"bomb_minigame":
-			pass
+			gh._on_game_lost()
 		"permanent_lives":
-			pass
+			gh.max_healh += effect.get("value")
