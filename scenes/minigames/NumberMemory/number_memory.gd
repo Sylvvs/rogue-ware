@@ -4,9 +4,9 @@ var instruction_text_value := "Memorize the number!"
 var time_limit_value := 60
 
 var level: int = 1
+var maxLevel = 4
 var current_number: String = ""
 var show_time: float = 1.0
-
 var label_number: Label
 var label_instruction: Label
 var input_field: LineEdit
@@ -17,6 +17,7 @@ var tween: Tween
 
 
 func start() -> void:
+	maxLevel = ceil(maxLevel * mult)
 	instruction_text = instruction_text_value
 	time_limit = time_limit_value
 	build_ui()
@@ -87,7 +88,7 @@ func next_level() -> void:
 
 	var round_label := get_node_or_null("LabelRound") as Label
 	if round_label:
-		round_label.text = "Level: %d/7" % level
+		round_label.text = "Level: " + str(level) + "/" + str(maxLevel)
 
 	show_time = clamp(float(level) * 0.8, 1.0, 2.0)
 	progress_bar.value = 1.0
@@ -129,7 +130,7 @@ func on_text_changed(new_text: String) -> void:
 func on_feedback_timer_timeout() -> void:
 	if label_instruction.text.begins_with("✗"):
 		emit_signal("game_lost")
-	elif level > 7:
+	elif level > maxLevel:
 		emit_signal("game_won")
 	else:
 		next_level()
