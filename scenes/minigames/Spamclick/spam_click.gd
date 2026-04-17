@@ -7,6 +7,7 @@ var difficulty = 1
 @onready var win_label = $winLabel
 
 func start():
+	win_condition = ceil(win_condition * 1/2 * mult)
 	instruction_text = "Click as fast as you can"
 	time_limit = 7
 	win_label.text = "Number of clicks to win: " + str(win_condition)
