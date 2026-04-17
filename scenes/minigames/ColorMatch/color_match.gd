@@ -30,12 +30,10 @@ var _buttons: Array = []
 
 func start() -> void:
 	instruction_text = instruction_text_value
-	time_limit = time_limit_value
+	time_limit = time_limit_value 
 	_build_ui()
 	_next_round()
 
-func stop() -> void:
-	pass
 
 func _build_ui() -> void:
 	_label_score = Label.new()
