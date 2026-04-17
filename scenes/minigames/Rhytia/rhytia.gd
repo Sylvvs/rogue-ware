@@ -9,8 +9,8 @@ extends Minigame
 @onready var multiplier_circle = $Control/MultiplierCircle
 
 @export var song = "RudeBuster"
+@export var full_song = false
 const song_path = "res://music/"
-
 var max_mult = 8.0
 var last_multiplier = -1
 func start():
@@ -18,7 +18,13 @@ func start():
 		instruction_text = "Hit the block with your mouse " + "and don't miss more than 15"
 	if mult == 2:
 		instruction_text = "Hit the block with your mouse " + "and don't miss more than 10"
-	time_limit = Conductor.get_song_length()
+	#time_limit = Conductor.get_song_length()
+	time_limit = 20
+	if full_song:
+		time_limit = 300
+
+func note_man_start():
+	get_node("NoteManager").start()
 
 func get_song_path():
 	return song_path + song + "/" + song
@@ -46,8 +52,10 @@ func _process(delta: float) -> void:
 
 
 func lose():
+	Conductor.stop()
 	emit_signal("game_lost")
 
 func stop():
+	Conductor.stop()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	emit_signal("game_won")
