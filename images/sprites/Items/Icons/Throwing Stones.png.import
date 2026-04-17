@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u3iyy0w5m03d"
-path="res://.godot/imported/Anvil.png-5f5fc0b20803787e192c7c03094ab625.ctex"
+uid="uid://dujy3n14axqnb"
+path="res://.godot/imported/Throwing Stones.png-0213677e60bffbbc6b8881e4d8e89d09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Anvil.png"
-dest_files=["res://.godot/imported/Anvil.png-5f5fc0b20803787e192c7c03094ab625.ctex"]
+source_file="res://images/sprites/Items/Icons/Throwing Stones.png"
+dest_files=["res://.godot/imported/Throwing Stones.png-0213677e60bffbbc6b8881e4d8e89d09.ctex"]
 
 [params]
 

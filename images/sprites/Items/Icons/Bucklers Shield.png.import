@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwfld3wbj6qne"
-path="res://.godot/imported/Door of Nexus.png-2c16fa0656785dcf33cce5a3284b4303.ctex"
+uid="uid://dadg83w688glx"
+path="res://.godot/imported/Bucklers Shield.png-e522c2732ce21fcc21b3e89f71a10194.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Door of Nexus.png"
-dest_files=["res://.godot/imported/Door of Nexus.png-2c16fa0656785dcf33cce5a3284b4303.ctex"]
+source_file="res://images/sprites/Items/Icons/Bucklers Shield.png"
+dest_files=["res://.godot/imported/Bucklers Shield.png-e522c2732ce21fcc21b3e89f71a10194.ctex"]
 
 [params]
 

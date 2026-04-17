@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d00fg4cjawcnr"
-path="res://.godot/imported/Raw meat.png-ae4b839b6dbbf6baaa3074a318b2fae0.ctex"
+uid="uid://u3iyy0w5m03d"
+path="res://.godot/imported/Anvil.png-f34d3ea42b02a3e19e15cfbd4aae03b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Raw meat.png"
-dest_files=["res://.godot/imported/Raw meat.png-ae4b839b6dbbf6baaa3074a318b2fae0.ctex"]
+source_file="res://images/sprites/Items/Icons/Anvil.png"
+dest_files=["res://.godot/imported/Anvil.png-f34d3ea42b02a3e19e15cfbd4aae03b9.ctex"]
 
 [params]
 

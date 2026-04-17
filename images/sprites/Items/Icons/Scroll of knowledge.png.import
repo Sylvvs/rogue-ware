@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtsuggcl2f0ff"
-path="res://.godot/imported/Gold.png-f4a64793bf4ff78bc5bde2ef4377b205.ctex"
+uid="uid://c1urkciibpo5x"
+path="res://.godot/imported/Scroll of knowledge.png-13158676721503afd778d1d63803003b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Gold.png"
-dest_files=["res://.godot/imported/Gold.png-f4a64793bf4ff78bc5bde2ef4377b205.ctex"]
+source_file="res://images/sprites/Items/Icons/Scroll of knowledge.png"
+dest_files=["res://.godot/imported/Scroll of knowledge.png-13158676721503afd778d1d63803003b.ctex"]
 
 [params]
 

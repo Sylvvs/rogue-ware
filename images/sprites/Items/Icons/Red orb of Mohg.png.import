@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dadg83w688glx"
-path="res://.godot/imported/Bucklers Shield.png-3de169d4aef578432794bb9aabec77cb.ctex"
+uid="uid://xyqfpf4vj2ll"
+path="res://.godot/imported/Red orb of Mohg.png-a5a02e686ca58bc22045d64b1172f114.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Bucklers Shield.png"
-dest_files=["res://.godot/imported/Bucklers Shield.png-3de169d4aef578432794bb9aabec77cb.ctex"]
+source_file="res://images/sprites/Items/Icons/Red orb of Mohg.png"
+dest_files=["res://.godot/imported/Red orb of Mohg.png-a5a02e686ca58bc22045d64b1172f114.ctex"]
 
 [params]
 

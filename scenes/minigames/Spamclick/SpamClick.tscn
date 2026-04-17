@@ -7,7 +7,10 @@
 
 [node name="SpamClick" type="CanvasLayer"]
 script = ExtResource("1_jqxxj")
+<<<<<<< Updated upstream
 button_scene = ExtResource("2_5dk1i")
+=======
+>>>>>>> Stashed changes
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0.24218988, 0.503516, 0.21990412, 0.6666667)

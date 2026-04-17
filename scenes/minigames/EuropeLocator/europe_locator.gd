@@ -1,6 +1,6 @@
 extends Minigame
 
-const MAX_ROUNDS := 10
+const MAX_ROUNDS := 3
 
 const COLOR_DEFAULT   := Color(0.0, 0.0, 0.0, 1.0)
 const COLOR_HIGHLIGHT := Color(1.0, 0.78, 0.0,  1.0)

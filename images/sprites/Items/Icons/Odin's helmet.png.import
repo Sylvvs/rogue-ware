@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfe1kp67q44mr"
-path="res://.godot/imported/Pendant of Rhea.png-712bf2314a721f0405469890e39fe1c0.ctex"
+uid="uid://cmk5877dh3xhv"
+path="res://.godot/imported/Odin's helmet.png-5f36928251e07fb0a1f529cae52371e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Pendant of Rhea.png"
-dest_files=["res://.godot/imported/Pendant of Rhea.png-712bf2314a721f0405469890e39fe1c0.ctex"]
+source_file="res://images/sprites/Items/Icons/Odin's helmet.png"
+dest_files=["res://.godot/imported/Odin's helmet.png-5f36928251e07fb0a1f529cae52371e1.ctex"]
 
 [params]
 

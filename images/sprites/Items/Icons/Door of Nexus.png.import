@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xyqfpf4vj2ll"
-path="res://.godot/imported/Red orb of Mohg.png-f2b066fb4d371186854077d69cccccb0.ctex"
+uid="uid://cwfld3wbj6qne"
+path="res://.godot/imported/Door of Nexus.png-2cc09cf16677db04af7162e8c0cc594e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Red orb of Mohg.png"
-dest_files=["res://.godot/imported/Red orb of Mohg.png-f2b066fb4d371186854077d69cccccb0.ctex"]
+source_file="res://images/sprites/Items/Icons/Door of Nexus.png"
+dest_files=["res://.godot/imported/Door of Nexus.png-2cc09cf16677db04af7162e8c0cc594e.ctex"]
 
 [params]
 

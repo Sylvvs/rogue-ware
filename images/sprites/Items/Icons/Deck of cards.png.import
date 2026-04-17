@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x4tbsf5k0tkd"
-path="res://.godot/imported/Stone Wall.png-33fee29a6c53ca9b918ac9d8f532a6c3.ctex"
+uid="uid://flm8encysyka"
+path="res://.godot/imported/Deck of cards.png-401de4487e023e22f95957fe1c141966.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprites/Items/1 Icons/Stone Wall.png"
-dest_files=["res://.godot/imported/Stone Wall.png-33fee29a6c53ca9b918ac9d8f532a6c3.ctex"]
+source_file="res://images/sprites/Items/Icons/Deck of cards.png"
+dest_files=["res://.godot/imported/Deck of cards.png-401de4487e023e22f95957fe1c141966.ctex"]
 
 [params]
 
