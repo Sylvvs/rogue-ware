@@ -7,7 +7,7 @@ extends Minigame
 @onready var number_input = $NumberInput
 
 var rng = RandomNumberGenerator.new()
-var objects = ["red apples","bombs","green_apples","shoes"]
+var objects = ["red apples","bombs","green apples","shoes"]
 
 var random_number = randi_range(0,3)
 var chosen_object = objects[random_number]
