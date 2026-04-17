@@ -1,14 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://blh54k0qiwmw2"]
+[gd_scene load_steps=3 format=3 uid="uid://blh54k0qiwmw2"]
 
 [ext_resource type="Script" uid="uid://cfjsvr67pov1d" path="res://scenes/minigames/PokerHand/poker_hand.gd" id="1_2c6e8"]
+[ext_resource type="Texture2D" uid="uid://dol7mbayfucex" path="res://scenes/minigames/PokerHand/pxfuel.jpg" id="2_wtyac"]
 
 [node name="PokerHand" type="CanvasLayer"]
 script = ExtResource("1_2c6e8")
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.093100004, 0.49, 0.205555, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_wtyac")
 
 [node name="Container" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1, 95)

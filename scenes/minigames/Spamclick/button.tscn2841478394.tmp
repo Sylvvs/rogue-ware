@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7xgox4jg3yr"]
+
+[ext_resource type="Texture2D" uid="uid://dy3fstcbsbcwr" path="res://images/ButtonUp.png" id="1_6e5ek"]
+[ext_resource type="Script" uid="uid://dre3j2eoflye6" path="res://scenes/minigames/Spamclick/button.gd" id="2_dklhn"]
+
+[node name="Sprite2D" type="Area2D"]
+scale = Vector2(0.2105415, 0.21054149)
+script = ExtResource("2_dklhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(0.3156634, 0.31566343)
+texture = ExtResource("1_6e5ek")

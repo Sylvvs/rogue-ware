@@ -14,6 +14,7 @@ var style_clicked = StyleBoxFlat.new()
 var style = StyleBoxFlat.new()
 
 func start():
+	memory_number = ceil(memory_number * mult)
 	instruction_text = "Remember the squares"
 	time_limit = 6 + memory_number
 	
