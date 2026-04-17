@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://c3jvhu2ioq0dn"]
 
-[ext_resource type="Script" uid="uid://p53l67ynpxps" path="res://scenes/minigames/ApplesFromSky/apples_from_sky.gd" id="1_b0t73"]
+[ext_resource type="Script" path="res://scenes/minigames/ApplesFromSky/apples_from_sky.gd" id="1_b0t73"]
 [ext_resource type="PackedScene" uid="uid://c0ewflca406h2" path="res://scenes/minigames/ApplesFromSky/player.tscn" id="1_rthiq"]
 [ext_resource type="PackedScene" uid="uid://dmgmuqyqn3avb" path="res://scenes/minigames/ApplesFromSky/apple.tscn" id="2_5qxsy"]
 [ext_resource type="Texture2D" uid="uid://bsnigcf8f1oh6" path="res://images/Tileset/mk_16_16_nature_tileset.png" id="3_5qxsy"]
