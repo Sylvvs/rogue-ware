@@ -13,7 +13,7 @@ var held_hand = []
 
 
 func start():
-	hand_size = ceil(hand_size + mult)
+	hand_size = ceil(hand_size * mult)
 	time_limit = 7
 	instruction_text = "Make the best hand with the following cards!"
 	
