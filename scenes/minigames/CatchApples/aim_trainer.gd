@@ -3,17 +3,20 @@ extends Minigame
 @onready var apple = $Apple
 @onready var bomb = $Bomb
 
+var apple_count = 5
+var bomb_count = 3
 func start():
 	instruction_text = "Click the apples, not the bombs!"
 	time_limit = 7
-	
-	for i in range(3):
+	bomb_count = ceil(bomb_count * mult)
+	apple_count = ceil(apple_count * mult)
+	for i in range(bomb_count):
 		var new_bomb = bomb.duplicate()
 		add_child(new_bomb)
 		new_bomb.visible = true
 		new_bomb.position = get_random_pos()
 	
-	for i in range(5):
+	for i in range(apple_count):
 		var new_apple = apple.duplicate()
 		add_child(new_apple)
 		new_apple.visible = true

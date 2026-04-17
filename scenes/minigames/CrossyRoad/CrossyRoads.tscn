@@ -23,8 +23,6 @@ func start() -> void:
 	player.position = _lane_center(0)
 	_spawn_cars_for_all_lanes()
 
-func stop() -> void:
-	pass
 
 func _build_background() -> void:
 	# Vej
