@@ -184,6 +184,7 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1
 
