@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://badcoruw0gjko"]
+
+[ext_resource type="Script" uid="uid://8h7acm441aj0" path="res://scenes/UI/gui.gd" id="1_c20p6"]
+[ext_resource type="Texture2D" uid="uid://dtsuggcl2f0ff" path="res://images/sprites/Items/Icons/Gold.png" id="1_nq88q"]
+[ext_resource type="PackedScene" uid="uid://b1ln82hkmj5x7" path="res://scenes/UI/hud.tscn" id="1_tvu7q"]
+
+[node name="Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_c20p6")
+
+[node name="BottomBar" type="ColorRect" parent="."]
+z_index = -5
+custom_minimum_size = Vector2(921.6, 129.6)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -129.6
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0.8784314, 0.7764706, 0.5176471, 1)
+
+[node name="SideBar" type="ColorRect" parent="."]
+z_index = -5
+custom_minimum_size = Vector2(230.4, 129.6)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8784314, 0.7764706, 0.5176471, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="SideBar"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="SideBar/MarginContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_nq88q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="RichTextLabel" parent="SideBar/MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "50 billion coins"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="SideBar"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SideBar/MarginContainer2"]
+layout_mode = 2
+
+[node name="PassiveItems" type="RichTextLabel" parent="SideBar/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Passive Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassiveItemContainer" type="GridContainer" parent="SideBar/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+columns = 3
+
+[node name="HSeparator" type="HSeparator" parent="SideBar/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ActiveItems" type="RichTextLabel" parent="SideBar/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Active Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActiveItemContainer" type="GridContainer" parent="SideBar/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+columns = 3
+
+[node name="HUD" parent="." instance=ExtResource("1_tvu7q")]
+layout_mode = 1

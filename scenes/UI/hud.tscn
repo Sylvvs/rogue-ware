@@ -24,20 +24,22 @@ atlas = ExtResource("1_37p78")
 region = Rect2(0, 81, 48, 48)
 
 [node name="HUD" type="Control"]
-custom_minimum_size = Vector2(0, 175)
+custom_minimum_size = Vector2(921.6, 225)
 layout_mode = 3
-anchors_preset = 12
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_top = -175.0
+grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_64ctp")
 
 [node name="Label" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 125)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -62,9 +64,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 40
-text = "KILL EVERYONE!!!!!"
+theme_override_font_sizes/normal_font_size = 50
+text = "KILL EVERYONE!!!!!aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+fit_content = true
 vertical_alignment = 1
 
 [node name="Skip" type="Button" parent="Label"]

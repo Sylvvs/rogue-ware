@@ -1,9 +1,10 @@
 extends Node2D
 
-const BLOCK_SIZE = 5
+const BLOCK_SIZE = 1
 const HARD_GAME_INDEX = 4
 
 var health = 3
+var max_health = health
 var loop = 0
 var block_position = 0
 var minigames_beaten = 0
@@ -14,8 +15,10 @@ var song_path: String = ""
 @onready var UIContainer: CanvasLayer = $UIContainer
 @onready var intermission = $IntermissionTime
 @onready var music = $MusicHandler
-@onready var HUD = preload("res://scenes/UI/hud.tscn")
+@onready var HUD = preload("res://scenes/UI/GUI.tscn")
 @onready var shop = preload("res://scenes/UI/Shop.tscn")
+
+var next_timer_mult = 1
 
 @onready var MINIGAMES = [
 	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),	
@@ -41,9 +44,11 @@ var song_path: String = ""
 
 var current_minigame = null
 var current_timer = null
+var current_HUD = null
 var current_shop = null
 
 var game_seed: int = 0
+const BASE_SIZE = Vector2(1152, 648)
 
 func _ready() -> void:
 	apply_seed(randi())
@@ -118,20 +123,20 @@ func _launch(scene: PackedScene) -> void:
 	current_minigame = game
 	var scale_factor = 0.8
 	if game is CanvasLayer or game is Control:
-		var screen_size = get_viewport().size
-		
 		var viewport = SubViewport.new()
 		var container = SubViewportContainer.new()
 		
-		# Viewport renders at FULL resolution internally
-		viewport.size = Vector2i(screen_size)
+		viewport.size = Vector2i(BASE_SIZE)
 		viewport.transparent_bg = true
 		
-		# Container displays it scaled down
 		container.stretch = true
-		container.size = screen_size  # natural size = full screen
-		container.scale = Vector2(scale_factor, scale_factor)  # then scale down
-		container.position = Vector2(screen_size.x * (1.0 - scale_factor), 0)  # push to top-right
+		container.size = BASE_SIZE
+		container.scale = Vector2(scale_factor, scale_factor)
+		container.position = Vector2(BASE_SIZE.x * (1.0 - scale_factor), 0)
+		
+		container.mouse_filter = Control.MOUSE_FILTER_PASS
+		viewport.handle_input_locally = true
+		viewport.gui_embed_subwindows = true
 		
 		container.add_child(viewport)
 		viewport.add_child(game)
@@ -142,7 +147,7 @@ func _launch(scene: PackedScene) -> void:
 	else:
 		MinigameContainer.add_child(game)
 		MinigameContainer.scale = Vector2(scale_factor, scale_factor)
-		MinigameContainer.position = Vector2(get_viewport().size.x * (1-scale_factor), 0)
+		MinigameContainer.position = Vector2(BASE_SIZE.x * (1-scale_factor), 0)
 	
 	if "song_path" in game:
 		game.song = music.get_track_name()
@@ -151,17 +156,23 @@ func _launch(scene: PackedScene) -> void:
 	game.game_won.connect(_on_game_won)
 	game.game_lost.connect(_on_game_lost)
 
-	var timer = HUD.instantiate()
-	UIContainer.add_child(timer)
+	var HUD_game = HUD.instantiate()
+	UIContainer.add_child(HUD_game)
+	current_HUD = HUD_game
+	var timer = current_HUD.get_node("HUD") # ik the naming convention sucks but i cant be asked to change it
 	current_timer = timer
 
 	game.start()
-	timer.time = game.time_limit + int(Inventory.get_time_bonus())
+	var additional_time = int(Inventory.get_time_bonus())
+	if game.disable_timer_addition:
+		additional_time = 0
+	timer.time = int((game.time_limit * next_timer_mult) + additional_time)
 	timer.init_time = game.time_limit
 	timer.time_out.connect(_on_timer_finished)
 	timer.skipping.connect(_on_game_won)
 	timer.change_text(game.instruction_text)
 	timer.start()
+	next_timer_mult = 1
 
 
 func clear_current_minigame():
@@ -184,6 +195,7 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
+	Inventory.coins += 50 * Inventory.get_coin_multiplier()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1

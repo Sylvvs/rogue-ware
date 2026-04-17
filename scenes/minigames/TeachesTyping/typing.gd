@@ -61,6 +61,7 @@ func update_cursor():
 	cursor.size = Vector2(2, font_size * 1.2)
 
 func _unhandled_key_input(event: InputEvent) -> void:
+
 	if event.pressed and char(event.unicode) == words[progress]:
 		progress += 1
 	update_label()

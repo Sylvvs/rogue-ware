@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://vne6isy128c0"]
 
-[ext_resource type="Script" uid="uid://xehaise66k21" path="res://scenes/UI/StartScreen/start_screen.gd" id="1_doawn"]
+[ext_resource type="Script" path="res://start_screen.gd" id="1_doawn"]
 [ext_resource type="Texture2D" uid="uid://bujdi2oglrx14" path="res://images/ondstjerne.png" id="2_doawn"]
 [ext_resource type="Texture2D" uid="uid://d2wepxmxewvw4" path="res://images/start background-table-427-240.png" id="3_scmhy"]
 
