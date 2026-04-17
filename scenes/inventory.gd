@@ -3,6 +3,8 @@ extends Node
 var owned: Array[Dictionary] = []
 var all_items: Array = []
 
+signal inventory_changed
+
 func _ready() -> void:
 	var text = FileAccess.open("res://scenes/UI/shop_items.json", FileAccess.READ).get_as_text()
 	all_items = JSON.parse_string(text)
@@ -12,6 +14,7 @@ func get_item(id: int) -> Dictionary:
 
 func add_item(id: int) -> void:
 	owned.append(get_item(id))
+	emit_signal("inventory_changed")
 
 func get_time_bonus() -> float:
 	return _sum_passive("time_bonus")

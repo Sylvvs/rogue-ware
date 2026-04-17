@@ -1,12 +1,5 @@
 [
 	{
-		"id": 0,
-		"name": "Test item",
-		"desc": "This is the item I use for testing purposes!\n It also doesn't do anything. Like at all. Soooo...",
-		"image": "res://images/apple.png",
-		"cost": 50
-	},
-	{
 		"id": 1,
 		"name": "Stopwatch",
 		"desc": "Adds 3 seconds to every minigame!",
