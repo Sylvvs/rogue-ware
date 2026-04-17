@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var current_track: AudioStreamPlayer
 var current_meta: Dictionary = {}
+var current_track_file_name = ""
 @onready var popup = $MusicPopUp
 @onready var popup_text = $MusicPopUp/Panel/RichTextLabel
 @onready var record = $MusicPopUp/Panel/TextureRect
@@ -56,6 +57,9 @@ func get_credit_string() -> String:
 	var song_length = ""
 	return title + "\n" + composer + "\n" + album + song_length
 
+func get_track_name():
+	return current_track_file_name
+
 func _get_track_base(folder: String) -> String:
 	var dir = DirAccess.open(folder)
 	for file in dir.get_files():
@@ -71,6 +75,8 @@ func play_random_track() -> void:
 		push_error("No mp3 found in %s" % folder)
 		return
 	play_track(base)
+	current_track_file_name = folder.trim_prefix("res://music/")
+	current_track_file_name = current_track_file_name.trim_suffix("/")
 
 var spin_tween: Tween
 var popup_tween: Tween
@@ -115,21 +121,16 @@ func _on_panel_mouse_exited() -> void:
 	var tween = create_tween()
 	tween.tween_property(popup, "modulate:a", 1.0, 0.1)
 	
-func play_track_with_conductor(base_path: String, conductor: Node) -> void: #specifikt til Rhytia
-	var stream = load(base_path + ".mp3")
-	if current_track:
-		current_track.queue_free()
-		current_track = null
+func play_track_with_conductor(_name: String, conductor: Node) -> void: #specifikt til Rhytia
+	var path = "res://music/"
+	var stream = load(path + get_track_name() + "/" + get_track_name() + ".mp3")
 		
 	if conductor.audio_player.finished.is_connected(_on_track_finished):
 		conductor.audio_player.finished.disconnect(_on_track_finished)
 		
 	conductor.audio_player.finished.connect(_on_track_finished)
 	
-	conductor.start(stream)
-	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
-	current_meta = JSON.parse_string(json_text)
-	show_credits()
+	conductor.start(stream, current_track.get_playback_position())
 	
 func play_error_sound():
 	if current_track == null or not is_instance_valid(current_track):

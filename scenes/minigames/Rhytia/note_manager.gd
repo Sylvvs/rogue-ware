@@ -18,18 +18,32 @@ func grid_to_screen(col, row) -> Vector2:
 
 func _ready():
 	draw_grid()
+	Conductor.fake_mouse = fake_mouse
+	fake_mouse.global_position = grid_to_screen(1,1)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func start():
 	const filePath = "res://scenes/minigames/Rhytia/Maps/"
 	var song = get_parent().song
 	var songPath = filePath + song + ".json" 
 	var file = FileAccess.open(songPath, FileAccess.READ)
 	var json = JSON.new()
-	Conductor.fake_mouse = fake_mouse
-	fake_mouse.global_position = grid_to_screen(1,1)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if file == null:
+		return
 	json.parse(file.get_as_text())
 	map = json.get_data()
 	map.sort_custom(func(a, b): return a.time < b.time)
 	Conductor.total_notes = map.size()
+	
+	next_note_index = 0
+	while next_note_index < map.size():
+		var note_data = map[next_note_index]
+		if note_data.time - approach_duration < Conductor.current_time:
+			next_note_index += 1
+		else:
+			break
+	
+	print("loaded " + songPath + " | starting at note index " + str(next_note_index))
 
 func draw_grid():
 	for row in range(grid_rows):
@@ -50,6 +64,8 @@ func draw_grid():
 
 func _process(delta):
 	if not Conductor.is_playing:
+		return
+	if Conductor.current_time <= 0.05:
 		return
 	
 	while next_note_index < map.size():
