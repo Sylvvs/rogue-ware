@@ -28,6 +28,7 @@ func start(song: AudioStream, time: float):
 	is_playing = true
 
 func stop():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	audio_player.stop()
 	is_playing = false
 	notes_missed = 0
