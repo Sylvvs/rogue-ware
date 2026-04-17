@@ -13,6 +13,7 @@ var held_hand = []
 
 
 func start():
+	hand_size = ceil(hand_size + mult)
 	time_limit = 7
 	instruction_text = "Make the best hand with the following cards!"
 	
@@ -53,6 +54,8 @@ func on_button_pressed(button: TextureButton):
 func _on_confirm_pressed() -> void:
 	if best_hand() == best_hand(held_hand):
 		emit_signal("game_won")
+	else:
+		emit_signal('game_lost')
 
 
 

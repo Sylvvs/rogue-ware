@@ -6,6 +6,7 @@
 
 [node name="SpamClick" type="CanvasLayer"]
 script = ExtResource("1_jqxxj")
+priority = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0.24218988, 0.503516, 0.21990412, 0.6666667)
@@ -17,17 +18,17 @@ offset_right = -1112.0
 offset_bottom = -594.392
 
 [node name="redButton" type="TextureButton" parent="."]
-offset_left = 404.0
-offset_top = 165.0
-offset_right = 704.0
-offset_bottom = 465.0
+offset_left = 453.0
+offset_top = 208.0
+offset_right = 711.0
+offset_bottom = 425.0
 texture_normal = ExtResource("2_7u32s")
 texture_pressed = ExtResource("3_5dk1i")
 
 [node name="winLabel" type="Label" parent="."]
-offset_left = 394.0
+offset_left = 397.0
 offset_top = 86.0
-offset_right = 757.0
+offset_right = 760.0
 offset_bottom = 149.0
 theme_override_font_sizes/font_size = 24
 text = "Number of clicks to win: "
