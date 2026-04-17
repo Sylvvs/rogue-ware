@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d0qskxcf5qsp4"]
+[gd_scene load_steps=22 format=4 uid="uid://d0qskxcf5qsp4"]
 
 [ext_resource type="Script" uid="uid://couwt1pqhqpcy" path="res://scenes/minigames/Bullet hell/bullet_hell_node.gd" id="1_4ghpt"]
 [ext_resource type="Script" uid="uid://dqhdx4gcly5ei" path="res://scenes/minigames/Bullet hell/bullet_hell_spawner.gd" id="1_mfe8g"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cb57mk20h7t2m" path="res://scenes/minigames/Bullet hell/beam.tscn" id="4_fikdt"]
 [ext_resource type="Texture2D" uid="uid://45bwgcne14tq" path="res://images/prototype_character_green.png" id="5_1057j"]
 [ext_resource type="Texture2D" uid="uid://bsnigcf8f1oh6" path="res://images/Tileset/mk_16_16_nature_tileset.png" id="7_a11hq"]
+[ext_resource type="Texture2D" uid="uid://bujdi2oglrx14" path="res://images/ondstjerne.png" id="8_aintk"]
+[ext_resource type="Texture2D" uid="uid://bkc2tcs7prn72" path="res://images/Star thing.png" id="9_vwk6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfe8g"]
 
@@ -729,6 +731,7 @@ sources/0 = SubResource("TileSetAtlasSource_aintk")
 [node name="Node2D" type="Node2D"]
 position = Vector2(579, 142)
 script = ExtResource("1_4ghpt")
+priority = true
 
 [node name="BulletSpawner" type="Node2D" parent="."]
 script = ExtResource("1_mfe8g")
@@ -774,3 +777,37 @@ offset_top = 355.0
 offset_right = 576.0
 offset_bottom = 420.0
 theme_override_font_sizes/font_size = 36
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+offset_left = -579.0
+offset_top = -142.0
+offset_right = 576.0
+offset_bottom = 498.0
+color = Color(0, 0, 0, 1)
+
+[node name="EvilStar" type="Sprite2D" parent="."]
+texture = ExtResource("8_aintk")
+
+[node name="StarHandler" type="Node2D" parent="."]
+z_index = -4096
+
+[node name="Star" type="Sprite2D" parent="StarHandler"]
+position = Vector2(-387.0679, -38.125)
+scale = Vector2(0.39720812, 0.39720812)
+texture = ExtResource("9_vwk6o")
+
+[node name="Star2" type="Sprite2D" parent="StarHandler"]
+position = Vector2(383, -39)
+scale = Vector2(0.27664974, 0.27664974)
+texture = ExtResource("9_vwk6o")
+
+[node name="Star3" type="Sprite2D" parent="StarHandler"]
+position = Vector2(457.99997, 260)
+scale = Vector2(0.29060915, 0.29060918)
+texture = ExtResource("9_vwk6o")
+
+[node name="Star4" type="Sprite2D" parent="StarHandler"]
+position = Vector2(-409, 340)
+scale = Vector2(0.4137056, 0.4137056)
+texture = ExtResource("9_vwk6o")

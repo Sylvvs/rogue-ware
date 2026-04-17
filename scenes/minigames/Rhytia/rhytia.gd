@@ -10,7 +10,6 @@ extends Minigame
 
 @export var song = "RudeBuster"
 const song_path = "res://music/"
-
 var max_mult = 8.0
 var last_multiplier = -1
 func start():
