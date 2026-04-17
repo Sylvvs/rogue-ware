@@ -195,7 +195,7 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
-	Inventory.coins += 500 * Inventory.get_coin_multiplier()
+	Inventory.coins += 50 * Inventory.get_coin_multiplier()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1
