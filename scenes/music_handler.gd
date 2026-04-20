@@ -77,6 +77,16 @@ func play_random_track() -> void:
 	play_track(base)
 	current_track_file_name = folder.trim_prefix("res://music/")
 	current_track_file_name = current_track_file_name.trim_suffix("/")
+	
+func play_specific_track(song_name) -> void:
+	var folder = "res://music/" + song_name
+	var base = _get_track_base(folder)
+	if base == "":
+		push_error("No mp3 found in %s" % folder)
+		return
+	play_track(base)
+	current_track_file_name = folder.trim_prefix("res://music/")
+	current_track_file_name = current_track_file_name.trim_suffix("/")
 
 var spin_tween: Tween
 var popup_tween: Tween
