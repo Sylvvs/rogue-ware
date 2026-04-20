@@ -157,8 +157,8 @@ position = Vector2(580.00006, 327)
 scale = Vector2(289.50003, 162.75)
 texture = ExtResource("4_cq8qc")
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Tutorials" to="." method="_on_tutorials_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

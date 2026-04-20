@@ -211,10 +211,16 @@ func _on_game_lost():
 	print("holy washed")
 	print('You beat: ' + JSON.stringify(minigames_beaten))
 	minigames_beaten = 0
-	stop_game()
+	if health == 0:
+		die()
+	else:
+		stop_game()
 	
 func _on_intermission_time_timeout() -> void:
 	if in_shop:
 		return
 	music.recover_error_sound()
 	_advance_and_decide()
+func die():
+	get_tree().change_scene_to_file("res://scenes/UI/StartScreen/start_screen.tscn")
+	pass

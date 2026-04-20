@@ -4,7 +4,7 @@ var instruction_text_value := "Memorize the number!"
 var time_limit_value := 60
 
 var level: int = 1
-var maxLevel = 4
+var maxLevel = 2
 var current_number: String = ""
 var show_time: float = 1.0
 var label_number: Label
@@ -17,7 +17,7 @@ var tween: Tween
 
 
 func start() -> void:
-	maxLevel = clamp(ceil(maxLevel * mult),3,10)
+	maxLevel = clamp(ceil(maxLevel * mult),2,8)
 	instruction_text = instruction_text_value
 	time_limit = time_limit_value
 	build_ui()
