@@ -18,9 +18,8 @@ var shoe_amount = randi_range(2,7)
 var amounts = [apple_amount, bomb_amount, green_apple_amount, shoe_amount]
 	
 func start():
-
-	
 	time_limit = 10
+	time_limit = clamp(ceil(time_limit - (4 * mult)),4,180)
 	instruction_text = "Count how many " + chosen_object + " are on screen"
 	
 	

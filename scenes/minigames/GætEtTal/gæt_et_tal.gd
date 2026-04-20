@@ -14,7 +14,8 @@ func _ready():
 
 func start():
 	instruction_text = 'Guess the number 1 and 100!'
-	time_limit = 10
+	time_limit = 22
+	time_limit = clamp(ceil(time_limit - (2 * mult)),4,20)
 	secret_number = randi_range(1, 100)
 	guess_button.pressed.connect(OnGuessPressed)
 	number_input.grab_focus()

@@ -5,6 +5,8 @@ extends Minigame
 func start():
 	instruction_text = "Survive The Bullets... and don't die"
 	time_limit = 20
+	
+	time_limit = clamp(ceil(time_limit * mult),20,60)
 
 func _process(delta: float) -> void:
 	health_text.text = "Lives: " + str(bullet_hell_guy.health)

@@ -33,6 +33,7 @@ func _ready():
 func start():
 	instruction_text = "Answer the math questions!"
 	time_limit = 20
+	time_limit = clamp(ceil(time_limit - (2 * mult)),5,20)
 	var pool = QUESTIONS.duplicate()
 	pool.shuffle()
 	selected_questions = pool.slice(0, 3)

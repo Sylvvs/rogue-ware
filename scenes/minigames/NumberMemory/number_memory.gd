@@ -17,7 +17,7 @@ var tween: Tween
 
 
 func start() -> void:
-	maxLevel = ceil(maxLevel * mult)
+	maxLevel = clamp(ceil(maxLevel * mult),3,10)
 	instruction_text = instruction_text_value
 	time_limit = time_limit_value
 	build_ui()

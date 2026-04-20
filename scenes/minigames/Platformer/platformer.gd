@@ -19,7 +19,7 @@ var win_condition_monitoring
 func start():
 	time_limit = 180
 	instruction_text = "Get to the far right side as fast as possible"
-	
+	piece_count = clamp(ceil(piece_count * mult),3,10)
 	player.speed.connect(lost)
 	generate_map()
 	pass

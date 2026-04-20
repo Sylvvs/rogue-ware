@@ -23,7 +23,8 @@ var progress: int = 0
 
 func start():
 	instruction_text = "Type the words!"
-	time_limit = 10
+	time_limit = 20
+	time_limit = clamp(ceil(time_limit - (4 * mult)),8,180)
 	
 	for i in range(10):
 		words = words + WORDS.pick_random() + " "

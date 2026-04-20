@@ -7,6 +7,7 @@ func start():
 	instruction_text = "Catch the apples!"
 	time_limit = 20
 	
+	time_limit = clamp(ceil(time_limit * mult),20,40)
 	get_tree().root.connect("size_changed", _on_screen_resized)
 	
 	screen_width = get_viewport().size.x

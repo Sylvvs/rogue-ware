@@ -10,6 +10,7 @@ var block_position = 0
 var minigames_beaten = 0
 var in_shop = false
 var song_path: String = ""
+var mult = 1
 
 @onready var MinigameContainer: Node2D = $MinigameContainer
 @onready var UIContainer: CanvasLayer = $UIContainer
@@ -120,6 +121,7 @@ func _close_shop():
 func _launch(scene: PackedScene) -> void:
 	intermission.stop()
 	var game = scene.instantiate()
+	game.mult = mult
 	current_minigame = game
 	var scale_factor = 0.8
 	if game is CanvasLayer or game is Control:
@@ -200,6 +202,7 @@ func _on_game_won():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1
+	mult += 0.1
 
 func _on_game_lost():
 	health -= 1

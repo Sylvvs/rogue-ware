@@ -7,7 +7,8 @@ var drawing = false
 @onready var label = $Label
 
 func start():
-	time_limit = 10
+	time_limit = 20
+	time_limit = clamp(ceil(time_limit - (2 * mult)),5,180)
 	instruction_text = "Draw a good circle!"
 	point_holder.gui_input.connect(_on_point_holder_gui_input)
 	point_holder.draw.connect(_holder_draw)
