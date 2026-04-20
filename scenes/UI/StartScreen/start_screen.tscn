@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://vne6isy128c0"]
 
 [ext_resource type="Script" uid="uid://bsh7vqyruq3o1" path="res://start_screen.gd" id="1_doawn"]
-[ext_resource type="Texture2D" uid="uid://bujdi2oglrx14" path="res://images/ondstjerne.png" id="2_doawn"]
+[ext_resource type="Texture2D" uid="uid://btf45nsblu2i1" path="res://images/logo_2.webp" id="2_scmhy"]
 [ext_resource type="Texture2D" uid="uid://kqy55q40huu1" path="res://images/square.png" id="4_cq8qc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scmhy"]
@@ -122,9 +122,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pqfcd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ipsch")
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(337.00003, 279)
-scale = Vector2(1.4133333, 1.3366667)
-texture = ExtResource("2_doawn")
+position = Vector2(252.00003, 303)
+scale = Vector2(0.8093798, 0.76547486)
+texture = ExtResource("2_scmhy")
 
 [node name="BackgroundHigh" type="Sprite2D" parent="."]
 z_index = -4096
@@ -153,12 +153,12 @@ text = "Turn on bagground
 [node name="BackgroundLow" type="Sprite2D" parent="."]
 modulate = Color(0.25882354, 0.19215687, 0.24313726, 1)
 z_index = -4096
-position = Vector2(577, 323.50003)
+position = Vector2(580.00006, 327)
 scale = Vector2(289.50003, 162.75)
 texture = ExtResource("4_cq8qc")
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Tutorials" to="." method="_on_tutorials_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

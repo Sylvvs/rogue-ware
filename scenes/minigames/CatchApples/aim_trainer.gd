@@ -8,8 +8,8 @@ var bomb_count = 3
 func start():
 	instruction_text = "Click the apples, not the bombs!"
 	time_limit = 7
-	bomb_count = ceil(bomb_count * mult)
-	apple_count = ceil(apple_count * mult)
+	bomb_count = clamp(ceil(bomb_count * mult),3,10)
+	apple_count = clamp(ceil(apple_count * mult),5,15)
 	for i in range(bomb_count):
 		var new_bomb = bomb.duplicate()
 		add_child(new_bomb)

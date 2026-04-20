@@ -5,7 +5,7 @@ extends Minigame
 
 var button_array = []
 var index = 0
-var memory_number = 5
+var memory_number = 3
 var game_state = false
 
 var style_clicked = StyleBoxFlat.new()
@@ -14,8 +14,8 @@ var style_clicked = StyleBoxFlat.new()
 var style = StyleBoxFlat.new()
 
 func start():
-	memory_number = ceil(memory_number * mult)
 	instruction_text = "Remember the squares"
+	memory_number = clamp(ceil(memory_number * mult),3,15)
 	time_limit = 6 + memory_number
 	
 	style.bg_color = Color(0.5,0.5,0.5,1)

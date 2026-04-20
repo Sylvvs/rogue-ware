@@ -1,6 +1,6 @@
 extends Minigame
 
-const MAX_ROUNDS := 3
+var MAX_ROUNDS := 3
 
 const COLOR_DEFAULT   := Color(0.0, 0.0, 0.0, 1.0)
 const COLOR_HIGHLIGHT := Color(1.0, 0.78, 0.0,  1.0)
@@ -34,6 +34,7 @@ var feedback_timer: Timer
 func start() -> void:
 	instruction_text = "Type the name of the highlighted country!"
 	time_limit = 60
+	MAX_ROUNDS = clamp(ceil(MAX_ROUNDS * mult),3,10)
 	_build_ui()
 	_setup_shaders()
 	_pick_round_countries()

@@ -2,6 +2,7 @@ extends Minigame
 
 var instruction_text_value := "Click the COLOR of the word, not what it says!"
 var time_limit_value := 20
+var win_condition = 5
 
 const COLORS = {
 	"Red":     Color(0.95, 0.15, 0.15),
@@ -31,6 +32,8 @@ var _buttons: Array = []
 func start() -> void:
 	instruction_text = instruction_text_value
 	time_limit = time_limit_value 
+	win_condition = clamp(ceili(win_condition * mult),5,15)
+	time_limit += ceil(win_condition * 0.3)
 	_build_ui()
 	_next_round()
 
@@ -90,7 +93,7 @@ func _next_round() -> void:
 
 	var hex: String = COLORS[_word_color].to_html(false)
 	_label_word.text = "[center][color=#%s]%s[/color][/center]" % [hex, _word]
-	_label_score.text = "Score: %d/5" % _score
+	_label_score.text = "Score: " + JSON.stringify(_score) + "/" + JSON.stringify(win_condition)
 
 	for btn in _buttons:
 		btn.disabled = false
@@ -101,9 +104,9 @@ func _on_button_pressed(chosen: String) -> void:
 
 	if chosen == _word_color:
 		_score += 1
-		_label_score.text = "Score: %d/5" % _score
+		_label_score.text = "Score: " + JSON.stringify(_score) + "/" + JSON.stringify(win_condition)
 		_label_word.text = "[center][color=#33ee33]✓ Correct![/color][/center]"
-		if _score >= 5:
+		if _score >= win_condition:
 			_pending_result = "won"
 		else:
 			_pending_result = "next"

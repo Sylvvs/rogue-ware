@@ -405,6 +405,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

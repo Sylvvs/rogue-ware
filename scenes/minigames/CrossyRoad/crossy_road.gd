@@ -17,7 +17,8 @@ var car_scene: PackedScene = preload("res://scenes/minigames/CrossyRoad/Car.tscn
 
 func start() -> void:
 	instruction_text = "Cross the road without getting hit!"
-	time_limit = 20
+	time_limit = 25
+	time_limit = clamp(ceil(time_limit - (5 * mult)),5,20)
 	anim_state = anim_tree.get("parameters/playback")
 	anim_tree.active = true
 	_build_background()

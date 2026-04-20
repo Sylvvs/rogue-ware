@@ -8,7 +8,7 @@ var difficulty = 1
 @export var button_scene: PackedScene
 
 func start():
-	win_condition = ceil(win_condition * 1/2 * mult)
+	win_condition = clamp(ceili(win_condition * 1/2 * mult),12,50)
 	instruction_text = "Click as fast as you can"
 	time_limit = 7
 	win_label.text = "Number of clicks to win: " + str(win_condition)
