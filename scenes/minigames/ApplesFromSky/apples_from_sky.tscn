@@ -586,6 +586,7 @@ size = Vector2(1197, 33)
 [node name="Apples from sky" type="Node2D"]
 script = ExtResource("1_b0t73")
 apple_scene = ExtResource("2_5qxsy")
+disable_timer_addition = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_rthiq")]
 position = Vector2(579, 507)
