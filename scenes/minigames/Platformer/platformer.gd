@@ -33,16 +33,18 @@ func generate_map():
 			continue
 		
 		add_child(piece)
+		piece.force_update_transform()
 		var startMarker = piece.get_node("Start")
 		var end = piece.get_node("End")
 		
 		piece.global_position += prevPos - startMarker.global_position
-		
+		if i == 0:
+			player.global_position = startMarker.global_position
 
 		print("Spawned at " + JSON.stringify(prevPos))
 		prevPos = end.global_position
 		if i == piece_count-1:
-			win_condition.position = end.global_position
+			win_condition.global_position = end.global_position
 			print(win_condition.position)
 	win_condition_monitoring = true
 	
