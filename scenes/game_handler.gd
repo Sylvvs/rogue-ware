@@ -202,7 +202,7 @@ func _on_game_won():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1
-	mult += 0.1
+	mult += 0.05
 
 func _on_game_lost():
 	health -= 1
