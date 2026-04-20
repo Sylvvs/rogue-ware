@@ -8,7 +8,7 @@ extends Minigame
 @onready var multiplier_text = $Control/Multiplier
 @onready var multiplier_circle = $Control/MultiplierCircle
 
-@export var song = "RudeBuster"
+@export var song = ""
 @export var full_song = false
 const song_path = "res://music/"
 var max_mult = 8.0
@@ -22,6 +22,9 @@ func start():
 	time_limit = 20
 	if full_song:
 		time_limit = 300
+	if song != "":
+		get_parent().get_parent().music.play_specific_track(song)
+	
 
 func note_man_start():
 	get_node("NoteManager").start()

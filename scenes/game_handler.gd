@@ -153,7 +153,8 @@ func _launch(scene: PackedScene) -> void:
 		MinigameContainer.position = Vector2(BASE_SIZE.x * (1-scale_factor), 0)
 	
 	if "song_path" in game:
-		game.song = music.get_track_name()
+		if not game.full_song:
+			game.song = music.get_track_name()
 		music.play_track_with_conductor(game.get_song_path(), Conductor)
 		game.note_man_start()
 	game.game_won.connect(_on_game_won)

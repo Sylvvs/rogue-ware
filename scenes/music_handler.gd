@@ -28,7 +28,6 @@ func play_track(base_path: String) -> void:
 	
 	var stream = load(base_path + ".mp3")
 
-
 	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
 	current_meta = JSON.parse_string(json_text)
 
@@ -79,7 +78,7 @@ func play_random_track() -> void:
 	current_track_file_name = current_track_file_name.trim_suffix("/")
 	
 func play_specific_track(song_name) -> void:
-	var folder = "res://music/" + song_name
+	var folder = "res://music/" + song_name + "/"
 	var base = _get_track_base(folder)
 	if base == "":
 		push_error("No mp3 found in %s" % folder)
