@@ -92,4 +92,4 @@ func _execute_action(effect: Dictionary):
 		"bomb_minigame":
 			gh._on_game_lost()
 		"permanent_lives":
-			gh.max_healh += effect.get("value")
+			gh.max_health += effect.get("value")
