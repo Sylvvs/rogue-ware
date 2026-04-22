@@ -4,6 +4,7 @@
 
 [node name="ColorMatch" type="CanvasLayer"]
 script = ExtResource("1_bhcoa")
+priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15

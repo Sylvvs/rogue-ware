@@ -73,6 +73,9 @@ func _build_ui() -> void:
 		btn.text = color_names[i]
 		btn.add_theme_font_size_override("font_size", 24)
 		btn.add_theme_color_override("font_color", COLORS[color_names[i]])
+		btn.add_theme_color_override("font_disabled_color", COLORS[color_names[i]])
+		btn.add_theme_color_override("font_hover_color", COLORS[color_names[i]])
+		btn.focus_mode = Control.FOCUS_NONE
 		btn.pressed.connect(_on_button_pressed.bind(color_names[i]))
 		add_child(btn)
 		_buttons.append(btn)
