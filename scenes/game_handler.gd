@@ -222,10 +222,7 @@ func _on_game_lost():
 	print("holy washed")
 	print('You beat: ' + JSON.stringify(minigames_beaten))
 	minigames_beaten = 0
-	if health == 0:
-		pass
-	else:
-		stop_game()
+	stop_game()
 	
 func _on_intermission_time_timeout() -> void:
 	if in_shop:

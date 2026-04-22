@@ -93,6 +93,7 @@ func _on_timer_timeout() -> void:
 	pending_damage = 0
 	
 	if current_hp <= 0:
+		await get_tree().create_timer(1.0).timeout
 		get_parent().die()
 
 func play_win(start_value: int, add_value: int):
