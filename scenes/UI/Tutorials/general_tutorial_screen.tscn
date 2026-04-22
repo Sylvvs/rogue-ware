@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://ceb84qde7ihwm"]
+
+[ext_resource type="Script" uid="uid://l6lel8mwgdly" path="res://scenes/UI/Tutorials/general_tutorial_screen.gd" id="1_cvs1x"]
+[ext_resource type="Texture2D" uid="uid://btf45nsblu2i1" path="res://images/logo_2.webp" id="2_g6011"]
+[ext_resource type="Texture2D" uid="uid://kqy55q40huu1" path="res://images/square.png" id="3_b5oor"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wultw"]
+bg_color = Color(0.8156863, 0.8156863, 0.8156863, 0.84705883)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aro3p"]
+bg_color = Color(0.8862745, 0.7764706, 0.7764706, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o75dk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7koer"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jqef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_264or"]
+
+[node name="Tutorial Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cvs1x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -401.0
+offset_top = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="General" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.33984375, 0.26815796, 0.26815796, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wultw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o75dk")
+text = "GENERAL TUTORIAL"
+
+[node name="Platformer" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wultw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7koer")
+text = "PLATFORMER TUTORIAL"
+
+[node name="Bullethell" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wultw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4jqef")
+text = "BULLETHELL TUTORIAL"
+
+[node name="Rhythia" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wultw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_264or")
+text = "RHYTHIA TUTORIAL"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wultw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aro3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_264or")
+text = "BACK TO STARTSCREEN"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(252.00003, 303)
+scale = Vector2(0.8093798, 0.76547486)
+texture = ExtResource("2_g6011")
+
+[node name="BackgroundLow" type="Sprite2D" parent="."]
+modulate = Color(0.25882354, 0.19215687, 0.24313726, 1)
+z_index = -4096
+position = Vector2(580.00006, 327)
+scale = Vector2(289.50003, 162.75)
+texture = ExtResource("3_b5oor")
+
+[node name="Tutorialbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 233.0
+offset_top = 99.0
+offset_right = 895.68
+offset_bottom = 476.824
+
+[node name="TextureRect" type="TextureRect" parent="Tutorialbox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="Buttonbox" type="HBoxContainer" parent="Tutorialbox"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="Tutorialbox/Buttonbox"]
+layout_mode = 2
+
+[node name="TextureButton" type="Button" parent="Tutorialbox/Buttonbox"]
+layout_mode = 2
+
+[node name="TextureButton2" type="Button" parent="Tutorialbox/Buttonbox"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/General" to="." method="_on_general_pressed"]
+[connection signal="pressed" from="VBoxContainer/Platformer" to="." method="_on_platformer_pressed"]
+[connection signal="pressed" from="VBoxContainer/Bullethell" to="." method="_on_bullethell_pressed"]
+[connection signal="pressed" from="VBoxContainer/Rhythia" to="." method="_on_rhythia_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
