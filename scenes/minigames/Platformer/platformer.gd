@@ -12,6 +12,7 @@ const MAP_PIECES = [
 @onready var win_condition = $Wincondition
 var piece_count = 3
 var last_index = -1
+
 var piece_spacing = Vector2(648,200)
 var win_condition_monitoring
 
