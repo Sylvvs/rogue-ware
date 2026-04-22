@@ -161,6 +161,8 @@ func _launch(scene: PackedScene) -> void:
 	if "song_path" in game:
 		if not game.full_song:
 			game.song = music.get_track_name()
+		else:
+			music.play_specific_track(game.song)
 		music.play_track_with_conductor(game.get_song_path(), Conductor)
 		game.note_man_start()
 	game.game_won.connect(_on_game_won)
