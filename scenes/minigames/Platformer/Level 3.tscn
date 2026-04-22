@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://u4hnjmnmekt3"]
+[gd_scene load_steps=5 format=4 uid="uid://u4hnjmnmekt3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnigcf8f1oh6" path="res://images/Tileset/mk_16_16_nature_tileset.png" id="1_38q02"]
 
@@ -585,6 +585,9 @@ texture = ExtResource("1_38q02")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2v6gf")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38q02"]
+size = Vector2(1185, 16)
+
 [node name="Level3" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -596,3 +599,10 @@ position = Vector2(135, 57)
 
 [node name="End" type="Marker2D" parent="."]
 position = Vector2(968, 53)
+
+[node name="Death" type="Area2D" parent="."]
+position = Vector2(573, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_38q02")
