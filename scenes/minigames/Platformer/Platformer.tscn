@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b43he8ihxipud"]
+[gd_scene load_steps=6 format=3 uid="uid://b43he8ihxipud"]
 
 [ext_resource type="Script" uid="uid://cj0y867lcgv70" path="res://scenes/minigames/Platformer/platformer.gd" id="1_uj6ll"]
 [ext_resource type="PackedScene" uid="uid://c15ycibi734p8" path="res://scenes/minigames/Platformer/player.tscn" id="2_yxpt3"]
+[ext_resource type="PackedScene" uid="uid://dj5twsmi3o1ee" path="res://scenes/minigames/Platformer/cloud_background.tscn" id="3_uaf1r"]
 
 [sub_resource type="GDScript" id="GDScript_grvlt"]
 script/source = "extends CharacterBody2D
@@ -181,6 +182,17 @@ size = Vector2(213.25, 2068)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uj6ll")
+priority = true
+
+[node name="Cloud Background" parent="." instance=ExtResource("3_uaf1r")]
+z_index = -11
+position = Vector2(-1400, -1000)
+scale = Vector2(4, 4)
+
+[node name="Cloud Background2" parent="." instance=ExtResource("3_uaf1r")]
+z_index = -11
+position = Vector2(-6000, -1000)
+scale = Vector2(4, 4)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_yxpt3")]
 position = Vector2(-1, 0)

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxe6vmumyhevc"]
+
+[ext_resource type="Texture2D" uid="uid://c2ecir8oilqoh" path="res://images/sprites/Clouds/Clouds 1/1.png" id="1_uf55c"]
+[ext_resource type="Texture2D" uid="uid://dy7obkyxr18gv" path="res://images/sprites/Clouds/Clouds 1/2.png" id="2_sp1b4"]
+[ext_resource type="Texture2D" uid="uid://vbymhdk1ueor" path="res://images/sprites/Clouds/Clouds 1/3.png" id="3_so2mr"]
+[ext_resource type="Texture2D" uid="uid://do1vp7uh0o6yk" path="res://images/sprites/Clouds/Clouds 1/4.png" id="4_epwm4"]
+
+[node name="Cloud Background" type="Node2D"]
+
+[node name="Layer 1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 1)
+
+[node name="Sprite 1" type="Sprite2D" parent="Layer 1"]
+position = Vector2(575, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("1_uf55c")
+
+[node name="Layer 2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 1)
+
+[node name="Sprite 2" type="Sprite2D" parent="Layer 2"]
+position = Vector2(575, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("2_sp1b4")
+
+[node name="Layer 3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.4, 1)
+
+[node name="Sprite 3" type="Sprite2D" parent="Layer 3"]
+position = Vector2(575, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("3_so2mr")
+
+[node name="Layer 4" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="Sprite 4" type="Sprite2D" parent="Layer 4"]
+position = Vector2(575, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("4_epwm4")
