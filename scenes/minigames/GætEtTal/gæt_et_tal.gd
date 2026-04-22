@@ -13,7 +13,7 @@ func _ready():
 
 
 func start():
-	instruction_text = 'Guess the number 1 and 100!'
+	instruction_text = 'Guess the number 1 between and 100!'
 	time_limit = 22
 	time_limit = clamp(ceil(time_limit - (2 * mult)),4,20)
 	secret_number = randi_range(1, 100)

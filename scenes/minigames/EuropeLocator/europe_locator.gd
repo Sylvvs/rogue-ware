@@ -128,6 +128,10 @@ func _on_hint_pressed() -> void:
 	label_hint.text = current_code.to_upper()
 	hint_button.disabled = true
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_ENTER and event.pressed:
+		get_viewport().set_input_as_handled()
+
 func _on_input_field_text_changed(new_text: String) -> void:
 	if current_name == "":
 		return
