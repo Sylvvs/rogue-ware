@@ -33,7 +33,6 @@ func start():
 	json.parse(file.get_as_text())
 	map = json.get_data()
 	map.sort_custom(func(a, b): return a.time < b.time)
-	Conductor.total_notes = map.size()
 	
 	next_note_index = 0
 	while next_note_index < map.size():
