@@ -1,9 +1,8 @@
 extends Control
 
 
-
-
 func _on_general_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/UI/Tutorials/general_tutorial_screen.tscn")
 	pass # Replace with function body.
 
 
