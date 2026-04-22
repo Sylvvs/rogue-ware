@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://kdettvscy7da"]
+[gd_scene load_steps=5 format=4 uid="uid://c2tao3qnf85mp"]
 
 [ext_resource type="Texture2D" uid="uid://bsnigcf8f1oh6" path="res://images/Tileset/mk_16_16_nature_tileset.png" id="1_pbyoc"]
 
@@ -685,5 +685,5 @@ position = Vector2(1195, 118)
 position = Vector2(573, 720)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
-position = Vector2(-1, 2)
+position = Vector2(8, 156)
 shape = SubResource("RectangleShape2D_pbyoc")
