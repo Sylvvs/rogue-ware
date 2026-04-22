@@ -28,4 +28,6 @@ func _on_quit_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_tutorials_pressed() -> void:
+	print('ding')
+	get_tree().change_scene_to_file("res://scenes/UI/Tutorials/tutorial_screen.tscn")
 	pass # Replace with function body
