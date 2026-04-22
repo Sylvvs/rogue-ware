@@ -22,7 +22,6 @@ func start():
 	time_limit = clamp(ceil(time_limit * mult),20,300)
 	if full_song:
 		time_limit = 300
-	if song != "":
 		get_parent().get_parent().music.play_specific_track(song)
 	
 

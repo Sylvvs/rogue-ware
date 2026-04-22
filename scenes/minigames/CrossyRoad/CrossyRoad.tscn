@@ -393,7 +393,6 @@ graph_offset = Vector2(-312, -121.75)
 
 [node name="CrossyRoad" type="Node2D"]
 script = ExtResource("1_l77p6")
-priority = true
 
 [node name="PlayerBody" type="CharacterBody2D" parent="."]
 position = Vector2(576, 600)
