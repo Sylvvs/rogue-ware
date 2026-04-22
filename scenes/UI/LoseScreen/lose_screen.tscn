@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://p2xrdj0p4hgc"]
+[gd_scene load_steps=6 format=3 uid="uid://p2xrdj0p4hgc"]
+
+[ext_resource type="Script" uid="uid://cqred3yl8fby" path="res://scenes/UI/LoseScreen/lose_screen.gd" id="1_rxx5q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gignq"]
 bg_color = Color(0.8156863, 0.8156863, 0.8156863, 0.84705883)
@@ -18,10 +20,6 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ap7s"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8ckl"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2atfr"]
-
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -29,23 +27,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rxx5q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -200.5
-offset_top = -200.0
+offset_top = -400.0
 offset_right = 200.5
-offset_bottom = 200.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 alignment = 2
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Retry" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.33984375, 0.26815796, 0.26815796, 1)
@@ -54,7 +52,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rxx5q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rxx5q")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_te1dg")
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="MainScreen" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
@@ -63,20 +61,24 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rxx5q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rxx5q")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8ap7s")
 
-[node name="Tutorials" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_gignq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rxx5q")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rxx5q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f8ckl")
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -276.0
+offset_right = 276.0
+offset_bottom = 168.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.9187369, 0.3133042, 0.25030932, 1)
+theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/bold_font_size = 100
+theme_override_font_sizes/bold_italics_font_size = 100
+theme_override_font_sizes/italics_font_size = 100
+theme_override_font_sizes/mono_font_size = 100
+text = "You Lose"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.34117648, 0.26666668, 0.26666668, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_gignq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rxx5q")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rxx5q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2atfr")
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainScreen" to="." method="_on_main_screen_pressed"]
