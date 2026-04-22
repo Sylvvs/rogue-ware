@@ -134,6 +134,5 @@ func _on_win() -> void:
 
 [node name="CrossyRoads" type="CanvasLayer"]
 script = SubResource("GDScript_qlxs6")
-priority = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
