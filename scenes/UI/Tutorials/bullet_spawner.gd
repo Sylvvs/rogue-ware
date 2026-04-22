@@ -4,6 +4,7 @@ extends Minigame
 @export var bullet_scene: PackedScene
 @export var beam_scene: PackedScene
 @onready var node_center = $"."
+@onready var start_text = $"../RichTextLabel"
 
 var spawn_timer = 0.0
 var time_passed = 0.0
@@ -14,27 +15,19 @@ var phases = [
 	{
 		"name": "circle",
 		"duration": 3.0,
-		"bullets": 32,
+		"bullets": 8,
 		"lifetime": 10,
 		"speed": 200,
-		"multiplier": 1
+		"multiplier": 0.8
 	},
 	{
 		"name": "petals",
 		"duration": 3.0,
-		"bullets": 32,
-		"speed": 300,
-		"lifetime": 5,
-		"k": 10,
-		"multiplier": 1
-	},
-	{
-		"name": "spiral",
-		"duration": 4.0,
-		"bullets": 32,
+		"bullets": 12,
 		"lifetime": 10,
 		"speed": 200,
-		"multiplier": 1
+		"multiplier": 1,
+		"k": 10
 	},
 	{
 		"name": "beam",
@@ -47,14 +40,16 @@ var phases = [
 	}
 ]
 
+func _ready() -> void:
+	set_process(false)
+
 func _process(delta):
 	var phase = phases[current_phase]
-	print(time_passed)
+	
 	spawn_timer += delta 
 	time_passed += delta
 	phase_timer += delta
 	node_center.rotation += delta/4 * phase.multiplier
-	
 	
 	# switch phase
 	if phase_timer >= phase.duration:
@@ -65,6 +60,7 @@ func _process(delta):
 	if spawn_timer >= 0.5:
 		spawn_timer = 0
 		spawn_pattern(phase)
+	
 func spawn_pattern(phase):
 	match phase.name:
 		"circle":
@@ -135,3 +131,11 @@ func spawn_beam(phase):
 			beam.bullet_direction = dir * phase.speed
 			add_child(beam)
 			
+func _input(event) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ENTER:
+			set_process(true)
+			start_text.hide()
+		if event.keycode == KEY_ESCAPE:
+			get_tree().change_scene_to_file("res://scenes/UI/Tutorials/tutorial_screen.tscn")
+	

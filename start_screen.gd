@@ -34,7 +34,7 @@ func _on_quit_pressed() -> void:
 
 
 func _on_tutorials_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/UI/Tutorials/platformer_tutorial.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/Tutorials/tutorial_screen.tscn")
 	pass # Replace with function body.
 
 
