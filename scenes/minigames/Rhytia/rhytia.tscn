@@ -48,7 +48,6 @@ _data = {
 
 [node name="Rhytia" type="Node2D"]
 script = ExtResource("1_w2baf")
-song = "Red&Blue"
 disable_timer_addition = true
 
 [node name="NoteManager" type="Node2D" parent="."]

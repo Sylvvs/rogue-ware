@@ -13,15 +13,15 @@ extends Minigame
 const song_path = "res://music/"
 var max_mult = 8.0
 var last_multiplier = -1
+var allowed_misses = 25
+var allowed_misses_scale = 5
 func start():
-	if mult == 1:
-		instruction_text = "Hit the block with your mouse " + "and don't miss more than 15"
-	if mult == 2:
-		instruction_text = "Hit the block with your mouse " + "and don't miss more than 10"
-	#time_limit = Conductor.get_song_length()
+	allowed_misses = allowed_misses - round(allowed_misses_scale * mult)
+	instruction_text = "Hit the block with your mouse " + "and don't miss more than:" + " " + str(allowed_misses)
 	time_limit = 20
+	time_limit = clamp(ceil(time_limit * mult),20,Conductor.get_song_length())
 	if full_song:
-		time_limit = 300
+		time_limit = Conductor.get_song_length()
 	if song != "":
 		get_parent().get_parent().music.play_specific_track(song)
 	
@@ -33,16 +33,17 @@ func get_song_path():
 	return song_path + song + "/" + song
 
 func _process(delta: float) -> void:
+	print(time_limit, allowed_misses)
 	misses.text = "Misses " + "\n" + str(Conductor.notes_missed)
 	score_text.text = "Score" + "\n" + str(Conductor.score)
 	combo_text.text = "Combo " + "\n" + str(Conductor.combo)
 	accuracy_text.text = "Accuracy " + "\n" + str(snapped(Conductor.get_accuracy(), 0.1)) + "%"
 	multiplier_text.text = str(Conductor.multiplier) + "x"
-	if Conductor.notes_missed >= 15 and mult == 1:
+	if Conductor.notes_missed >= allowed_misses:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Conductor.stop()
 		lose()
-	if Conductor.notes_missed >= 10 and mult == 2:
+	if Conductor.notes_missed >= 10 and mult == 1.05:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Conductor.stop()
 		lose()
