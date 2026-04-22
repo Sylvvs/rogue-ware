@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://badcoruw0gjko"]
 
-[ext_resource type="Script" path="res://scenes/UI/gui.gd" id="1_c20p6"]
+[ext_resource type="Script" uid="uid://8h7acm441aj0" path="res://scenes/UI/gui.gd" id="1_c20p6"]
 [ext_resource type="Texture2D" uid="uid://dtsuggcl2f0ff" path="res://images/sprites/Items/Icons/Gold.png" id="1_nq88q"]
 [ext_resource type="PackedScene" uid="uid://b1ln82hkmj5x7" path="res://scenes/UI/hud.tscn" id="1_tvu7q"]
 

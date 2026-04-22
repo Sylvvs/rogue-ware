@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var label: RichTextLabel = $Padding/VBox/Label
 @onready var item_container: GridContainer = $Padding/VBox/Itembackground/Padding2/ItemContainer
+@onready var coinLabel = $MarginContainer/CoinLabel
 
 signal shop_finished
 
@@ -9,6 +10,8 @@ const ItemCard = preload("res://scenes/UI/ItemHolder.tscn")
 const SHOP_SIZE = 9  
 
 func _ready() -> void:
+	Inventory.coins_changed.connect(_on_coins_changed)
+	_on_coins_changed(Inventory.coins)
 	populate()
 
 func populate() -> void:
@@ -30,6 +33,7 @@ func populate() -> void:
 	Inventory.coins_changed.connect(_on_coins_changed)
 
 func _on_coins_changed(_amount: int):
+	coinLabel.text = str(_amount) + " Coins"
 	var cards = item_container.get_children()
 	for i in range(cards.size()):
 		
