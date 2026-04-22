@@ -36,6 +36,8 @@ func generate_map():
 		piece.force_update_transform()
 		var startMarker = piece.get_node("Start")
 		var end = piece.get_node("End")
+		var death = piece.get_node('Death')
+		death.body_entered.connect(func(body): if body.is_in_group("player"): emit_signal('game_lost'))
 		
 		piece.global_position += prevPos - startMarker.global_position
 		if i == 0:
