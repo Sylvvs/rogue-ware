@@ -18,11 +18,12 @@ var mult = 1
 @onready var music = $MusicHandler
 @onready var HUD = preload("res://scenes/UI/GUI.tscn")
 @onready var shop = preload("res://scenes/UI/Shop.tscn")
+@onready var intermission_screen_file = preload("res://scenes/UI/Intermission.tscn")
 
 var next_timer_mult = 1
 
 @onready var MINIGAMES = [
-	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),	
+	preload("res://scenes/minigames/CatchApples/CatchApples.tscn"),
 	preload("res://scenes/minigames/Spamclick/SpamClick.tscn"),
 	preload("res://scenes/minigames/SimonSays/SimonSays.tscn"),
 	preload("res://scenes/minigames/TeachesTyping/Typing.tscn"),
@@ -47,6 +48,7 @@ var current_minigame = null
 var current_timer = null
 var current_HUD = null
 var current_shop = null
+var intermission_screen = null
 
 var game_seed: int = 0
 const BASE_SIZE = Vector2(1152, 648)
@@ -54,6 +56,10 @@ const BASE_SIZE = Vector2(1152, 648)
 func _ready() -> void:
 	apply_seed(randi())
 	music.play_random_track()
+	intermission_screen = intermission_screen_file.instantiate()
+	intermission_screen.max_normal_hp = max_health
+	intermission_screen.current_hp = health
+	self.add_child(intermission_screen)
 	intermission.start()
 
 func apply_seed(s: int) -> void:
@@ -193,12 +199,14 @@ func stop_game():
 	clear_current_minigame()
 	block_position += 1
 	intermission.start()
+	intermission_screen.visible = true
 
 func _on_timer_finished():
 	current_minigame.stop()
 	
 func _on_game_won():
 	print("yay u did it")
+	intermission_screen.play_win(Inventory.coins, 50 * Inventory.get_coin_multiplier())
 	Inventory.coins += 50 * Inventory.get_coin_multiplier()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
@@ -208,11 +216,12 @@ func _on_game_won():
 func _on_game_lost():
 	health -= 1
 	music.play_error_sound()
+	intermission_screen.lose_heart()
 	print("holy washed")
 	print('You beat: ' + JSON.stringify(minigames_beaten))
 	minigames_beaten = 0
 	if health == 0:
-		die()
+		pass
 	else:
 		stop_game()
 	
@@ -220,6 +229,7 @@ func _on_intermission_time_timeout() -> void:
 	if in_shop:
 		return
 	music.recover_error_sound()
+	intermission_screen.visible = false
 	_advance_and_decide()
 func die():
 	get_tree().change_scene_to_file("res://scenes/UI/StartScreen/start_screen.tscn")
