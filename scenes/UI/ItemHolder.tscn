@@ -27,6 +27,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
