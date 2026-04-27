@@ -13,8 +13,8 @@ var mult_levels = [1, 2, 4, 8]
 var fake_mouse: Sprite2D = null
 @onready var audio_player = $AudioStreamPlayer
 
-func start(song: AudioStream, time: float):
-	audio_player.volume_db = -80
+func start(song: AudioStream, time: float, vol = -80):
+	audio_player.volume_db = vol
 	notes_missed = 0
 	current_time = time
 	score = 0
