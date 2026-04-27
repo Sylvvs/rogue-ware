@@ -5,7 +5,9 @@ var pages = [
 	["res://images/tutorial/tutorial_1.png", "Welcome! This is the general tutorial for the game. After this you will be ready to conquer the game!"],
 	["res://images/tutorial/tutorial_2.png", "When you launch the game you get a random minigame. Each minigame needs you to do something specific! It will always be stated what you need to do here!"],
 	["res://images/tutorial/tutorial_3.png", "There are a few other important visual indicators. Namely the bomb which shows how much time you have left, and then the coin pouch where you can see how many coins you have!"],
-	[],
+	["res://images/tutorial/tutorial_4.png", "Here is the shop! It appears every so often after a minigame and offers 9 random items! You can buy as many as you want as long as you can afford it! Every item does something unique, try to find the best combos!"],
+	["res://images/tutorial/tutorial_5.png", "After you have bought items they will appear on the left side! You don't have to do anything with your passive items but for your active items you have to press on them to activate their effects!"],
+	["res://images/tutorial/tutorial_6.png", "Whenever you don't beat a minigame you lose a life... Try not to lose all your health points!"]
 ]
 
 var current_page = 0
