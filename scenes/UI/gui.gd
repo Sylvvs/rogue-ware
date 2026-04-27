@@ -93,3 +93,4 @@ func _execute_action(effect: Dictionary):
 			gh._on_game_lost()
 		"permanent_lives":
 			gh.max_health += effect.get("value")
+			gh.intermission_screen.gain_max_hp(effect.get("value"))
