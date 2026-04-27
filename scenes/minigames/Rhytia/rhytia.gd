@@ -22,11 +22,18 @@ func start():
 	time_limit = clamp(ceil(time_limit * mult),20,300)
 	if full_song:
 		time_limit = 300
-		get_parent().get_parent().music.play_specific_track(song)
+		if get_parent().get_parent().name == "GameHandler":
+			get_parent().get_parent().music.play_specific_track(song)
+		else:
+			note_man_start()
 	
 
 func note_man_start():
 	get_node("NoteManager").start()
+	if not get_parent().get_parent().name == "GameHandler":
+		var stream = load(get_song_path() + ".mp3")
+		Conductor.start(stream, 0, -20)
+		time_limit = stream.length
 
 func get_song_path():
 	return song_path + song + "/" + song

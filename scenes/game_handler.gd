@@ -231,5 +231,5 @@ func _on_intermission_time_timeout() -> void:
 	intermission_screen.visible = false
 	_advance_and_decide()
 func die():
-	get_tree().change_scene_to_file("res://scenes/UI/StartScreen/start_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/LoseScreen/lose_screen.tscn")
 	pass
