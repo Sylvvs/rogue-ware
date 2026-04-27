@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceb84qde7ihwm"]
+[gd_scene load_steps=11 format=3 uid="uid://ceb84qde7ihwm"]
 
 [ext_resource type="Script" uid="uid://l6lel8mwgdly" path="res://scenes/UI/Tutorials/general_tutorial_screen.gd" id="1_cvs1x"]
 [ext_resource type="Texture2D" uid="uid://btf45nsblu2i1" path="res://images/logo_2.webp" id="2_g6011"]
@@ -21,6 +21,9 @@ corner_radius_bottom_left = 50
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jqef"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_264or"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvs1x"]
+bg_color = Color(0, 0, 0, 0.8156863)
 
 [node name="Tutorial Screen" type="Control"]
 layout_mode = 3
@@ -107,28 +110,36 @@ position = Vector2(580.00006, 327)
 scale = Vector2(289.50003, 162.75)
 texture = ExtResource("3_b5oor")
 
-[node name="Tutorialbox" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 233.0
-offset_top = 99.0
-offset_right = 895.68
-offset_bottom = 476.824
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 75.0
+offset_right = 940.0
+offset_bottom = 573.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvs1x")
 
-[node name="TextureRect" type="TextureRect" parent="Tutorialbox"]
+[node name="Tutorialbox" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Tutorialbox"]
+layout_mode = 2
+size_flags_vertical = 3
 expand_mode = 2
 
-[node name="Buttonbox" type="HBoxContainer" parent="Tutorialbox"]
+[node name="Buttonbox" type="HBoxContainer" parent="PanelContainer/Tutorialbox"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="Label" parent="Tutorialbox/Buttonbox"]
+[node name="TextureButton" type="Button" parent="PanelContainer/Tutorialbox/Buttonbox"]
 layout_mode = 2
+text = "Back"
 
-[node name="TextureButton" type="Button" parent="Tutorialbox/Buttonbox"]
+[node name="RichTextLabel" type="Label" parent="PanelContainer/Tutorialbox/Buttonbox"]
+custom_minimum_size = Vector2(550, 20)
 layout_mode = 2
+size_flags_horizontal = 6
+autowrap_mode = 3
 
-[node name="TextureButton2" type="Button" parent="Tutorialbox/Buttonbox"]
+[node name="TextureButton2" type="Button" parent="PanelContainer/Tutorialbox/Buttonbox"]
 layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/General" to="." method="_on_general_pressed"]
@@ -136,3 +147,5 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/Bullethell" to="." method="_on_bullethell_pressed"]
 [connection signal="pressed" from="VBoxContainer/Rhythia" to="." method="_on_rhythia_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="PanelContainer/Tutorialbox/Buttonbox/TextureButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PanelContainer/Tutorialbox/Buttonbox/TextureButton2" to="." method="_on_next_button_2_pressed"]

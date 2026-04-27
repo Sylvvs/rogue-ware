@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://3q2wp6gfpl4n"]
 
 [ext_resource type="Script" uid="uid://b88sndxrpfdfq" path="res://scenes/UI/shop.gd" id="1_k04v8"]
-[ext_resource type="Texture2D" uid="uid://d1i6qlv7hbl1" path="res://images/apple.png" id="1_ywicn"]
 [ext_resource type="Texture2D" uid="uid://dtsuggcl2f0ff" path="res://images/sprites/Items/Icons/Gold.png" id="2_0ib7j"]
 [ext_resource type="Texture2D" uid="uid://cslgbaqh21dja" path="res://images/red_apple.png" id="2_k04v8"]
+[ext_resource type="Texture2D" uid="uid://dxy5pt3wky4sj" path="res://images/shop_sign.png" id="3_0ib7j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ib7j"]
 bg_color = Color(0, 0, 0, 1)
@@ -113,7 +113,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-texture = ExtResource("1_ywicn")
+texture = ExtResource("3_0ib7j")
 expand_mode = 1
 stretch_mode = 5
 

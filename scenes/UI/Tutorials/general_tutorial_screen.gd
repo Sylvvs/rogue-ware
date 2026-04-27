@@ -2,24 +2,28 @@ extends Control
 
 # Define your tutorial pages as an array of [image_path, text]
 var pages = [
-	["res://images/apple.png", "Welcome! This is step one.\nLearn the basics here."],
-	["res://images/ButtonDown.png", "Step two: Here's how to move\naround the world."],
-	["res://images/circle.png", "Step three: You're ready!\nGood luck on your adventure."],
+	["res://images/tutorial/tutorial_1.png", "Welcome! This is the general tutorial for the game. After this you will be ready to conquer the game!"],
+	["res://images/tutorial/tutorial_2.png", "When you launch the game you get a random minigame. Each minigame needs you to do something specific! It will always be stated what you need to do here!"],
+	["res://images/tutorial/tutorial_3.png", "There are a few other important visual indicators. Namely the bomb which shows how much time you have left, and then the coin pouch where you can see how many coins you have!"],
+	[],
 ]
 
 var current_page = 0
 
-@onready var texture_rect = $Tutorialbox/TextureRect
-@onready var label = $Tutorialbox/Buttonbox/RichTextLabel
-@onready var back_button = $Tutorialbox/Buttonbox/TextureButton
-@onready var next_button = $Tutorialbox/Buttonbox/TextureButton2
+@onready var texture_rect = $PanelContainer/Tutorialbox/TextureRect
+@onready var label = $PanelContainer/Tutorialbox/Buttonbox/RichTextLabel
+@onready var back_button = $PanelContainer/Tutorialbox/Buttonbox/TextureButton
+@onready var next_button = $PanelContainer/Tutorialbox/Buttonbox/TextureButton2
 
 func _ready():
 	update_page()
 
 func update_page():
 	var page = pages[current_page]
-	texture_rect.texture = load(page[0])
+	var image = Image.load_from_file(page[0])
+	var texture = ImageTexture.create_from_image(image)
+	texture_rect.texture = texture
+	print(texture_rect.texture)
 	label.text = page[1]
 	
 	# Hide back button on first page
@@ -32,12 +36,8 @@ func update_page():
 		next_button.text = "Next"
 
 func _on_next_button_pressed():
-	if current_page < pages.size() - 1:
-		current_page += 1
-		update_page()
-	else:
-		# Last page — close tutorial or go to main game
-		get_tree().change_scene_to_file("res://scenes/main_game.tscn")
+	print('ding')
+	
 
 func _on_back_button_pressed():
 	if current_page > 0:
@@ -65,3 +65,11 @@ func _on_rhythia_pressed() -> void:
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/StartScreen/start_screen.tscn")
 	pass # Replace with function body.
+
+
+func _on_next_button_2_pressed() -> void:
+	if current_page < pages.size() - 1:
+		current_page += 1
+		update_page()
+	else:
+		get_tree().change_scene_to_file("res://scenes/UI/Tutorials/tutorial_screen.tscn")
