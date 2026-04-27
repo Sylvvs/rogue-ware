@@ -731,7 +731,6 @@ sources/0 = SubResource("TileSetAtlasSource_aintk")
 [node name="Bullethell" type="Node2D"]
 position = Vector2(579, 142)
 script = ExtResource("1_4ghpt")
-priority = true
 disable_timer_addition = true
 
 [node name="BulletSpawner" type="Node2D" parent="."]
