@@ -221,7 +221,6 @@ func _on_game_lost():
 	intermission_screen.lose_heart()
 	print("holy washed")
 	print('You beat: ' + JSON.stringify(minigames_beaten))
-	minigames_beaten = 0
 	stop_game()
 	
 func _on_intermission_time_timeout() -> void:
@@ -231,5 +230,5 @@ func _on_intermission_time_timeout() -> void:
 	intermission_screen.visible = false
 	_advance_and_decide()
 func die():
+	Inventory.minigames_beaten = minigames_beaten
 	get_tree().change_scene_to_file("res://scenes/UI/LoseScreen/lose_screen.tscn")
-	pass

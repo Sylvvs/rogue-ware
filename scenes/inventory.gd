@@ -6,6 +6,8 @@ var all_items: Array = []
 signal inventory_changed
 signal coins_changed(amount: int)
 
+var minigames_beaten = 0
+
 var coins = 0:
 	set(value):
 		coins = value
