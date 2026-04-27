@@ -3,7 +3,7 @@
 		"id": 1,
 		"name": "Stopwatch",
 		"desc": "Adds 3 seconds to every minigame!",
-		"image": "res://images/red_apple.png",
+		"image": "res://images/stopwatch.png",
 		"cost": 100,
 		"type": "passive",
 		"effect": {
@@ -58,7 +58,7 @@
 	{
 		"id": 6,
 		"name": "Anvil",
-		"desc": "2x points in the next minigame!",
+		"desc": "50/50: for 0.5x gold or 2.0x gold",
 		"image": "res://images/sprites/Items/Icons/Anvil.png",
 		"cost": 120,
 		"type": "active",
