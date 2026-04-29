@@ -39,7 +39,6 @@ func get_song_path():
 	return song_path + song + "/" + song
 
 func _process(delta: float) -> void:
-	print(time_limit, allowed_misses)
 	misses.text = "Misses " + "\n" + str(Conductor.notes_missed)
 	score_text.text = "Score" + "\n" + str(Conductor.score)
 	combo_text.text = "Combo " + "\n" + str(Conductor.combo)
