@@ -1,6 +1,6 @@
 extends Node2D
 
-const BLOCK_SIZE = 1
+const BLOCK_SIZE = 5
 const HARD_GAME_INDEX = 4
 
 var health = 3
@@ -211,7 +211,7 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
-	var coin_reward = 500 * Inventory.get_passive("coin_multiplier")
+	var coin_reward = 50 * Inventory.get_passive("coin_multiplier")
 	intermission_screen.play_win(Inventory.coins, coin_reward)
 	Inventory.coins += coin_reward
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
