@@ -63,10 +63,13 @@ func _execute_action(effect: Dictionary):
 	match effect.get("action"):
 		"skip_minigame":
 			gh._on_game_won()
-		"double_points":
-			print("doesnt work")
-		"triple_points":
-			print("doesnt work")
+		"mult_decrease":
+			gh.mult -= 0.1
+		"big_mult_decrease":
+			gh.mult -= 0.25
+			gh.health -= 1
+			if gh.health <= 0:
+				gh.die()
 		"freeze_timer":
 			gh.freeze_timer(effect.get("value"))
 		"random_effect":
