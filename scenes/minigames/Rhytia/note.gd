@@ -72,8 +72,8 @@ func register_hit(rating: String):
 	var i = Conductor.mult_levels.find(Conductor.multiplier)
 	has_been_hit = true
 	perfect_hit_sound.reparent(get_tree().current_scene)
-	perfect_hit_sound.play()
 	perfect_hit_sound.bus = "SFX"
+	perfect_hit_sound.play()
 	Conductor.combo += 1
 	Conductor.successful_hits += 1
 	Conductor.total_notes += 1
