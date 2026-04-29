@@ -11,7 +11,7 @@ const invincible_duration = 1.0
 
 
 func _physics_process(delta: float) -> void:
-	var current_speed = slow_speed if Input.is_key_pressed(KEY_CTRL) else SPEED
+	var current_speed = slow_speed if Input.is_action_pressed('walk_slow') else SPEED
 	var direction = Vector2(Input.get_axis("walk_left", "walk_right"), Input.get_axis("up", "down"))
 	if direction != Vector2.ZERO:
 		velocity = direction.normalized() * current_speed
