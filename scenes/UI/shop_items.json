@@ -58,12 +58,12 @@
 	{
 		"id": 6,
 		"name": "Anvil",
-		"desc": "50/50: for 0.5x gold or 2.0x gold",
+		"desc": "Decreases mult by 0.1",
 		"image": "res://images/sprites/Items/Icons/Anvil.png",
-		"cost": 120,
+		"cost": 400,
 		"type": "active",
 		"effect": {
-			"action": "double_points"
+			"action": "mult_decrease"
 		}
 	},
 	{
@@ -103,12 +103,12 @@
 	{
 		"id": 10,
 		"name": "Red Orb of Mohg",
-		"desc": "3x points in the next minigame!",
+		"desc": "Decreases mult by 0.25 but costs a life in addition to the coins!",
 		"image": "res://images/sprites/Items/Icons/Red orb of Mohg.png",
-		"cost": 200,
+		"cost": 500,
 		"type": "active",
 		"effect": {
-			"action": "triple_points"
+			"action": "big_mult_decrease"
 		}
 	},
 	{
