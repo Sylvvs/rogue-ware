@@ -19,6 +19,8 @@ signal skipping
 var time = 5
 var init_time = 5
 
+var time_frozen_until = 99999
+
 func start():
 	timer.start()
 	timeShow.text = str(time)
@@ -41,6 +43,7 @@ func change_text(param: String):
 
 func _on_timer_timeout():
 	time -= 1
+	if time >= time_frozen_until: return
 	timeShow.text = str(time)
 	_handle_color()
 	
@@ -82,7 +85,7 @@ func _on_flicker_timer_timeout() -> void:
 	flicker = !flicker
 
 func _handle_color():
-	if time > init_time:
+	if time > init_time and time < time_frozen_until:
 		timeShow.text = "[color=cyan]" + timeShow.text + "[/color]"
 
 func _handle_skip_button():
@@ -92,3 +95,7 @@ func _handle_skip_button():
 
 func _on_skip_pressed() -> void:
 	emit_signal("skipping")
+
+func freeze_time(value):
+	time_frozen_until = time
+	time += int(value)

@@ -8,6 +8,25 @@ signal coins_changed(amount: int)
 
 var minigames_beaten = 0
 
+const PASSIVE_DEFAULTS = {
+	"time_bonus": 0.0,
+	"coin_multiplier": 1.0,
+	"health_cap": 5.0
+}
+
+func get_passive(stat: String) -> float:
+	var default = PASSIVE_DEFAULTS.get(stat, 0.0)
+	var is_multiplicative = stat.ends_with("_multiplier")
+	var result = default
+	for item in owned:
+		if item.get("type") != "passive": continue
+		if item.get("effect", {}).get("stat") != stat: continue
+		if is_multiplicative:
+			result *= item.effect.value
+		else:
+			result += item.effect.value
+	return result
+
 var coins = 0:
 	set(value):
 		coins = value
