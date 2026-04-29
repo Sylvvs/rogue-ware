@@ -13,9 +13,9 @@ script = ExtResource("1_ggrd2")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_top = 187.0
-offset_right = 192.0
-offset_bottom = 268.0
+offset_top = 251.0
+offset_right = 267.0
+offset_bottom = 308.0
 
 [node name="StepLabel" type="Label" parent="."]
 layout_mode = 0
@@ -35,13 +35,13 @@ render_target_update_mode = 4
 
 [node name="OverlayPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 186.0
-offset_bottom = 171.0
+offset_right = 209.0
+offset_bottom = 250.0
 
 [node name="VBox" type="VBoxContainer" parent="OverlayPanel"]
 layout_mode = 0
-offset_right = 186.0
-offset_bottom = 173.0
+offset_right = 209.0
+offset_bottom = 249.0
 alignment = 2
 
 [node name="Title" type="Label" parent="OverlayPanel/VBox"]
