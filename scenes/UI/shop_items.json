@@ -153,9 +153,9 @@
 		"desc": "Permanently gain +2 max lives for this run!",
 		"image": "res://images/sprites/Items/Icons/Odin's helmet.png",
 		"cost": 300,
-		"type": "active",
+		"type": "passive",
 		"effect": {
-			"action": "permanent_lives",
+			"stat": "health_cap",
 			"value": 2
 		}
 	}

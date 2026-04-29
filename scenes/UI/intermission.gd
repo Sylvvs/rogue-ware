@@ -16,10 +16,11 @@ var current_hp = 3
 var pending_damage = 0
 
 func _ready():
+	Inventory.passive_changed.connect(_on_passive_changed)
 	create_hearts()
 
 func create_hearts():
-	for i in range(max_normal_hp):
+	for i in range(int(Inventory.get_passive("health_cap"))):
 		var new_heart = heart.duplicate()
 		new_heart.visible = true
 		
@@ -53,12 +54,12 @@ func lose_heart(amount := 1):
 	play_loss()
 
 func gain_heart(amount := 1):
-	current_hp = min(current_hp + amount, max_normal_hp)
+	current_hp = min(current_hp + amount, int(Inventory.get_passive("health_cap")))
 	update_hearts()
 
 func gain_max_hp(amount := 1):
 	for i in range(amount):
-		max_normal_hp += 1
+		#max_normal_hp += 1
 		
 		var new_heart = heart.duplicate()
 		new_heart.visible = true
@@ -126,3 +127,11 @@ func count_up(value, remaining, step_time):
 	win_label.text = str(value)
 	
 	count_up(value, remaining, step_time)
+
+
+func _on_passive_changed(stat: String) -> void:
+	if stat == "health_cap":
+		var new_cap = int(Inventory.get_passive("health_cap"))
+		var increase = new_cap - hearts.size()
+		if increase > 0:
+			gain_max_hp(increase)

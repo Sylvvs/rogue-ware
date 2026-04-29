@@ -11,8 +11,10 @@ var minigames_beaten = 0
 const PASSIVE_DEFAULTS = {
 	"time_bonus": 0.0,
 	"coin_multiplier": 1.0,
-	"health_cap": 5.0
+	"health_cap": 3.0
 }
+
+signal passive_changed(stat: String)
 
 func get_passive(stat: String) -> float:
 	var default = PASSIVE_DEFAULTS.get(stat, 0.0)
@@ -40,9 +42,12 @@ func _ready() -> void:
 func get_item(id: int) -> Dictionary:
 	return all_items.filter(func(i): return i.id == id).front()
 
-func add_item(id: int) -> void:
-	owned.append(get_item(id))
+func add_item(id) -> void:
+	var item = get_item(id)
+	owned.append(item)
 	emit_signal("inventory_changed")
+	if item.get("type") == "passive":
+		passive_changed.emit(item.effect.get("stat", ""))
 
 func get_time_bonus() -> float:
 	return _sum_passive("time_bonus")
