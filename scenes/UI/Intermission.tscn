@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cv8qbgcywtapx"]
 
-[ext_resource type="Script" uid="uid://b6hce2rqd3xko" path="res://scenes/UI/intermission.gd" id="1_j3epy"]
+[ext_resource type="Script" path="res://scenes/UI/intermission.gd" id="1_j3epy"]
 [ext_resource type="Texture2D" uid="uid://cyadpmo1t6d8t" path="res://images/HealthUI.png" id="2_gxxy8"]
 [ext_resource type="Texture2D" uid="uid://dtsuggcl2f0ff" path="res://images/sprites/Items/Icons/Gold.png" id="3_gxxy8"]
 
