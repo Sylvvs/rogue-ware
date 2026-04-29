@@ -63,12 +63,15 @@ func _execute_action(effect: Dictionary):
 	match effect.get("action"):
 		"skip_minigame":
 			gh._on_game_won()
-		"double_points":
-			print("doesnt work")
-		"triple_points":
-			print("doesnt work")
+		"mult_decrease":
+			gh.mult -= 0.1
+		"big_mult_decrease":
+			gh.mult -= 0.25
+			gh.health -= 1
+			if gh.health <= 0:
+				gh.die()
 		"freeze_timer":
-			print("doesnt work")
+			gh.freeze_timer(effect.get("value"))
 		"random_effect":
 			var actions = ["skip_minigame", "double_points", "regain_life", "throwing_stone"]
 			_execute_action({"action": actions.pick_random()})
@@ -79,8 +82,6 @@ func _execute_action(effect: Dictionary):
 			if gh.health <= gh.max_health:
 				gh.health += 1
 			gh.next_timer_mult *= 1.2
-		"double_gold":
-			print("doesnt work")
 		"throwing_stone":
 			if randi() % 2 == 0:
 				gh.current_timer.time += 10
@@ -90,6 +91,8 @@ func _execute_action(effect: Dictionary):
 			var amount = randi_range(effect.get("min", -300), effect.get("max", 600))
 			Inventory.coins += amount
 		"bomb_minigame":
-			gh._on_game_lost()
+			gh.block_position -= 1
+			gh.stop_game()
 		"permanent_lives":
 			gh.max_health += effect.get("value")
+			gh.intermission_screen.gain_max_hp(effect.get("value"))

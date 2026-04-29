@@ -175,7 +175,7 @@ func _launch(scene: PackedScene) -> void:
 	current_timer = timer
 
 	game.start()
-	var additional_time = int(Inventory.get_time_bonus())
+	var additional_time = int(Inventory.get_passive("time_bonus"))
 	if game.disable_timer_addition:
 		additional_time = 0
 	timer.time = int((game.time_limit * next_timer_mult) + additional_time)
@@ -186,6 +186,9 @@ func _launch(scene: PackedScene) -> void:
 	timer.start()
 	next_timer_mult = 1
 
+func freeze_timer(time_value):
+	if current_minigame and current_timer:
+		current_timer.freeze_time(time_value)
 
 func clear_current_minigame():
 	if current_minigame:
@@ -208,8 +211,9 @@ func _on_timer_finished():
 	
 func _on_game_won():
 	print("yay u did it")
-	intermission_screen.play_win(Inventory.coins, 50 * Inventory.get_coin_multiplier())
-	Inventory.coins += 50 * Inventory.get_coin_multiplier()
+	var coin_reward = 50 * Inventory.get_passive("coin_multiplier")
+	intermission_screen.play_win(Inventory.coins, coin_reward)
+	Inventory.coins += coin_reward
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	stop_game()
 	minigames_beaten += 1
@@ -221,7 +225,6 @@ func _on_game_lost():
 	intermission_screen.lose_heart()
 	print("holy washed")
 	print('You beat: ' + JSON.stringify(minigames_beaten))
-	minigames_beaten = 0
 	stop_game()
 	
 func _on_intermission_time_timeout() -> void:
@@ -230,6 +233,8 @@ func _on_intermission_time_timeout() -> void:
 	music.recover_error_sound()
 	intermission_screen.visible = false
 	_advance_and_decide()
+
 func die():
+	Inventory.minigames_beaten = minigames_beaten
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/LoseScreen/lose_screen.tscn")
-	pass

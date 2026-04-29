@@ -33,6 +33,7 @@ stretch_mode = 5
 
 [node name="Bomb" type="TextureButton" parent="."]
 visible = false
+texture_filter = 1
 offset_right = 100.0
 offset_bottom = 100.0
 texture_normal = SubResource("AtlasTexture_tc6fj")

@@ -26,7 +26,8 @@ func start():
 	time_limit = 20
 	time_limit = clamp(ceil(time_limit - (4 * mult)),8,180)
 	
-	for i in range(10):
+	var word_amount = clamp(ceili(10 * mult),10,50)
+	for i in range(word_amount):
 		words = words + WORDS.pick_random() + " "
 	words = words.trim_suffix(" ")
 	update_label()

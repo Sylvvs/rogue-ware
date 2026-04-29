@@ -28,4 +28,3 @@ func _on_body_entered(body: Node2D) -> void:
 		body.invincible_timer = 0.0
 		var player = get_tree().get_first_node_in_group('player')
 		player.play_anim('Hit')
-		print("guy hit!", body.health)

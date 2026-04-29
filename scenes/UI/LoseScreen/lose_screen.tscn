@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://p2xrdj0p4hgc"]
+[gd_scene load_steps=8 format=3 uid="uid://p2xrdj0p4hgc"]
 
-[ext_resource type="Script" path="res://scenes/UI/LoseScreen/lose_screen.gd" id="1_rxx5q"]
+[ext_resource type="Script" uid="uid://cqred3yl8fby" path="res://scenes/UI/LoseScreen/lose_screen.gd" id="1_rxx5q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gignq"]
 bg_color = Color(0.8156863, 0.8156863, 0.8156863, 0.84705883)
@@ -20,6 +20,12 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ap7s"]
 
+[sub_resource type="Gradient" id="Gradient_rxx5q"]
+colors = PackedColorArray(0.7984597, 0.7401366, 7.70092e-07, 1, 0.6498998, 0.4072234, 7.0862916e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_te1dg"]
+gradient = SubResource("Gradient_rxx5q")
+
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -37,7 +43,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -200.5
-offset_top = -400.0
+offset_top = -229.0
 offset_right = 200.5
 grow_horizontal = 2
 grow_vertical = 0
@@ -70,7 +76,7 @@ offset_left = -276.0
 offset_right = 276.0
 offset_bottom = 168.0
 grow_horizontal = 2
-theme_override_colors/default_color = Color(0.9187369, 0.3133042, 0.25030932, 1)
+theme_override_colors/default_color = Color(1, 0.100000024, 0, 1)
 theme_override_font_sizes/normal_font_size = 100
 theme_override_font_sizes/bold_font_size = 100
 theme_override_font_sizes/bold_italics_font_size = 100
@@ -79,6 +85,34 @@ theme_override_font_sizes/mono_font_size = 100
 text = "You Lose"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatsLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.0
+offset_top = -153.0
+offset_right = 203.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "i am saving data and shit cause im in fucking minecraft
+"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_te1dg")
 
 [connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainScreen" to="." method="_on_main_screen_pressed"]

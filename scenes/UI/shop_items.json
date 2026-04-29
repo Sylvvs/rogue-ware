@@ -58,12 +58,12 @@
 	{
 		"id": 6,
 		"name": "Anvil",
-		"desc": "50/50: for 0.5x gold or 2.0x gold",
+		"desc": "Decreases mult by 0.1",
 		"image": "res://images/sprites/Items/Icons/Anvil.png",
-		"cost": 120,
+		"cost": 400,
 		"type": "active",
 		"effect": {
-			"action": "double_points"
+			"action": "mult_decrease"
 		}
 	},
 	{
@@ -80,12 +80,13 @@
 	{
 		"id": 8,
 		"name": "Pearl of Gold",
-		"desc": "2x gold in the next minigame!",
+		"desc": "1.25x gold multiplier!",
 		"image": "res://images/sprites/Items/Icons/Pearl of gold.png",
-		"cost": 100,
-		"type": "active",
+		"cost": 300,
+		"type": "passive",
 		"effect": {
-			"action": "double_gold"
+			"stat": "coin_multiplier",
+			"value": 1.25
 		}
 	},
 	{
@@ -102,12 +103,12 @@
 	{
 		"id": 10,
 		"name": "Red Orb of Mohg",
-		"desc": "3x points in the next minigame!",
+		"desc": "Decreases mult by 0.25 but costs a life in addition to the coins!",
 		"image": "res://images/sprites/Items/Icons/Red orb of Mohg.png",
-		"cost": 200,
+		"cost": 500,
 		"type": "active",
 		"effect": {
-			"action": "triple_points"
+			"action": "big_mult_decrease"
 		}
 	},
 	{
@@ -138,7 +139,7 @@
 	{
 		"id": 13,
 		"name": "Bomb",
-		"desc": "Destroys the next minigame — counts as a skip, but does NOT count as a cleared minigame.",
+		"desc": "Destroys the next minigame, skipping, but does NOT count as a cleared minigame.",
 		"image": "res://images/sprites/Items/Icons/Bomb.png",
 		"cost": 125,
 		"type": "active",
@@ -152,9 +153,9 @@
 		"desc": "Permanently gain +2 max lives for this run!",
 		"image": "res://images/sprites/Items/Icons/Odin's helmet.png",
 		"cost": 300,
-		"type": "active",
+		"type": "passive",
 		"effect": {
-			"action": "permanent_lives",
+			"stat": "health_cap",
 			"value": 2
 		}
 	}
