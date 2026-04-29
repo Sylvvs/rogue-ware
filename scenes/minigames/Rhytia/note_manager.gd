@@ -10,7 +10,7 @@ const  grid_rows = 3
 const cell_size = 145
 const grid_offset = Vector2(370, 75)
 
-
+var tutorial_mode = false
 var map = []
 var next_note_index = 0
 func grid_to_screen(col, row) -> Vector2:
@@ -85,10 +85,17 @@ func spawn_note(note_data: Dictionary):
 	note.scale = Vector2(0.1, 0.1)
 
 
+
 func _input(event):
 	if event is InputEventMouseMotion:
-		var min_pos = grid_to_screen(0,0) - Vector2(20,20)
-		var max_pos = grid_to_screen(2,2) + Vector2(20,20)
-		var offset = 	Vector2(get_viewport_rect().size.x * 0.1, get_viewport_rect().size.y * -0.09)
+		var min_pos = grid_to_screen(0,0) - Vector2(63,63)
+		var max_pos = grid_to_screen(2,2) + Vector2(63,63)
+		
+		var offset: Vector2
+		if tutorial_mode:
+			offset = Vector2.ZERO  # no offset needed inside SubViewport
+		else:
+			offset = Vector2(get_viewport_rect().size.x * 0.1, get_viewport_rect().size.y * -0.09)
+		
 		var new_pos = fake_mouse.global_position + event.relative
 		fake_mouse.global_position = new_pos.clamp(offset + min_pos, offset + max_pos - Vector2(1, 1))

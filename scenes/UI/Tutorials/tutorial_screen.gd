@@ -17,6 +17,7 @@ func _on_bullethell_pressed() -> void:
 
 
 func _on_rhythia_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/UI/Tutorials/rhythia_tutorial.tscn")
 	pass # Replace with function body.
 
 

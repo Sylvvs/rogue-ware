@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://lsvrwjvemyl6"]
+
+[ext_resource type="Script" uid="uid://djupk2d381b3y" path="res://scenes/UI/Tutorials/rhythia_tutorial.gd" id="1_ggrd2"]
+
+[node name="RhythiaTutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ggrd2")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 187.0
+offset_right = 192.0
+offset_bottom = 268.0
+
+[node name="StepLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 98.0
+offset_bottom = 24.0
+
+[node name="RhytiaViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 650.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="RhytiaViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1151, 650)
+render_target_update_mode = 4
+
+[node name="OverlayPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 171.0
+
+[node name="VBox" type="VBoxContainer" parent="OverlayPanel"]
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 173.0
+alignment = 2
+
+[node name="Title" type="Label" parent="OverlayPanel/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Body" type="RichTextLabel" parent="OverlayPanel/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DismissButton" type="Button" parent="OverlayPanel/VBox"]
+layout_mode = 2
+icon_alignment = 1
