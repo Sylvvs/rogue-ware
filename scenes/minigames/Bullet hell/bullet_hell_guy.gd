@@ -34,7 +34,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if invincible:
 		invincible_timer += delta
-		print(invincible_timer)
 		if invincible_timer >= invincible_duration:
 			invincible = false
 			invincible_timer = 0.0
@@ -44,7 +43,5 @@ func play_anim(name: String):
 		return
 	if anim.current_animation != name:
 		anim.play(name)
-	if name == "Hit":
-		print('hej')
 		
 		
