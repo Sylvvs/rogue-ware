@@ -8,14 +8,14 @@ var current_track_file_name = ""
 @onready var record = $MusicPopUp/Panel/TextureRect
 
 @onready var ALL_TRACKS = [
-	"res://music/Flocci/",
+	#"res://music/Flocci/",
 	"res://music/Red&Blue/",
-	"res://music/Green&Purple/",
+	#"res://music/Green&Purple/",
 	"res://music/NoDuh/",
 	"res://music/TVWorld/",
 	"res://music/RudeBuster/",
 	"res://music/GreenGo/",
-	"res://music/DesertScramble/",
+	#"res://music/DesertScramble/",
 	"res://music/BeCareful/"
 ]
 

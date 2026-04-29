@@ -4,6 +4,7 @@
 
 [node name="Typing" type="CanvasLayer"]
 script = ExtResource("1_vn78h")
+priority = true
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
