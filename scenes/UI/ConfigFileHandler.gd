@@ -50,3 +50,10 @@ func load_keybindings():
 		
 		keybindings[key] = input_event
 	return keybindings
+
+func save_volume(bus: String, value: float) -> void:
+	config.set_value("audio", bus + "_volume", value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_volume(bus: String, default: float = 0.5) -> float:
+	return config.get_value("audio", bus + "_volume", default)

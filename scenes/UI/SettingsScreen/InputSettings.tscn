@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3hih2qymrcju"]
+[gd_scene load_steps=5 format=3 uid="uid://d3hih2qymrcju"]
 
 [ext_resource type="Script" uid="uid://bi4r1a12ke656" path="res://scenes/UI/SettingsScreen/input_settings.gd" id="1_vfnmu"]
 [ext_resource type="PackedScene" uid="uid://cbgnehogil6k2" path="res://scenes/UI/SettingsScreen/input_button.tscn" id="2_5levr"]
+[ext_resource type="Texture2D" uid="uid://cdugw11mgum3f" path="res://images/sound-off-music-mute-off-sound-speaker-volume-icon-16.png" id="3_6nthw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfnmu"]
 bg_color = Color(0.207843, 0.207843, 0.207843, 0.866667)
@@ -22,10 +23,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -381.0
-offset_top = -222.0
-offset_right = 381.0
-offset_bottom = 222.0
+offset_left = -330.0
+offset_top = -86.0
+offset_right = 330.0
+offset_bottom = 299.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vfnmu")
@@ -72,6 +73,45 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "Reset Keybinds"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 94.0
+offset_right = 890.0
+offset_bottom = 256.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Master volume" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Master_slider" type="HSlider" parent="MarginContainer/VBoxContainer/Master volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Master volume"]
+position = Vector2(-29, 6.999998)
+scale = Vector2(0.16291673, 0.16291673)
+texture = ExtResource("3_6nthw")
+
+[node name="Music volume" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Music_slider" type="HSlider" parent="MarginContainer/VBoxContainer/Music volume"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFX volume" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SFX_slider" type="HSlider" parent="MarginContainer/VBoxContainer/SFX volume"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
