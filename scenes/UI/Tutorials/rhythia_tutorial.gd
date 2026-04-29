@@ -17,12 +17,12 @@ var tutorial_steps = [
 	{
 		"trigger": "first_hit",
 		"title": "Nice hit :D",
-		"body": "That's all there is to it.\nKeep hovering over circles as they appear."
+		"body": "That's all there is to it.\nKeep hovering over the squares as they appear."
 	},
 	{
 		"trigger": "first_miss",
 		"title": "That was a miss.",
-		"body": "If your cursor isn't on the circle when it finishes shrinking, it's a miss.\nToo many misses and you lose"
+		"body": "If your cursor isn't on the square when it finishes extending, it's a miss.\nToo many misses and you lose"
 	},
 	{
 		"trigger": "combo_4",

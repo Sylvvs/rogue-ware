@@ -87,15 +87,19 @@ func spawn_note(note_data: Dictionary):
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if tutorial_mode:
 		var min_pos = grid_to_screen(0,0) - Vector2(63,63)
 		var max_pos = grid_to_screen(2,2) + Vector2(63,63)
+		var offset: Vector2
+		offset = Vector2.ZERO
+		var new_pos = fake_mouse.global_position + event.relative
+		fake_mouse.global_position = new_pos.clamp(offset + min_pos, offset + max_pos - Vector2(1, 1))
+	elif event is InputEventMouseMotion and not tutorial_mode:
+		var min_pos = grid_to_screen(0,0) - Vector2(22,22)
+		var max_pos = grid_to_screen(2,2) + Vector2(20,20)
 		
 		var offset: Vector2
-		if tutorial_mode:
-			offset = Vector2.ZERO  # no offset needed inside SubViewport
-		else:
-			offset = Vector2(get_viewport_rect().size.x * 0.1, get_viewport_rect().size.y * -0.09)
+		offset = Vector2(get_viewport_rect().size.x * 0.1, get_viewport_rect().size.y * -0.09)
 		
 		var new_pos = fake_mouse.global_position + event.relative
 		fake_mouse.global_position = new_pos.clamp(offset + min_pos, offset + max_pos - Vector2(1, 1))
