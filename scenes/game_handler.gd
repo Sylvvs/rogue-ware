@@ -233,6 +233,8 @@ func _on_intermission_time_timeout() -> void:
 	music.recover_error_sound()
 	intermission_screen.visible = false
 	_advance_and_decide()
+
 func die():
 	Inventory.minigames_beaten = minigames_beaten
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/LoseScreen/lose_screen.tscn")
