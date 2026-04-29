@@ -49,7 +49,6 @@ var phases = [
 
 func _process(delta):
 	var phase = phases[current_phase]
-	print(time_passed)
 	spawn_timer += delta 
 	time_passed += delta
 	phase_timer += delta
