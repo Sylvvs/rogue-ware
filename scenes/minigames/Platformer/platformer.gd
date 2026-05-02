@@ -43,15 +43,14 @@ func generate_map():
 		piece.global_position += prevPos - startMarker.global_position
 		if i == 0:
 			player.global_position = startMarker.global_position
-
-		print("Spawned at " + JSON.stringify(prevPos))
+		
+		
 		prevPos = end.global_position
 		if i == piece_count-1:
 			win_condition.global_position = end.global_position
-			print(win_condition.position)
 	win_condition_monitoring = true
-	
-	
+
+
 func load_random_piece():
 	var index = randi() % MAP_PIECES.size()
 	while index == last_index and MAP_PIECES.size() > 1:
@@ -63,7 +62,6 @@ func load_random_piece():
 func _on_wincondition_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
-	
 	emit_signal("game_won")
 
 func lost():
