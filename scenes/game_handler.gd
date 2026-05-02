@@ -210,7 +210,6 @@ func _on_timer_finished():
 	current_minigame.stop()
 	
 func _on_game_won():
-	print("yay u did it")
 	var coin_reward = 50 * Inventory.get_passive("coin_multiplier")
 	intermission_screen.play_win(Inventory.coins, coin_reward)
 	Inventory.coins += coin_reward
@@ -223,8 +222,6 @@ func _on_game_lost():
 	health -= 1
 	music.play_error_sound()
 	intermission_screen.lose_heart()
-	print("holy washed")
-	print('You beat: ' + JSON.stringify(minigames_beaten))
 	stop_game()
 	
 func _on_intermission_time_timeout() -> void:
