@@ -55,12 +55,10 @@ func _process(delta):
 	node_center.rotation += delta/4 * phase.multiplier
 	
 	
-	# switch phase
 	if phase_timer >= phase.duration:
 		phase_timer = 0
 		current_phase = (current_phase + 1) % phases.size()
 		
-	# spawn bullets
 	if spawn_timer >= 0.5:
 		spawn_timer = 0
 		spawn_pattern(phase)

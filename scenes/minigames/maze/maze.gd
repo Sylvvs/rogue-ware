@@ -11,7 +11,6 @@ func _ready():
 	generate_grid()
 	generate_maze()
 
-
 func generate_grid():
 	for y in range(height):
 		grid.append([])

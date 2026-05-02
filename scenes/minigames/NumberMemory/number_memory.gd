@@ -38,7 +38,6 @@ func build_ui() -> void:
 	label_instruction.add_theme_font_size_override("font_size", 30)
 	add_child(label_instruction)
 
-	# Progress bar just below instruction
 	progress_bar = ProgressBar.new()
 	progress_bar.position = Vector2(176, 115)
 	progress_bar.size = Vector2(800, 20)

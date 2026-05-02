@@ -26,7 +26,6 @@ func start():
 		new_card.value_sheet = value_sheet
 		new_card.back_sheet = back_sheet
 
-		# Random card
 		new_card.suit = rng.randi_range(0,3)
 		new_card.value = rng.randi_range(0,12)
 		new_card.set_card(new_card.suit,new_card.value)
@@ -73,41 +72,35 @@ func best_hand(held_cards = null):
 	for idx in cards:
 		suits.append(idx / 13)
 		values.append(idx % 13)
-	
-	# Count occurrences of each value
+
 	var value_counts = {}
 	for v in values:
 		value_counts[v] = value_counts.get(v, 0) + 1
 	
 	var counts = value_counts.values()
 	counts.sort()
-	counts.reverse()  # e.g. [3, 2, 1] for three-of-a-kind + pair + kicker
+	counts.reverse() 
 	
-	# Check flush: all same suit (only possible with 5 cards from your held hand)
 	var is_flush = false
 	if cards.size() >= 5:
 		var held_suits = cards.map(func(i): return i / 13)
 		is_flush = held_suits.count(held_suits[0]) == 5
 	
-	# Check straight: 5 consecutive values (needs sorted unique values)
 	var is_straight = false
 	if cards.size() >= 5:
 		var held_vals = cards.map(func(i): return i % 13)
 		held_vals.sort()
-		# Check normal straight
 		var consecutive = true
 		for i in range(1, held_vals.size()):
 			if held_vals[i] != held_vals[i-1] + 1:
 				consecutive = false
 				break
-		# Check ace-low straight (A-2-3-4-5): ace is 12, so [0,1,2,3,12]
 		var ace_low = held_vals == [0, 1, 2, 3, 4]
 		is_straight = consecutive or ace_low
 	
-	# Evaluate hand rank
 	if is_straight and is_flush:
 		var held_vals = held_hand.map(func(i): return i % 13)
-		if held_vals.has(0) and held_vals.has(11):  # A + K = royal
+		if held_vals.has(0) and held_vals.has(11):
 			return "Royal Flush"
 		return "Straight Flush"
 	

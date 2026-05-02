@@ -54,7 +54,6 @@ func evaluate_circle():
 		label.text = "Too small!"
 		return
 	
-	# Check the drawing actually wraps around (start and end are close)
 	var gap = points[0].distance_to(points[-1])
 	if gap > radius * 0.8:
 		label.text = "Close the circle!"
@@ -66,7 +65,7 @@ func evaluate_circle():
 		variance += diff * diff
 	variance /= points.size()
 	var std_dev = sqrt(variance)
-	var score = std_dev / radius  # ~0.0 (perfect) og ~0.3+ (washed)
+	var score = std_dev / radius 
 	
 	var percent = int((1.0 - clamp(score / 0.3, 0.0, 1.0)) * 150)
 	label.text = "%d%%" % percent

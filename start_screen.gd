@@ -21,22 +21,22 @@ func _ready() -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/GameHandler.tscn")
-	pass # Replace with function body.
+	pass 
 
 
 func _on_settings_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/SettingsScreen/InputSettings.tscn")
-	pass # Replace with function body.
+	pass 
 
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.
+	pass 
 
 
 func _on_tutorials_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/Tutorials/tutorial_screen.tscn")
-	pass # Replace with function body.
+	pass 
 
 
 func _on_high_detail_toggled(toggled_on: bool) -> void:

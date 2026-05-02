@@ -26,13 +26,11 @@ func update_sprite():
 	if not value_sheet or not back_sheet:
 		return
 
-	# Card face (suit x value)
 	var face := AtlasTexture.new()
 	face.atlas = value_sheet
 	face.region = Rect2(Vector2(value * tile_size.x, suit * tile_size.y), tile_size)
 	value_sprite.texture = face
 
-	# Card back
 	var back := AtlasTexture.new()
 	back.atlas = back_sheet
 	back.region = Rect2(Vector2(71,0), tile_size)

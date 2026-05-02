@@ -35,7 +35,6 @@ func start():
 		newPart.name = "BombStringPart%d" % i
 		bomb.add_child(newPart)
 
-	# keep fuse last
 	bomb.move_child(fuseHolder, bomb.get_child_count() - 1)
 
 func change_text(param: String):
