@@ -86,7 +86,7 @@ func _send_request(request: Dictionary):
 	print("[LoseScreen] Request sent OK, waiting for response...")
 	http_request.set_meta("on_complete", request.get("on_complete", ""))
 
-func _http_request_completed(result, response_code, headers, body):
+func _http_request_completed(result, response_code, body):
 	var callback = http_request.get_meta("on_complete", "")
 	print("[LoseScreen] Response received — result: %d | code: %d | callback: %s" % [result, response_code, callback])
 	is_requesting = false
