@@ -17,7 +17,7 @@ var allowed_misses = 25
 var allowed_misses_scale = 5
 func start():
 	allowed_misses = clamp(allowed_misses - round(allowed_misses_scale * mult),5,25)
-	instruction_text = "Hit the block with your mouse " + "and don't miss more than:" + " " + str(allowed_misses)
+	instruction_text = "Hit the block with your mouse " + "and don't miss more than:" + " " + str(int(allowed_misses))
 	time_limit = 20
 	time_limit = clamp(ceil(time_limit * mult),20,300)
 	if full_song:
