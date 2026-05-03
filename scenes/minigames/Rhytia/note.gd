@@ -50,24 +50,6 @@ func _process(delta):
 			else:
 				register_miss()
 
-#func _input(event):
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		#var mouse_pos = get_global_mouse_position()
-		#if position.distance_to(mouse_pos) < hit_radius: 
-			#try_hit()
-#
-#func try_hit():
-	#if has_been_hit:
-		#return
-	#var diff = abs(Conductor.current_time - hit_time)
-	#if diff <= perfect_window:
-		#register_hit("Perfect")
-	#elif diff <= good_window:
-		#register_hit("Good")
-	#else:
-		#notes_missed += 1
-		#register_miss()
-
 func register_hit(rating: String):
 	var i = Conductor.mult_levels.find(Conductor.multiplier)
 	has_been_hit = true
