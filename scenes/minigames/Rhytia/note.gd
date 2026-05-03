@@ -42,7 +42,7 @@ func _process(delta):
 	if Conductor.current_time > hit_time:
 		var mouse_pos = Conductor.fake_mouse.global_position
 		var dist = global_position.distance_to(mouse_pos)
-		if global_position.distance_to(mouse_pos) < hit_radius:
+		if dist < hit_radius:
 			register_hit("Perfect")
 		else:
 			if Conductor.current_time - last_seen_cursor < grace_period:
