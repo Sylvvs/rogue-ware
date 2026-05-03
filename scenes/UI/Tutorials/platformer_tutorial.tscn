@@ -827,6 +827,7 @@ offset_left = 88.0
 offset_top = 347.0
 offset_right = 346.0
 offset_bottom = 470.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Welcome to the platforming tutorial! To start move from side to side with A and D and jump over that block with SPACE!"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
@@ -834,6 +835,7 @@ offset_left = 598.0
 offset_top = 243.0
 offset_right = 932.0
 offset_bottom = 364.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Oh No... This wall is too large to clear with just a jump, luckily you can repeatedly jump against it and gain height! If you're not gaining height try holding space when you jump, that way to go higher!"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
@@ -841,6 +843,7 @@ offset_left = 1107.0
 offset_top = 314.0
 offset_right = 1482.0
 offset_bottom = 428.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Hmmm... This gap is too large to clear with just a jump.. Try using your dash to clear it, you dash by pressing SHIFT and regain it whenever you touch the ground!"
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="."]
@@ -848,6 +851,7 @@ offset_left = 1724.0
 offset_top = 329.0
 offset_right = 2040.725
 offset_bottom = 432.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Congrats, you're a natural. Try clearing these next obstacles! Pro tIp: You can dash 8 different directions depending on the keys you're holding"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="."]
@@ -855,6 +859,7 @@ offset_left = 2874.0
 offset_top = 348.0
 offset_right = 3098.0
 offset_bottom = 459.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Congratulations you beat the tutorial, now go beat the real game!"
 
 [node name="Area2D" type="Area2D" parent="."]
