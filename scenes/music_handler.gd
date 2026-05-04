@@ -60,12 +60,9 @@ func get_track_name():
 	return current_track_file_name
 
 func _get_track_base(folder: String) -> String:
-	var dir = DirAccess.open(folder)
-	for file in dir.get_files():
-		if file.ends_with(".mp3"):
-			var stem = file.get_basename()
-			return folder + stem
-	return ""
+	var stem = folder.rstrip("/").get_file()
+	var path = folder + stem
+	return path
 
 func play_random_track() -> void:
 	var folder = ALL_TRACKS.pick_random()
