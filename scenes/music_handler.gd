@@ -49,6 +49,7 @@ func _on_track_finished() -> void:
 	play_random_track()
 
 func get_credit_string() -> String:
+	return "ugh this debugging sucks"
 	if current_meta.is_empty():
 		return ""
 	var title = "Now playing: %s (%s)" % [current_meta.title, int(current_meta.year)]
