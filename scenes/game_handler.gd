@@ -60,6 +60,9 @@ func _ready() -> void:
 	intermission_screen.max_normal_hp = max_health
 	intermission_screen.current_hp = health
 	self.add_child(intermission_screen)
+	mult = 1
+	Inventory.coins = 0
+	Inventory.owned = []
 	intermission.start()
 
 func apply_seed(s: int) -> void:
