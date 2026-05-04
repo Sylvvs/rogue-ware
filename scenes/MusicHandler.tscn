@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://x5ywo0qflrca"]
+[gd_scene load_steps=4 format=3 uid="uid://x5ywo0qflrca"]
 
 [ext_resource type="Script" uid="uid://s6bomjssdcw8" path="res://scenes/music_handler.gd" id="1_s6e27"]
 [ext_resource type="Texture2D" uid="uid://d1wuf5kmxemne" path="res://images/record.png" id="2_r8afn"]
@@ -12,21 +12,6 @@ border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 1000
 corner_radius_bottom_left = 1000
-
-[sub_resource type="FontFile" id="FontFile_1b0gh"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
 
 [node name="MusicHandler" type="CanvasLayer"]
 layer = 4
@@ -63,9 +48,7 @@ offset_left = 100.0
 offset_right = 500.0
 offset_bottom = 100.0
 mouse_filter = 1
-theme_override_fonts/normal_font = SubResource("FontFile_1b0gh")
 theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
 text = "what do you mean"
 fit_content = true
 autowrap_mode = 0

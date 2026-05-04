@@ -28,7 +28,8 @@ func play_track(base_path: String) -> void:
 	
 	var stream = load(base_path + ".mp3")
 
-	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
+	var file = FileAccess.open(base_path + ".json", FileAccess.READ)
+	var json_text = file.get_as_text(true)  # true = skip UTF-8 BOM
 	current_meta = JSON.parse_string(json_text)
 
 	if current_track:
@@ -48,6 +49,7 @@ func _on_track_finished() -> void:
 	play_random_track()
 
 func get_credit_string() -> String:
+	
 	if current_meta.is_empty():
 		return ""
 	var title = "Now playing: %s (%s)" % [current_meta.title, int(current_meta.year)]
@@ -60,12 +62,9 @@ func get_track_name():
 	return current_track_file_name
 
 func _get_track_base(folder: String) -> String:
-	var dir = DirAccess.open(folder)
-	for file in dir.get_files():
-		if file.ends_with(".mp3"):
-			var stem = file.get_basename()
-			return folder + stem
-	return ""
+	var stem = folder.rstrip("/").get_file()
+	var path = folder + stem
+	return path
 
 func play_random_track() -> void:
 	var folder = ALL_TRACKS.pick_random()
@@ -98,7 +97,7 @@ func show_credits():
 		popup.position = init_pos_popup
 
 	record.pivot_offset = record.size / 2
-	popup_text.text = get_credit_string()
+	popup_text.set_text(get_credit_string())
 	await get_tree().process_frame
 
 	var start_pos = popup.position
