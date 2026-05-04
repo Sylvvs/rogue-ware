@@ -49,7 +49,6 @@ func _on_track_finished() -> void:
 	play_random_track()
 
 func get_credit_string() -> String:
-	return "ugh this debugging sucks"
 	if current_meta.is_empty():
 		return ""
 	var title = "Now playing: %s (%s)" % [current_meta.title, int(current_meta.year)]
@@ -97,7 +96,7 @@ func show_credits():
 		popup.position = init_pos_popup
 
 	record.pivot_offset = record.size / 2
-	popup_text.text = get_credit_string()
+	popup_text.set_text(get_credit_string())
 	await get_tree().process_frame
 
 	var start_pos = popup.position
