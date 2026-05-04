@@ -28,7 +28,8 @@ func play_track(base_path: String) -> void:
 	
 	var stream = load(base_path + ".mp3")
 
-	var json_text = FileAccess.open(base_path + ".json", FileAccess.READ).get_as_text()
+	var file = FileAccess.open(base_path + ".json", FileAccess.READ)
+	var json_text = file.get_as_text(true)  # true = skip UTF-8 BOM
 	current_meta = JSON.parse_string(json_text)
 
 	if current_track:
